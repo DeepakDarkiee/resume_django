@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block css %}
+    <style>
+         html{
+             scroll-behavior: smooth;
+         }
+    </style>
+{% endblock css %}
+
+{% block main %}
+
+ {% comment %} <section class="bg-grey" id="service">
+        <div class="container">
+            <div class="row ">
+                <!-- <div class="col-lg-4">
+                    <div class="service-img">
+                        <img src="images/blog-lg.jpg" alt="" class="img-fluid">
+                    </div>
+                </div> -->
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <a href="{% url 'create_resume' %}">
+                    <div class="web-service-block">
+                        <img src="  static/resume/images/template4.png" class="img-fluid" >
+                        
+                    </div>
+                </a>
+                </div>
+
+                <div class="col-lg-6 pl-4">
+                    <div class="service-content">
+                        <h1>Get a better deal and start saving money today</h1>
+                        <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> {% endcomment %}
+
+
+
+    <section class="section" id="services-2">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 text-center">
+                    <div class="section-heading">
+                        <!-- Heading -->
+                        <h2 class="section-title mb-2 text-white">
+                            Web Services
+                        </h2>
+
+                        <!-- Subheading -->
+                        <p class="mb-5 text-white">
+                            Rapoo can be used to create anything from a small marketing page to a sophisticated website.
+                        </p>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+
+
+
+            <div class="row">
+                
+            
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <a href="{% url 'template1' %}">
+                    <div class="web-service-block">
+                        <i class="ti-light-bulb"></i>
+                        <h3>Creative Design</h3>
+                        <p>Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had .</p>
+                    </div>
+                </a>
+                </div>
+            
+           
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <a href="{% url 'template2' %}">
+                    <div class="web-service-block">
+                        <i class="ti-desktop"></i>
+                        <h3>Web Development</h3>
+                        <p>Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had .</p>
+                    </div>
+                </a>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                    <a href="{% url 'template3' %}">
+                    <div class="web-service-block">
+                        <i class="ti-announcement"></i>
+                        <h3>Digital Marketing</h3>
+                        <p>Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had .</p>
+                    </div></a>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <a href="{% url 'template4' %}">
+                    <div class="web-service-block">
+                        <i class="ti-layers-alt"></i>
+                        <h3>Graphic Design</h3>
+                        <p>Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had .</p>
+                    </div></a>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+                        <i class="ti-mobile"></i>
+                        <h3>App Development</h3>
+                        <p>Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had .</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6 ">
+                    <div class="web-service-block">
+                        <i class="ti-settings"></i>
+                        <h3>Wordpress Installation</h3>
+                        <p>Afraid we praise lively he suffer family estate is. Ample order up in of in ready. Timed blind had .</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+ 
+    <!--  Page Scroll to Top  -->
+
+    <a class="scroll-to-top js-scroll-trigger" href="#top-header">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+
+   
+    {% endblock main %}

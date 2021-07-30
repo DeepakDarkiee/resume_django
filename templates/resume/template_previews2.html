@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+
+  
+
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", SansSerif;
+  }
+  @media print {
+
+    #noprint {
+      visibility: hidden;
+    }
+  } 
+  body {
+      #background-color: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+  }
+  ::focut{
+      outline: none !important;
+      border: none;
+  }
+
+  :focus-visible{
+      outline: none;
+  }
+  p {
+    margin-bottom: 15px;
+}
+textarea {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 6px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.btnset {
+    float: right;
+}
+button.Delete {
+    border: none;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 5px;
+}
+
+button.add{
+  border: none;
+  background-color: #00466f;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 5px;
+}
+.about.interest .inputWithIcon input[type="text"] {
+    padding-left: 6px;
+}
+
+select#cars {
+    width: 100%;
+    border: 2px solid #aaa;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 6px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 0px auto;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f040";
+  font-family: 'FontAwesome';
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.inputWithIcon {
+    position: relative;
+}
+.inputWithIcon.inputIconBg i {
+    background-color: #aaa;
+    color: #fff;
+    width: 30px;
+    text-align: center;
+    padding: 9px 4px;
+    border-radius: 4px 0 0 4px;
+}
+
+.inputWithIcon i {
+/*    position: absolute;
+    left: 0;
+    top: 8px;*/
+    padding: 9px 8px;
+    color: #aaa;
+    transition: 0.3s;
+}
+.inputWithIcon input[type="text"] {
+    padding-left: 40px;
+}
+
+input[type="text"] {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 6px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 1000px;
+  background-color: #fff;
+  margin: 50px;
+/*  display: grid;
+grid-template-columns: 1fr 2fr;*/
+box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1);
+}
+.container .left_Side {
+  position: relative;
+  background-color: #003147;
+  padding: 30px;
+  height: 100%;
+}
+.col-md-4.no-padding {
+  margin: 0;
+  padding: 0;
+}
+.profileText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.profileText .imgBx {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  /*border-radius: 50%;*/
+  overflow: hidden;
+}
+.profileText .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo {
+  width: 100%;
+  height: auto;
+}
+.profileText h2 {
+  color: #fff;
+  font-size: 23px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+.profileText h2 span {
+  font-size: 0.8em;
+  font-weight: 300;
+}
+.contactInfo {
+  padding-top: 40px;
+}
+.title {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.contactInfo ul {
+  position: relative;
+}
+.contactInfo ul li {
+  list-style: none;
+  position: relative;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.contactInfo ul li .icon {
+  display: inline-block;
+  width: 30px;
+  font-size: 18px;
+  color: #03a9f4;
+}
+.contactInfo ul li span {
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+}
+.contactInfo.education p {
+    color: #fff;
+}
+.contactInfo.education h5 {
+  color: #03a9f4;
+  font-weight: 500;
+}
+.contactInfo.education h4:nth-child(2) {
+  color: #fff;
+  font-weight: 500;
+}
+.contactInfo.education h4 {
+  color: #fff;
+  font-weight: 300;
+}
+.contactInfo.language .percent {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #081921;
+  display: block;
+  margin-top: 5px;
+}
+.contactInfo.language .percent div {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #03a9f4;
+}
+.container .right_Side {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+}
+.about {
+  margin-bottom: 40px;
+}
+.about.interest h2 {
+    color: #fff;
+    margin-bottom: 20px;
+}
+.about.interest p {
+    color: #fff;
+}
+.about.interest ul li {
+    margin: 0;
+}
+.about:last-child {
+  margin-bottom: 0;
+}
+.title2 {
+  color: #003147;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+p {
+  color: #081921;
+}
+.about .box {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  margin: 10px 0;
+}
+.about .box .year_company {
+  min-width: 270px;
+}
+.about .box .year_company h5 {
+  text-transform: uppercase;
+  color: #848c90;
+  font-weight: 600;
+}
+.about .box .text h4 {
+  text-transform: uppercase;
+  color: #2a7da2;
+  font-size: 16px;
+}
+.about.skills h2 {
+    color: #fff;
+    padding-top: 40px;
+    margin-bottom: 20px;
+}
+.about.skills p {
+    color: #fff;
+}
+.skills .box {
+  /*position: relative;
+  width: 50%;*/
+/*  display: grid;
+  grid-template-columns: 150px 1fr;
+  justify-content: center;
+  align-items: center;*/
+}
+.skills .box h4 {
+  text-transform: uppercase;
+  color: #848c90;
+  font-weight: 500;
+}
+/*.box1 {
+    display: flex;
+    gap: 1rem;
+    }*/
+    .about.skills .box {
+        margin: 3px auto;
+    }
+    .skills .box .percent {
+      position: relative;
+      width: 100%;
+      height: 10px;
+      background-color: #f0f0f0;
+  }
+  .skills .box .percent div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #03a9f4;
+  }
+  .about.interest .inputWithIcon.inputIconBg i {
+    width: 35px;
+    background-color: #0c3147;
+    color: #fff;
+}
+.interest ul li {
+  list-style: none;
+  color: black;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.interest ul li .fa {
+  color: #03a9f4;
+  font-size: 18px;
+  width: 20px;
+}
+@media (max-width: 1000px) {
+  .container {
+    margin: 10px;
+    grid-template-columns: repeat(1, 1fr);
+}
+.interest ul {
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+@media (max-width: 600px) {
+  .about .box {
+    flex-direction: column;
+}
+.about .box .year_company {
+    margin-bottom: 5px;
+}
+.interest ul {
+    grid-template-columns: repeat(1, 1fr);
+}
+.skills .box {
+    grid-template-columns: repeat(1, 1fr);
+}
+}
+.englishw50 {
+  width: 60%;
+}
+.russianw90 {
+  width: 90%;
+}
+.frenchw30 {
+  width: 30%;
+}
+.htmlws30 {
+  width: 50%;
+}
+.cssws45 {
+  width: 45%;
+}
+.jsws70 {
+  width: 70%;
+}
+.phws40 {
+  width: 40%;
+}
+.ilws60 {
+  width: 60%;
+}
+.adw70 {
+  width: 70%;
+}
+
+.dow_btn {
+    position: fixed;
+    right: 5px;
+    top: 11px;
+}
+</style>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-4 no-padding">
+               <div class="left_Side">
+                <div class="profileText">
+                    <div class="imgBx">
+                        <!-- <img class="photo" src="bilalkhan.png"> -->
+                        <div class="avatar-upload">
+                        <!-- <div class="avatar-edit">
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                            <label for="imageUpload"></label>
+                        </div> -->
+                        <div class="avatar-preview">
+                            {% if resume.resumeuserdetails_set.get.photo.url is not null %}
+                            <div id="imagePreview" style="background-image: url('{{resume.resumeuserdetails_set.get.photo.url}}');">
+                                {% else %}
+                            </div id="imagePreview">
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+          
+            {% for object in resume.resumeuserdetails_set.all %}
+
+            <h2>{{resume.resumeuserdetails_set.all.first.full_name}}</h2>
+            {% endfor %}<span style="color:white">{{resume.title}}</span></h2>
+
+        </div>
+
+        <!-- prsionaldeatils section -->
+
+        <div class="contactInfo">
+            <h2 style="color:white;" class="title2">PERSONAL DETAILS</h2>
+            <ul style="padding-top:10px">
+                {% for object in resume.resumeuserdetails_set.all %}
+                <li>
+                    <div class="inputWithIcon inputIconBg">
+                        <span><i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>&nbsp;{{object.mobile}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputWithIcon inputIconBg">
+
+                        <span><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;{{object.email}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputWithIcon inputIconBg">
+                        <span><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;{{object.date_of_birth}}</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputWithIcon inputIconBg">
+                        <span><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{object.address}}</span>
+                    </div>
+                </li>
+            </ul>
+            {% endfor %}
+
+        </div>
+
+        <!-- education section -->
+
+        <div class="contactInfo education">
+            <h2 style="color:white;" class="title2">EDUCATION</h2>
+            <ul style="padding-top:10px">
+                {% for object in resume.education_set.all %}
+
+                    <p><b>Qualification</b> :- {{object.qualification_name}}</p>
+                    <p>University :- {{object.university}}</p>
+                    <p>Passing :-{{object.year_of_passing}}</p>
+                    <p>Percentage :- {{object.percentage_or_grade}}%</p>
+
+            </ul>
+            <br>
+            {% endfor %}
+
+        </div>
+
+        <div class="about skills">
+            <h2 class="title2">Professionals skills</h2>
+
+            <div class="box1">
+                {% for object in resume.skills_set.all %}
+
+                <div class="box">
+                    <p>{{object.skills}}</p>
+                </div>
+                {% endfor %}
+
+            </div>
+
+
+            <div class="about interest">
+                <h2 class="title2">Hobbies</h2>
+                <div class="box1">
+                    {% for object in resume.hobbies_set.all %}
+
+                    <div class="box">
+                        <p>{{object.hobbies}}</p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </div></div>
+
+    <div class="col-md-8">
+        <div class="right_Side">
+            <div class="about">
+                <h2 class="title2">CAREER OBJECTIVE</h2>
+
+                <p>{{resume.objective}}</p>
+            </div>
+            
+            <!-- exprince section -->
+
+            <div class="about">
+                <h2 class="title2">Experience</h2>
+                {% for object in resume.experience_set.all %}
+
+                <div class="box">
+                    <div class="year_company">
+                        <!-- <h5>2020 - Present</h5> -->
+                        <p><b>Compay Name :- </b>{{ object.company_name }}</p>
+                        <p><b>Designation :- </b>{{ object.designation }}</p>
+                    </div>
+                    <div class="text">
+                        <p><b>Plcae :- </b>{{object.place}}</p>
+                        <p><b>Role :- </b>{{object.role}}</p>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- work samlpes section -->
+
+                <h2 class="title2">WORK SAMPLES</h2>
+                {% for object in resume.worksamples_set.all %}
+                <div class="box">
+                    
+                    <div class="year_company">
+                        <p><b>Project Name :- </b>{{ object.project_name }}</p>
+                    </div>
+                    <div class="text">
+                        <!-- <h4>Senior UX Developer</h4> -->
+                        <p><b>Project Link :- </b>{{ object.project_link }}</p>
+                        <p><b>Plateform:-</b>{{ object.technology }}</p>
+
+                        <p><b>Description :- </b>{{ object.responsibilities }}</p>
+                        <p><b>Role and Responsibilities :-</b>{{ object.description }}</p>
+                        
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+            
+            <!-- achivment section -->
+
+            <div class="about">
+                <h2 class="title2">ACHIEVEMENTS</h2>
+                {% for object in resume.achievements_set.all %}
+
+                <p>{{object.achievements}}</p>
+                {% endfor %}
+
+            </div>
+
+            <!-- certidicate section -->
+
+            <div class="about">
+                <h2 class="title2">CERTIFICATE</h2>
+                {% for object in resume.certificate_set.all %}
+
+                <p>{{object.certificate}}</p>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="dow_btn">
+    <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
+              More</button></a>
+              {% if  request.user.is_authenticated  %}
+              {% if not  request.user.account_approved %}
+              <a  onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a>
+              {% else %}
+              <a href="#" id="noprint" class="btn btn-info download">
+                Download</a>
+              {% endif %}
+              {% else %}
+              <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
+              {% endif %}
+</div>
+
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src="./script.js"></script>
+<!-- partial -->
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- <script>
+  $(".download").click(function(){
+    window.print()
+  })
+</script> -->
+
+<script>
+  $(".download").click(function(){
+    $(".wrapper").css("margin-top","-25px");
+    $(".wrapper").css("margin-bottom", "0px");
+    window.print()
+  })
+</script>
+</html>

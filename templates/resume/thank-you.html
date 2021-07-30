@@ -1,0 +1,125 @@
+{% extends "base.html" %} {% block css %}
+ {% endblock css %}
+  {% block main %} 
+  {% include "navbar.html" %}
+
+ 
+
+  <div>
+      
+      
+      <!-- Modal -->
+      <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <!-- <h5 class="modal-title">Modal title</h5> -->
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="{% url 'sign_up'%}" >
+                        {% csrf_token %}
+                       <div class="form__header">
+                        <h1>
+                         Register/Sign Up
+                        </h1>
+                        <p>
+                         Enter your login details below.
+                        </p>
+                       </div>
+                       <input type="hidden" name="r_id" value="{{ resume.id }}" />
+                       <div class="form-group">
+                        <label for="firstname">
+                         First Name
+                         <span>
+                          *
+                         </span>
+                        </label>
+                        <input id="firstname" name="firstname" type="text"/>
+                        <div class="error" id="name__error">
+                        </div>
+                       </div>
+                       <div class="form-group">
+                        <label for="lastname">
+                         Last Name
+                         <span>
+                          *
+                         </span>
+                        </label>
+                        <input id="lastname" name="lastname" type="text"/>
+                        <div class="error" id="name__error">
+                        </div>
+                       </div>
+                       <div class="form-group">
+                        <label for="username">
+                         Username
+                         <span>
+                          *
+                         </span>
+                        </label>
+                        <input id="username" name="username" type="text"/>
+                        <div class="error" id="name__error">
+                        </div>
+                       </div>
+                       <!-- <div class="form-group">
+                        <label for="email">
+                         Email
+                         <span>
+                          *
+                         </span>
+                        </label>
+                        <input id="email" name="email" type="email"/>
+                        <div class="error" id="name__error">
+                        </div>
+                       </div> -->
+                       <div class="form-group">
+                        <label for="password">
+                         Password
+                         <span>
+                          *
+                         </span>
+                        </label>
+                        <input id="password" name="password" type="password"/>
+                       </div>
+                       <div class="line-break">
+                       </div>
+                       <input id="register" type="submit" value="Register"/>
+                        Already have an account? <a href="{% url 'sign_in' %}">Sign In</a>
+                      </form>
+                  </div>
+                  <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save</button>
+                  </div> -->
+              </div>
+          </div>
+      </div>
+
+      <div class="jumbotron text-center">
+        <h1 class="display-3">Thank You!</h1>
+        <p class="lead"><strong>Please fill Sign Up or Sign In details</strong> for download resume.</p>
+        <hr>
+        <!-- <p>
+          Having trouble? <a href="">Contact us</a>
+        </p> -->
+        <p class="lead">
+          <!-- <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Continue to homepage</a> -->
+        <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-sm" id="modal" data-toggle="modal" data-target="#modelId">
+        Sign Up/Sign In
+      </button>
+        </p>
+      </div>
+  </div>
+  {% endblock main %}
+   {% block js %}
+   <script type="text/javascript">
+    $(document).ready(function(){
+        $("#modal").click(); 
+    });
+
+    
+    </script>   
+   {% endblock js %}

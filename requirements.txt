@@ -1,0 +1,13 @@
+Django==3.2.4
+django-3-jet==1.0.8
+django-jazzmin==2.4.7
+django-wkhtmltopdf==3.3.0
+gunicorn==20.1.0
+Pillow==8.2.0
+six==1.14.0
+virtualenv==20.0.17
+WeasyPrint==45
+xhtml2pdf==0.2.5
+pdfkit
+whitenoise==5.3.0
+django-jazzmin==2.4.7
