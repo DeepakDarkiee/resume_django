@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/static/css/template4/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <title></title>
+    <style type="text/css">
+      
+    </style>
+  </head>
+  <body>
+    <section class="wrapper">
+      <div class="container">
+        <div class="row">
+          <!---->
+          <div class="col-md-8">
+            <form action="{% url 'create_data_template' %}" method="post">
+              {% csrf_token %}
+            <div class="left-side">
+              <h2>CAREER OBJECTIVE</h2>
+              <textarea class="form-control mt-3 mb-4" name="objective" placeholder="Career objective...."rows="6" onkeyup="AutoGrowTextArea(this)"></textarea>
+
+              <h2>EXPERIENCES</h2>
+              <textarea class="form-control mt-3 font-weight-bold" name="company_name" placeholder="Company name..." onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control" placeholder="Designation..." name="designation" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control" placeholder="Place..." name="place" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <p class="role-text">role :-</p>
+              <textarea class="form-control" name="role" placeholder="Description here..."rows="6" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <button class="add-morebtn">
+                <i class="fa fa-plus"></i>
+              </button>
+
+              <h2 class="mt-5">WORK SAMPLES</h2>
+              <textarea class="project-name form-control mt-3 font-weight-bold d-inline-block" name="project_name" placeholder="Project name..." onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control project-link" placeholder="project link..." name="project_link" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control" placeholder="technology..." name="technology" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <p class="role-text">role :-</p>
+              <textarea class="form-control" placeholder="Description here..." name="responsibilities" rows="6" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <p class="role-text">Responsibilities :-</p>
+              <textarea class="form-control" placeholder="Description here..."rows="6" name="description" onkeyup="AutoGrowTextArea(this)"></textarea>
+
+              <h2>ACHIEVEMENTS</h2>
+              <textarea class="form-control mt-3" placeholder="achievements here... " name="achievements" rows="4" onkeyup="
+              AutoGrowTextArea(this)"></textarea>
+
+
+              <h2>CERTIFICATE</h2>
+              <textarea class="form-control mt-3" placeholder="certificate here..." name="certificate" rows="4" onkeyup="AutoGrowTextArea(this)"></textarea>
+
+            </div>
+
+          </div>
+          <!--col-md-8-->
+
+
+
+
+        <!--col-md-4-->
+
+          <div class="col-md-4 p-0">
+            <div class="right-side">
+              <div class="profile-area">
+                <div class="avatar-upload">
+                    <div class="avatar-edit">
+                        <input type='file' id="imageUpload" name="photo" accept=".png, .jpg, .jpeg" />
+                        <label for="imageUpload"></label>
+                    </div>
+                    <div class="avatar-preview">
+                      <div id="imagePreview" style="">
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <h2 class="container-block-title pt-4">Education</h2>
+              <textarea class="form-control mt-3" placeholder="Qualification name..." name="qualification_name" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control " placeholder="university name..." name="university" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control " placeholder="year of passing..." name="year_of_passing" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <textarea class="form-control " placeholder="grade..." name="percentage_or_grade" onkeyup="AutoGrowTextArea(this)"></textarea>
+              <h2 class="container-block-title pt-4">skills</h2>
+              <div class="skillset pt-2">  
+                  <div class="item">
+                    <ul>
+                      <li>
+                        <input type="text"  class="level-title" name="skills" placeholder="a">
+                      </li>
+                    </ul>                      
+                  </div>                               
+              </div>
+              <h2 class="container-block-title pt-4">hobbies</h2>
+              <div class="skillset pt-2">  
+                  <div class="item">
+                    <ul>
+                       <li>
+                        <input type="text"  class="level-title" name="hobbies" placeholder="a">
+                      </li>
+    
+                    </ul>                      
+                  </div>                               
+              </div>
+            </div>
+          </div>
+        <!--col-md-4-->
+        <button type="submit" class="btn btn-primary">submit</button>
+      </form>
+      
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      function readURL(input) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                  $("#imagePreview").css(
+                      "background-image",
+                      "url(" + e.target.result + ")"
+                  );
+                  // $("#imagePreview").hide();
+                  $("#imagePreview").fadeIn(650);
+              };
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+      $("#imageUpload").change(function () {
+          readURL(this);
+      });
+
+      function AutoGrowTextArea(textField)
+          {
+            if (textField.clientHeight < textField.scrollHeight)
+            {
+              textField.style.height = textField.scrollHeight + "px";
+              if (textField.clientHeight < textField.scrollHeight)
+              {
+                textField.style.height =
+                  (textField.scrollHeight * 2 - textField.clientHeight) + "px";
+              }
+            }
+          }
+
+    </script>
+  </body>
+</html>

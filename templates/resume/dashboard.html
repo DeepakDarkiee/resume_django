@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<style>
+  .todo nav ul li{
+    padding: 15px 20px;
+  }
+</style>
+
+{% endblock css %}
+
+{% block main %}
+
+
+  <div class="todo">
+
+  <nav>
+    <div class="logo">
+      <div><img src="" alt=""></div>
+    </div>
+    <ul>
+      <h2><b><li>{{ user.get_full_name }}</li></b></h2>  
+      <li>Dashboard</li>
+      <li>Components</li>
+      <li>Widgets<i class="fas fa-chevron-right flecha"></i></li>
+        <ul class="subboton">
+          <li>Desk</li>
+        </ul>
+      <li>Metrics</li>
+      <li>Tables<i class="fas fa-chevron-right flecha"></i></li>
+        <ul class="subboton">
+          <li>Sales</li>
+        </ul>
+      <li>Timeline</li>
+      <li><a class="nav-link" href="{% url 'logout' %}" style="padding:0;">Logout</a></li>
+    </ul>
+
+  </nav>
+
+
+
+<main class="panelD">
+
+  <header>
+    <img src="img/man.svg" alt="" class="perfil">
+    <img src="img/noti.svg" alt="">
+    <img src="img/chat.svg" alt="">
+  </header>
+
+  <h1 class="tituloD">Dashboard</h1>
+  <a href="/"><button type="button"  style="float: right;">Create Another Resume</button></a>
+
+  <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
+  <div class="tabla">
+    <table cellpadding="0" cellspacing="0" >
+      <tr class="negrita bg-dark ">
+        <th>Resume Name</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>Action</th>
+        <th>View Resume</th>
+      </tr>
+      {% for resumes in resume %}
+
+      <!-- <tr>
+        <th><h4>{{ resumes.title }}  {{resumes.template_set.all.first.name}}</h4></th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th><a href="{% url 'updateresume' resumes.id %}"
+        class="btn btn-warning btn-sm">edit and add more</a></th>
+        <th><a href="{% url 'updateresume' resumes.id %}"
+          class="btn btn-success btn-sm">View</a></th>
+
+      </tr> -->
+      <tr>
+        <th><h4>{{ resumes.title }}  {{resumes.template_set.all.first.name}}</h4></th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th><a href="{% url 'update_data' resumes.id %}"
+        class="btn btn-warning btn-sm">edit and add more</a></th>
+        {% if   resumes.template.name == "template"%}
+        <th><a href="{% url 'template_preview' resumes.id %}"
+
+          class="btn btn-success btn-sm">View</a></th>
+        {% else %}
+        <th><a href="{% url 'template_preview2' resumes.id %}"
+
+          class="btn btn-success btn-sm">View</a></th>
+        {% endif %}
+         
+      </tr>
+      {% endfor %}
+      
+    </table>
+  </div>
+
+
+  
+  
+  
+</main>
+
+</div>
+
+
+   
+{% endblock main %}
+
