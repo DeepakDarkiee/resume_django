@@ -6,7 +6,10 @@
 # Node artifact files
 node_modules/
 dist/
-
+db.sqlite3
+env/
+venv/
+.env
 # Compiled Java class files
 *.class
 
