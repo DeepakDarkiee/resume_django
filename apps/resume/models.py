@@ -1,7 +1,8 @@
 from django.db import models
 from .choice import COMPETENCY_CHOICES
 from django.contrib.auth.models import AbstractUser
-
+import uuid
+from django.utils.translation import ugettext_lazy as _
 
 class User(AbstractUser):
    account_approved = models.BooleanField(default=False)
@@ -17,6 +18,7 @@ class ChooseTemplate(models.Model):
 
 
 class Resume(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     template = models.ForeignKey(ChooseTemplate, on_delete=models.CASCADE,blank=True,null=True) #change
     user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True) #change
     title = models.CharField(max_length=50)
@@ -29,6 +31,7 @@ class Resume(models.Model):
         
 
 class ResumeUserDetails(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=30)
     email = models.EmailField()
@@ -44,6 +47,7 @@ class ResumeUserDetails(models.Model):
 
 
 class Education(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE,null=True)
     qualification_name = models.CharField(max_length=100)
     year_of_passing = models.CharField(max_length=100)
@@ -55,8 +59,8 @@ class Education(models.Model):
 
 
 class Experience(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE,null=True)
-    
     company_name = models.CharField(max_length=100)
     start_date = models.DateField(null=True, blank=True)
     end_date = models.DateField(null=True, blank=True)
@@ -72,6 +76,7 @@ class Experience(models.Model):
 
 
 class WorkSamples(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE,null=True)
     project_name =models.CharField(max_length=100)
     project_link = models.CharField(max_length=100)
@@ -83,6 +88,7 @@ class WorkSamples(models.Model):
 
 
 class Hobbies(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume,on_delete=models.CASCADE,null=True)
     hobbies = models.CharField(max_length=100)
 
@@ -91,6 +97,7 @@ class Hobbies(models.Model):
 
 
 class Skills(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume,on_delete=models.CASCADE,null=True)
     skills = models.CharField(max_length=300)
 
@@ -99,6 +106,7 @@ class Skills(models.Model):
 
 
 class Certificate(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE,null=True)
     certificate = models.CharField(max_length=300)
     date_obtained = models.DateField(null=True, blank=True)
@@ -107,6 +115,7 @@ class Certificate(models.Model):
 
 
 class Achievements(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE,null=True)
     achievements = models.CharField(max_length=300)
 
@@ -114,6 +123,7 @@ class Achievements(models.Model):
         return str(self.resume)
 
 class Language(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True,null=True)
     language_name = models.CharField(max_length=255, blank=True)
     competency = models.IntegerField(choices=COMPETENCY_CHOICES, null=True, blank=True)
