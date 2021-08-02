@@ -38,7 +38,8 @@ class ResumeUserDetails(models.Model):
     mobile = models.CharField(max_length=100)
     date_of_birth = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='images/' ,blank=True)
+    photo = models.ImageField(default="../static/images/default_avatar.png", blank=True)
+    # photo = models.ImageField(upload_to='images/' ,blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
 
