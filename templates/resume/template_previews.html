@@ -200,6 +200,7 @@ p {
   .profile-area {
     text-align: center;
     text-transform: capitalize;
+    width: 300px;
   }
 
   .pro_set {
@@ -382,11 +383,8 @@ p {
               </div>
             </div> -->
 
-            <div class="avatar-upload">
-              <!-- <div class="avatar-edit">
-                  <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                  <label for="imageUpload"></label>
-              </div> -->
+            <!-- <div class="avatar-upload">
+              
               <div class="avatar-preview">
                 {% if resume.resumeuserdetails_set.get.photo.url is not null   %}
                 <div id="imagePreview" style="background-image: url('{{resume.resumeuserdetails_set.get.photo.url}}')">
@@ -396,7 +394,7 @@ p {
                 </div>
               </div>
           </div>
-        </div>
+        </div> -->
 
             <div class="test">
               {% for object in resume.resumeuserdetails_set.all %}
