@@ -2,13 +2,7 @@ from django.contrib import admin
 
 from apps.resume.models import *
 
-from django.contrib.auth.admin import UserAdmin
 
-
-
-
-class UserAdmin(admin.ModelAdmin):
-    list_display = ['username','account_approved']
 
 
 
@@ -66,7 +60,6 @@ admin.site.register(Certificate, CertificateAdmin)
 admin.site.register(Achievements, AchievementsAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(ChooseTemplate)
-admin.site.register(User, UserAdmin)
 
 
 

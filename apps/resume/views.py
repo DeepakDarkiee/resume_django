@@ -20,6 +20,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 import pdfkit
 from .models import *
+from apps.users.models import *
 from .forms import *
 import random
 from datetime import date
