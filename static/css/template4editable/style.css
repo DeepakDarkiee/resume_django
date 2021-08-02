@@ -54,10 +54,17 @@ textarea {
 .name_sec input {
     width: 30% !important;
 }
-
 .btnset {
-    float: right;
+  /* float: right; */
+  margin-left: auto;
+  text-align: right;
 }
+.text-right.preview-btn {
+  position: fixed;
+  top: 50px;
+  right: 5%;
+} 
+
 button.Delete {
     border: none;
     background-color: #ff0000;

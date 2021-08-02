@@ -1214,7 +1214,9 @@ class UpdateDataView(View):
         if resume.template.name == "template3":   
             return render(request, 'resume/template3.html', {'resume': resume}) 
         if resume.template.name == "template4":
-            return render(request, 'resume/template4.html', {'resume': resume})    
+            return render(request, 'resume/template4.html', {'resume': resume})  
+        if resume.template.name == "template5":
+            return render(request, 'resume/template5.html', {'resume': resume})      
             
 
 

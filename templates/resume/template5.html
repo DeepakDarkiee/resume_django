@@ -16,8 +16,10 @@
 <body>
     <div class="containers">
         <div class="name_sec">
-            <input type="text" name="" placeholder="Name">
-            <input type="text" name="" placeholder="Title">
+            <input type="text"class="data full_name" id="full_name" name="full_name" placeholder="Full name"
+            value="{{resume.resumeuserdetails_set.get.full_name}}">
+            <input type="text" class="data title" id="title" name="title" placeholder="Title"
+            value="{{resume.title}}">
             <!-- <input type="text" name="" placeholder="Des"> -->
         </div>
         <table>
@@ -28,27 +30,32 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="inputWithIcon inputIconBg">
-                                <input type="text" placeholder="Phone Number"> <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                                <input type="text" name="mobile" id="mobile"
+                                value="{{resume.resumeuserdetails_set.get.mobile}}" class="data mobile"
+                                placeholder="Phone Number"> <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="inputWithIcon inputIconBg">
-                                <input type="text" placeholder="jon_doe@example.com">
+                                <input type="text" name="email" id="email" class="data email"
+                                value="{{resume.resumeuserdetails_set.get.email}}" placeholder="jon_doe@example.com">
     <i class="fa fa-envelope-o" aria-hidden="true"></i>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="inputWithIcon inputIconBg">
-                                <input type="text" placeholder="Address">
-    <i class="fa fa-map" aria-hidden="true"></i>
+                                <input type="text"  name="address" id="address" class="data address"
+                                value="{{resume.resumeuserdetails_set.get.address}}" placeholder="Address">
+    <i class="fa fa-map-marker" aria-hidden="true"></i>
                             </div>
                         </div>
 
                         <div class="col-md-3">
                             <div class="inputWithIcon inputIconBg">
-                                <input type="text" placeholder="Date of birth">
+                                <input type="text" name="date_of_birth" id="date_of_birth" class="data date_of_birth"
+                                value="{{resume.resumeuserdetails_set.get.date_of_birth}}" placeholder="Date of birth">
     <i class="fa fa-birthday-cake" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -59,72 +66,47 @@
 
                 <div class="about skills">
                     <h2 class="title2">Professionals skills</h2>
+                    {% for object in resume.skills_set.all %}
                 <div class="row">
                     <div class="col-md-3">
                         <div class="box">
-                            <input type="text" name="" placeholder="HTML">
+                            <input type="text"  class="data skills"  name="skills" placeholder="skills"
+                            value="{{ object.skills }}" placeholder="Skills">
                         </div>
                     </div>
 
-                    <!-- <div class="col-md-3">
-                        <div class="box">
-                            <input type="text" name="" placeholder="CSS">
-                        </div>
-                    </div> -->
-
-                    <!-- <div class="col-md-3">
-                        <div class="box">
-                            <input type="text" name="" placeholder="JavaScript">
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="box">
-                            <input type="text" name="" placeholder="Photoshop">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="box">
-                            <input type="text" name="" placeholder="Photoshop">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="box">
-                            <input type="text" name="" placeholder="Illustrator">
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="box">
-                            <input type="text" name="" placeholder="Adobe XD">
-                        </div>
-                    </div> -->
+                    
                 </div>
                 <div class="btnset">
                     <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                     <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
                 </div>
+                {% endfor %}
             </div>
 
             
                         
                 <div class="contactInfo education">  
             <h2 class="title2">EDUCATION</h2>
+            {% for object in resume.education_set.all %}
             <div class="row">
-                <div class="col-md-3"><input type="text" name="" placeholder="Qualication name..."></div>
+                <div class="col-md-3"><input type="text" class="data qualification_name" 
+                    name="qualification_name" value="{{object.qualification_name}}" placeholder="Qualification name..."></div>
 
-                <div class="col-md-3"><input type="text" name="" placeholder="University name..."></div>
+                <div class="col-md-3"><input type="text" class="data university" name="university"
+                    placeholder="University name..." value="{{object.university}}"></div>
 
-                <div class="col-md-3"><input type="text" name="" placeholder="Year of passing..."></div>
+                <div class="col-md-3"><input type="text"class="data year_of_passing" name="year_of_passing"
+                    placeholder="Year of passing..." value="{{object.year_of_passing}}"></div>
 
-                <div class="col-md-3"><input type="text" name="" placeholder="Grade..."></div>
+                <div class="col-md-3"><input type="text" class="data percentage_or_grade"
+                    name="percentage_or_grade" placeholder="Grade..." value="{{object.percentage_or_grade}}"></div>
             </div>
             <div class="btnset">
                 <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
             </div>
+            {% endif %}
             </div>
               
                 
@@ -134,7 +116,8 @@
                     <h2 class="title2">CAREER OBJECTIVE</h2>
                <div class="row">
                    <div class="col-md-12">
-                    <textarea placeholder="Career objective...." rows="4" cols="50" id="textareaInput" name="textareaInput" required=""></textarea>
+                    <textarea  rows="4" cols="50" class="data objective" placeholder="Career objective...." rows="4" cols="50" id="objective"
+                    name="objective" required="">{{resume.objective}} required=""></textarea>
                    </div>
                </div>
                </div>
@@ -142,6 +125,7 @@
                <div class="about">
                 <h2 class="title2">Experience</h2>
                <div class="row">
+                {% for object in resume.experience_set.all %}
                    <div class="col-md-4">
                     <div class="year_company">
                         <input type="text" name="" placeholder="Company Name">
@@ -160,6 +144,7 @@
                         </div>
                     </div>
                    </div>
+                   {% endfor %}
                </div>
                </div>
                

@@ -15,9 +15,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/css/template4_previews/style.css">
 </head>
-<style>
+<style type="text/css">
 
+    .dow_btn button {
+    font-size: 12px;
+}
 
+.dow_btn a {
+    font-size: 12px;
+}
+    .dow_btn {
+        position: fixed;
+        top: 50px;
+        right: 5px;
+    }    
+    @media print {
+
+        #noprint {
+          visibility: hidden;
+      }
+  } 
 </style>
 
 <body>
@@ -43,11 +60,11 @@
 
             <div class="about">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <div class="pad_sec">
                             <h2 class="title2">Experience</h2>
-                            {% for object in resume.experience_set.all %}
                             <div class="text">
+                                {% for object in resume.experience_set.all %}
                                 <div class="row">
                                     {% if object.company_name == '' %}
                                     {% else %}
@@ -89,6 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
                             </div>
 
 
@@ -100,6 +118,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                             
                             
                             <div class="wor_sem">
@@ -137,6 +156,7 @@
                                     <p><b>Description:-</b>{{ object.description }}</p>
                                     {% endif %}
                                 </div>
+                                
                                 {% endfor %}
                             </div>
                             
@@ -150,10 +170,12 @@
                                 {% if object.achievements == '' %}
                                 {% else %}
                                 <p>{{object.achievements}}</p>
+                                <hr>
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
                                 {% endif %}
+
                             </div>
                             
                             
@@ -169,7 +191,7 @@
                                 {% else %}
 
                                 <p>{{object.certificate}}</p>
-
+                                  <hr>
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
@@ -177,10 +199,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
 
 
-                <div class="col-md-4 no_pad">
+                <div class="col-md-5 no_pad">
                     <div class="rig_set">
                         <div class="contactInfo">
                             <h2 class="title">Contact</h2>
@@ -248,6 +270,7 @@
                             </p>
                             {% endif %}
                             <!-- </ul> -->
+                            <hr>
                             {% endfor %}
 
                         </div>
@@ -272,12 +295,10 @@
                     </div>
                 
                 </div>
-            </div>
+            </div></div>
     </div>
     </div>
-    </td>
-    </tr>
-    </table>
+ 
     </div>
     <!-- partial -->
     <div class="dow_btn">

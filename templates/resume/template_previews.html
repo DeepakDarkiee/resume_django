@@ -19,13 +19,11 @@
 
     
     @page { margin:50; }
-    /*@page { size:  auto; margin: 50px; }*/
-    @media print {
 
-    #noprint {
-      visibility: hidden;
-    }
-  } 
+
+  
+
+    
     body {
       font-family: "Roboto", sans-serif;
       background: #f5f5f5;
@@ -145,7 +143,6 @@ p {
     .wrapper {
     width: 1062px;
     margin: 0 auto;
-    margin-top: 60px;
     margin-bottom: 100px;
     background-color: #fff;
   }
@@ -200,6 +197,7 @@ p {
   .profile-area {
     text-align: center;
     text-transform: capitalize;
+    height: 100%;
   }
 
   .pro_set {
@@ -207,7 +205,7 @@ p {
     padding: 30px;
   }
 
-  td.set {
+  div.set {
     padding: 20px 18px;
   }
 
@@ -233,15 +231,27 @@ p {
     padding-top: 12px;
 }*/
 
+@media print {
+    #noprint {
+      visibility: hidden;
+    }
 
+    body{
+      background-color: #fff;
+    }
+  }
 </style>
 </head>
 
 <body>
-  <div class="wrapper">
-    <div class="">
-      <table>
-        <div class="btnset">
+
+
+
+
+
+
+    <div class="wrapper">
+      <div class="btnset">
         <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
               More</button></a>
               {% if  request.user.is_authenticated  %}
@@ -254,9 +264,10 @@ p {
               {% else %}
               <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
               {% endif %}</div>
-        <tr>
-          <td class="set">
-            <h2>CAREER OBJECTIVE</h2>
+<div class="row">
+  <div class="col-8">
+    <div class="set">
+    <h2>CAREER OBJECTIVE</h2>
              
             <!-- <p>{{resume.objective}}</p> -->
             <ul class="achie">
@@ -268,6 +279,7 @@ p {
 
              <h2>EXPERIENCES</h2>
               {% for object in  resume.experience_set.all %}
+
               {% if object.company_name == '' %}
                 {% else %}
               <h6 class=" font-weight-bold" name="company_name">Company Name :- {{ object.company_name }}</h6>
@@ -284,7 +296,6 @@ p {
               {% endif %}
 
               {% if object.role == '' %}
-              
               {% else %}
              <p class="font-weight-bold">Role :-</p>
              <ul class="achie">
@@ -292,10 +303,8 @@ p {
                   {{object.role}}
                 </li>
               </ul>
-              <!-- <div class="" name="role" placeholder="Description here...">
-                {{object.role}}</div> -->
-               
               {% endif %}
+              
               {% endfor %}
             
 
@@ -370,105 +379,79 @@ p {
             </ul>
             <!-- <p>{{object.certificate}}</p> -->
             {% endfor %}
-          </td>
+          </div></div></div>
 
-          <td class="profile-area">
-            <!-- <div class="pro_set">
-              <div class="avatar-upload">
 
-                <div class="avatar-preview">
-                  <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);"></div>
-                </div>
-              </div>
-            </div> -->
 
-            <div class="avatar-upload">
-              <!-- <div class="avatar-edit">
-                  <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
-                  <label for="imageUpload"></label>
-              </div> -->
-              <div class="avatar-preview">
-                {% if resume.resumeuserdetails_set.get.photo.url is not null   %}
-                <div id="imagePreview" style="background-image: url('{{resume.resumeuserdetails_set.get.photo.url}}')">
-                  {% else %}
-                <div id="imagePreview" >
-                 {% endif %}
-                </div>
-              </div>
-          </div>
-        </div>
+  <div class="col-4">
+    <div class="profile-area">
+    <div class="test">
+      <h3>{{resume.resumeuserdetails_set.all.first.full_name}}</h3>
+      <h6  style="font-size:15px" >{{resume.title}}</h6>
+      {% for object in resume.resumeuserdetails_set.all %}
+      <h6  style="font-size:15px" >{{object.email}}</h6>
+      
+      
+      
+      <ul>
+        <!-- <li>Title :- {{resume.title}}</li> -->
+        <li>Address :- {{object.address}}</li>
+      
+        <li>Phone :- {{object.mobile}}</li>
+        <li>Dob :- {{object.date_of_birth}}</li>
+      </ul>
+      {% endfor %}
 
-            <div class="test">
-              {% for object in resume.resumeuserdetails_set.all %}
-              <h3>{{resume.resumeuserdetails_set.all.first.full_name}}</h3>
-              <h6  style="font-size:15px" >{{resume.title}}</h6>
-              <h6  style="font-size:15px" >{{object.email}}</h6>
-              
-              
-              
-              <ul>
-                <!-- <li>Title :- {{resume.title}}</li> -->
-                <li>Address :- {{object.address}}</li>
-              
-                <li>Phone :- {{object.mobile}}</li>
-                <li>Dob :- {{object.date_of_birth}}</li>
-              </ul>
+      <h2>EDUCATION</h2>
+      {% for object in resume.education_set.all %}
+      <ul>
+        {% if object.qualification_name == '' %}
+        {% else %}
+        <li class="font-weight-bold" >Qualification :- {{object.qualification_name}}</li>
+        {% endif %}
 
-              <h2>EDUCATION</h2>
-              {% for object in resume.education_set.all %}
-              <ul>
-                {% if object.qualification_name == '' %}
-                {% else %}
-                <li class="font-weight-bold" >Qualification :- {{object.qualification_name}}</li>
-                {% endif %}
+        {% if object.university == '' %}
+        {% else %}
+        <li>University :- {{object.university}}</li>
+        {% endif %}
 
-                {% if object.university == '' %}
-                {% else %}
-                <li>University :- {{object.university}}</li>
-                {% endif %}
+        {% if object.year_of_passing == '' %}
+        {% else %}
+        <li>Passing :- {{object.year_of_passing}}</li>
+        {% endif %}
+       
+        {% if object.percentage_or_grade == '' %}
+        {% else %}
+        <li>Percentage :- {{object.percentage_or_grade}}</li>
+        {% endif %}
+      </ul>
+      {% endfor %}
+      <h2>SKILLS</h2>
+       
+      <ul>
+        {% for object in resume.skills_set.all %}
+        {% if object.skills == '' %}
+        {% else %}
+        <li> {{object.skills}}</li>
+        {% endif %}
+        {% endfor %}
+      </ul>
 
-                {% if object.year_of_passing == '' %}
-                {% else %}
-                <li>Passing :- {{object.year_of_passing}}</li>
-                {% endif %}
-               
-                {% if object.percentage_or_grade == '' %}
-                {% else %}
-                <li>Percentage :- {{object.percentage_or_grade}}</li>
-                {% endif %}
-              </ul>
+      <h2>HOBBIES</h2>
+      <ul>
+        {% for object in resume.hobbies_set.all %}
+              {% if object.hobbies == '' %}
+              {% else %}
+              <li>
+                {{object.hobbies}}
+              </li>
+              {% endif %}
               {% endfor %}
-              <h2>SKILLS</h2>
-               
-              <ul>
-                {% for object in resume.skills_set.all %}
-                {% if object.skills == '' %}
-                {% else %}
-                <li> {{object.skills}}</li>
-                {% endif %}
-                {% endfor %}
-              </ul>
-  
-              <h2>HOBBIES</h2>
-              <ul>
-                {% for object in resume.hobbies_set.all %}
-                      {% if object.hobbies == '' %}
-                      {% else %}
-                      <li>
-                        {{object.hobbies}}
-                      </li>
-                      {% endif %}
-                      {% endfor %}
-              </ul>
-              {% endfor %}
-            </div>
-
-          </td>
-        </tr>
-      </table>
+            
+      </ul>
     </div>
   </div>
-</div>
+</div></div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"

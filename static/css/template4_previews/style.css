@@ -7,12 +7,17 @@
 }
 
 body {
-  background-color: lightblue !important;
+  /* background-color: lightblue !important; */
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
+/* .dow_btn {
+  position: fixed;
+  right: 15px;
+  top: 17%;
+} */
 ::focut{
   outline: none !important;
   border: none;
@@ -363,7 +368,7 @@ input[type="text"] {
   /* padding: 0 20px; */
 }
 .about {
-  border-bottom: 2px solid #ececec;
+  /* border-bottom: 2px solid #ececec; */
   /* margin-bottom: 20px; */
   /* padding-top: 40px; */
 }
