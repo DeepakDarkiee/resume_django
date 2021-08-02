@@ -484,10 +484,13 @@ p {
             <div class="col-md-4 no-padding">
                <div class="left_Side">
                 <div class="profileText">
-                    <!-- <div class="imgBx">
-                        
+                    <div class="imgBx">
+                        <!-- <img class="photo" src="bilalkhan.png"> -->
                         <div class="avatar-upload">
-                        
+                        <!-- <div class="avatar-edit">
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                            <label for="imageUpload"></label>
+                        </div> -->
                         <div class="avatar-preview">
                             {% if resume.resumeuserdetails_set.get.photo.url is not null %}
                             <div id="imagePreview" style="background-image: url('{{resume.resumeuserdetails_set.get.photo.url}}');">
@@ -497,7 +500,7 @@ p {
                         </div>
                     </div>
 
-                </div> -->
+                </div>
             </div>
           
             {% for object in resume.resumeuserdetails_set.all %}
