@@ -99,7 +99,14 @@ def mail(user, password):
 class Home(View):
     def get(self, request):
         theme=ChooseTemplate.objects.all()
-        return render(request, 'index.html',{'theme':theme})
+        response =HttpResponse("200 ok")
+        response.set_cookie('last_work', '') 
+        last_work=None
+        try:
+            last_work  = request.COOKIES['last_work']
+        except KeyError as ke:
+            pass
+        return render(request, 'index.html',{'theme':theme,'last_work':last_work})
 
 
 class Dashboard(View):
@@ -1202,8 +1209,9 @@ class UpdateDataView(View):
             # user_data.photo = photo
             user_data.resume = resume
             user_data.save()
-
-            return HttpResponse("200 ok")
+            response =HttpResponse("200 ok")
+            response.set_cookie('last_work', f'http://127.0.0.1:8000/update_data/{id}') 
+            return response
             # return JsonResponse(experience)
     def get(self, request, id):
         resume = Resume.objects.get(id=id)
