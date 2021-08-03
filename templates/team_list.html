@@ -52,7 +52,7 @@
   </header>
 
   <h1 class="tituloD">Dashboard</h1>
-  <a href="/"><button type="button"  style="float: right;">Create Another Resume</button></a>
+  <a href="/" style="float: right;" class="btn btn-primary">Add Team Member</a>
 
   <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
   <div class="tabla">
@@ -61,41 +61,23 @@
         <th>Resume Name</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
-        <th>Action</th>
-        <th>View Resume</th>
+        <th>Account Approved</th>
+        
       </tr>
-      {% for resumes in resume %}
+      {% for child in user.children.all %}
 
-      <!-- <tr>
-        <th><h4>{{ resumes.title }}  {{resumes.template_set.all.first.name}}</h4></th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th><a href="{% url 'updateresume' resumes.id %}"
-        class="btn btn-warning btn-sm">edit and add more</a></th>
-        <th><a href="{% url 'updateresume' resumes.id %}"
-          class="btn btn-success btn-sm">View</a></th>
-
-      </tr> -->
       <tr>
-        <th><h4>{{ resumes.title }}  {{resumes.template_set.all.first.name}}</h4></th>
+        <th><h4>{{ child.username }}</h4></th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
-        <th><a href="{% url 'update_data' resumes.id %}"
-        class="btn btn-warning btn-sm">edit and add more</a></th>
-        {% if   resumes.template.name == "template"%}
-        <th><a href="{% url 'template_preview' resumes.id %}"
-
-          class="btn btn-success btn-sm">View</a></th>
-        {% else %}
-        <th><a href="{% url 'template_preview2' resumes.id %}"
-
-          class="btn btn-success btn-sm">View</a></th>
-        {% endif %}
-         
+        <th>{{ child.account_approved }}</th>
       </tr>
       {% endfor %}
       
     </table>
+
+
+
   </div>
 
 
@@ -103,7 +85,18 @@
   
   
 </main>
-
+<br><br>
+<form action="{%    url 'user_list' %} " method="post">
+ 
+  
+  {% csrf_token %}
+  <select name="team" id="" >
+   {% for user_team in users %}
+   <option value="{{user_team.id}}">{{user_team.username}}</option>
+   {% endfor %}
+  </select>
+  <button type="submit">Submit</button>
+</form>
 </div>
 
 
