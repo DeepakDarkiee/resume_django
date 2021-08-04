@@ -145,7 +145,7 @@ AUTH_USER_MODEL = 'resume.User'
 
 
 
-MEDIA_URL = '/static/theme_media/'
+MEDIA_URL = 'theme_media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/static/theme_media')
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
