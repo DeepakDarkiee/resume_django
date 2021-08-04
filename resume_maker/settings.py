@@ -130,7 +130,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-
+####################
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -139,13 +139,12 @@ STATICFILES_DIRS = (
 
 AUTH_USER_MODEL = 'resume.User'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/theme_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'theme_media')
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 
 
-# sdfksjdf
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
