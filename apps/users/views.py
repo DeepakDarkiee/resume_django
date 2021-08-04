@@ -10,23 +10,29 @@ class UserListView(View):
   def get(self, request):
     context={}
     # user=User.objects.get(id=request.user.id)
-    user = User.objects.get(pk=request.user.pk)  
-    for child in user.children.all():
-        print(child.username)
-    context["user"]=user
-    users = User.objects.all()
-    context["users"]=users
-    
+    user = User.objects.filter(parent=request.user)  
+    context["user"] = user
+    users=User.objects.filter(parent=None)
+    context["users"] = users
     return render(request,"team_list.html",context)
-  
+
   def post(self, request):
+    user=User.objects.get(username=request.user)
     team_member=User.objects.get(id=request.POST.get('team'))
-    user=User.objects.get(id=request.user.id)
-    print(user)
-    user.team_member.id=team_member
-    user.save()
+    team_member.parent=user
+    team_member.save()
     return redirect('/users/user_list')
     
-    
+class UserRemove(View):
+  def get(self, request,id):
+    team_member=User.objects.get(id=id)
+    team_member.parent=None
+    team_member.save()
+    return redirect('/users/user_list')
 
-  
+class TeamLeader(View):
+  def post(self, request):
+    user=User.objects.get(id=request.POST.get('team'))
+    user.is_teamleader=True
+    user.save()
+    return redirect('/users/user_list')

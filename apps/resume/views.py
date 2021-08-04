@@ -114,10 +114,13 @@ class Dashboard(View):
 
     @method_decorator(login_required)
     def get(self, request):
-        # import pdb
-        # pdb.set_trace()
         user = request.user
-        resume = Resume.objects.filter(user=user)
+        if user.is_superuser:
+            resume=Resume.objects.all()
+        else:
+            user_resume = Resume.objects.filter(user=user)
+            team_resume = Resume.objects.filter(user__parent=user)
+            resume = team_resume | user_resume
         return render(request, 'resume/dashboard.html', {'resume': resume, })
 
 

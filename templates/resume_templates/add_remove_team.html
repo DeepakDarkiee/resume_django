@@ -31,35 +31,20 @@
     <img src="img/noti.svg" alt="">
     <img src="img/chat.svg" alt="">
   </header>
+
   <h1 class="tituloD">Dashboard</h1>
-
-{% if request.user.is_superuser %}
-
-<form action="{% url 'team_leader'  %} " method="post">
-  {% csrf_token %}
-  <select name="team" class="form-control" id="team" style="width:200px" required>
-   <option   disabled="disabled" >Select</option>
-   {% for user_team in users %}
-   <option value="{{user_team.id}}">{{user_team.username}}</option>
-   {% endfor %}
-  </select>
-  <button type="submit">Team Leader</button>
-</form>
-{% else %}
-<form action="{% url 'user_list' %} " method="post">
-  {% csrf_token %}
-  <select name="team" class="form-control" id="team" style="width:200px" required>
-   <option   disabled="disabled" >Select</option>
-   {% for user_team in users %}
-   <option value="{{user_team.id}}">{{user_team.username}}</option>
-   {% endfor %}
-  </select>
-  <button type="submit">Add</button>
-</form>
-{% endif %}
+  <form style="float: right;" action="{%    url 'user_list' %} " method="post">
+ 
   
-  <a href="/user_add" style="float: right;" class="btn btn-primary">Add Team Member</a>
-
+    {% csrf_token %}
+    <select class="form-control " name="team" id="">
+      <option disabled>Select</option>  
+     {% for user_team in users %}
+     <option value="{{user_team.id}}">{{user_team.username}}</option>
+     {% endfor %}
+    </select>
+    <button type="submit">Add Team Member</button>
+  </form>
   <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
   <div class="tabla">
     <table cellpadding="0" cellspacing="0" >
@@ -68,8 +53,6 @@
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>Account Approved</th>
-        <th></th>
-        <th>Remove</th>
         
       </tr>
       {% for child in user %}
@@ -79,8 +62,6 @@
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>{{ child.account_approved }}</th>
-        <th><a href="{% url 'user_remove' child.id %}"
-          class="btn btn-warning btn-sm">Remove</a></th>
       </tr>
       {% endfor %}
       
