@@ -139,11 +139,17 @@ STATICFILES_DIRS = (
 
 AUTH_USER_MODEL = 'resume.User'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+MEDIA_URL = '/resumeT_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/resumeT_media')
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') MEDIA_URL = '/media/'
+
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
