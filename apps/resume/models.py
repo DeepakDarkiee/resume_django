@@ -26,7 +26,7 @@ class Resume(models.Model):
     
 
     def __str__(self):
-        return str(self.objective)
+        return str(self.title)
 
         
 
