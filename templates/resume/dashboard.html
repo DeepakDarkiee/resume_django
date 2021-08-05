@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 
 <style>
-  .todo nav ul li{
-    padding: 15px 20px;
-  }
+.todo nav ul li{
+  padding: 15px 20px;
+}
 </style>
 
 {% endblock css %}
@@ -15,70 +15,64 @@
 {% block main %}
 
 
-  <div class="todo">
+<div class="todo">
 
-{% block nav %}
-{% include 'resume/base/nav.html' %}
-{% endblock nav %}
-
-
-
-<main class="panelD">
-
-  <header>
-    <img src="img/man.svg" alt="" class="perfil">
-    <img src="img/noti.svg" alt="">
-    <img src="img/chat.svg" alt="">
-  </header>
-
-  <h1 class="tituloD">Dashboard</h1>
-  <h2>Team Leader: {{user.parent}}</h2>
-  <a href="/"><button type="button"  style="float: right;">Create Another Resume</button></a>
-
-  <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
-  <div class="tabla">
-    <table cellpadding="0" cellspacing="0" >
-      <tr class="negrita bg-dark ">
-        <th>Resume Name</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>Created By</th>
-        <th>Action</th>
-        <th>View Resume</th>
-      </tr>
-      {% for resumes in resume %}
-      <tr>
-        <th><h4>{{ resumes.title }}  {{resumes.template_set.all.first.name}}</h4></th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>{{ resumes.user}}</th>
-        <th><a href="{% url 'update_data' resumes.id %}"
-        class="btn btn-warning btn-sm">edit and add more</a></th>
-        {% if   resumes.template.name == "template"%}
-        <th><a href="{% url 'template_preview' resumes.id %}"
-
-          class="btn btn-success btn-sm">View</a></th>
-        {% else %}
-        <th><a href="{% url 'template_preview2' resumes.id %}"
-
-          class="btn btn-success btn-sm">View</a></th>
-        {% endif %}
-         
-      </tr>
-      {% endfor %}
-      
-    </table>
-  </div>
+  {% block nav %}
+  {% include 'resume/base/nav.html' %}
+  {% endblock nav %}
 
 
-  
-  
-  
-</main>
 
-</div>
+  <main class="panelD">
 
+    <header>
+      <img src="img/man.svg" alt="" class="perfil">
+      <img src="img/noti.svg" alt="">
+      <img src="img/chat.svg" alt="">
+    </header>
 
-   
-{% endblock main %}
+    <h1 class="tituloD">Dashboard</h1>
+    <h2>Team Leader: {{user.parent}}</h2>
+    <a href="/"><button type="button"  style="float: right;">Create Another Resume</button></a>
+
+    <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
+    <div class="tabla">
+      <table cellpadding="0" cellspacing="0" >
+        <tr class="negrita bg-dark ">
+          <th>Resume Name</th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+          <th>Created By</th>
+          <th>Action</th>
+          <th>View Resume</th>
+        </tr>
+        {% for resume in resumes %}
+        <tr>
+          <th><h4>{{ resume.title }}  {{resume.template_set.all.first.name}}</h4></th>
+          <th>&nbsp;</th>
+          <th>&nbsp;</th>
+          <th>{{ resume.user}}</th>
+          <th><a href="{% url 'update_data' resume.id %}"
+            class="btn btn-warning btn-sm">edit and add more</a></th>
+            {% if   resume.template.name == "template"%}
+            <th><a href="{% url 'template_preview' resume.id %}"
+
+              class="btn btn-success btn-sm">View</a></th>
+              {% else %}
+              <th><a href="{% url 'template_preview2' resume.id %}"
+
+                class="btn btn-success btn-sm">View</a></th>
+                {% endif %}
+
+              </tr>
+              {% endfor %}
+
+            </table>
+          </div>
+
+        </main>
+
+      </div>
+
+      {% endblock main %}
 

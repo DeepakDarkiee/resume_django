@@ -1,5 +1,5 @@
 import datetime
-# from .utils import render_to_pdf
+from .utils import get_childs
 from django.http import HttpResponse
 from django.core import mail
 from django.contrib.auth import authenticate, login, logout
@@ -116,12 +116,14 @@ class Dashboard(View):
     def get(self, request):
         user = request.user
         if user.is_superuser:
-            resume=Resume.objects.all()
+            resumes=Resume.objects.all()
         else:
-            user_resume = Resume.objects.filter(user=user)
-            team_resume = Resume.objects.filter(user__parent=user)
-            resume = team_resume | user_resume
-        return render(request, 'resume/dashboard.html', {'resume': resume, })
+            childs = get_childs(user,[])
+            resumes = Resume.objects.filter(user__in=childs)
+            # resume = team_resume | user_resume
+        return render(request, 'resume/dashboard.html', {'resumes': resumes, })
+
+
 
 
 class FresherResumeInput(View):
@@ -1227,9 +1229,7 @@ class UpdateDataView(View):
             return render(request, 'resume/template3.html', {'resume': resume}) 
         if resume.template.name == "template4":
             return render(request, 'resume/template4.html', {'resume': resume})  
-        if resume.template.name == "template5":
-            return render(request, 'resume/template5.html', {'resume': resume})      
-            
+           
 
 
 class TemplatePreviews(View):
@@ -1263,10 +1263,10 @@ class TemplatePreviews3(View):
 
 
 
-class TemplatePreviews4(View):
-    def get(self, request, id):
-        context = {}
-        user = request.user
-        resume = Resume.objects.filter(id=id).last()
-        context['resume'] = resume
-        return render(request, 'resume/template_previews4.html', context)  
+# class TemplatePreviews4(View):
+#     def get(self, request, id):
+#         context = {}
+#         user = request.user
+#         resume = Resume.objects.filter(id=id).last()
+#         context['resume'] = resume
+#         return render(request, 'resume/template_previews4.html', context)  
