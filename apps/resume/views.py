@@ -20,6 +20,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 import pdfkit
 from .models import *
+from apps.users.models import *
 from .forms import *
 import random
 from datetime import date
@@ -113,10 +114,13 @@ class Dashboard(View):
 
     @method_decorator(login_required)
     def get(self, request):
-        # import pdb
-        # pdb.set_trace()
         user = request.user
-        resume = Resume.objects.filter(user=user)
+        if user.is_superuser:
+            resume=Resume.objects.all()
+        else:
+            user_resume = Resume.objects.filter(user=user)
+            team_resume = Resume.objects.filter(user__parent=user)
+            resume = team_resume | user_resume
         return render(request, 'resume/dashboard.html', {'resume': resume, })
 
 
@@ -1209,7 +1213,6 @@ class UpdateDataView(View):
             # user_data.photo = photo
             user_data.resume = resume
             user_data.save()
-
             response =HttpResponse("200 ok")
             response.set_cookie('last_work', f'http://127.0.0.1:8000/update_data/{id}') 
             return response
@@ -1222,6 +1225,10 @@ class UpdateDataView(View):
             return render(request, 'resume/template2.html', {'resume': resume})
         if resume.template.name == "template3":   
             return render(request, 'resume/template3.html', {'resume': resume}) 
+        if resume.template.name == "template4":
+            return render(request, 'resume/template4.html', {'resume': resume})  
+        if resume.template.name == "template5":
+            return render(request, 'resume/template5.html', {'resume': resume})      
             
 
 
@@ -1253,3 +1260,13 @@ class TemplatePreviews3(View):
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
         return render(request, 'resume/template_previews3.html', context)        
+
+
+
+class TemplatePreviews4(View):
+    def get(self, request, id):
+        context = {}
+        user = request.user
+        resume = Resume.objects.filter(id=id).last()
+        context['resume'] = resume
+        return render(request, 'resume/template_previews4.html', context)  

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.resume.apps.ResumeConfig',
+    'apps.users',
+    
 
 ]
 DATE_INPUT_FORMATS = ['%d/%m/%Y', ]
@@ -78,8 +80,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'resume_maker.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -137,7 +137,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-AUTH_USER_MODEL = 'resume.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 
