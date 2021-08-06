@@ -6,7 +6,7 @@
 
 <style>
 .todo nav ul li{
-  padding: 15px 20px;
+  padding: 11px 20px;
 }
 </style>
 
@@ -25,23 +25,30 @@
 
   <main class="panelD">
 
-    <header>
+<!--     <header>
       <img src="img/man.svg" alt="" class="perfil">
       <img src="img/noti.svg" alt="">
       <img src="img/chat.svg" alt="">
-    </header>
+    </header> -->
 
-    <h1 class="tituloD">Dashboard</h1>
-    <h2>Team Leader: {{user.parent}}</h2>
-    <a href="/"><button type="button"  style="float: right;">Create Another Resume</button></a>
+    <!-- <h1 class="tituloD">Dashboard</h1> -->
+    <div class="container">
+    <div class="row">
+      <div class="col-md-6"><h2 class="tem">Team Leader: {{user.parent}}</h2></div>
+      <div class="col-md-6"><a href="/"><button type="button"  style="float: right;     margin: 9px 0;">Create Another Resume</button></a></div>
+    </div>
+    
+    
+    
 
     <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
+    </div>
     <div class="tabla">
       <table cellpadding="0" cellspacing="0" >
         <tr class="negrita bg-dark ">
           <th>Resume Name</th>
-          <th>&nbsp;</th>
-          <th>&nbsp;</th>
+          <!-- <th>&nbsp;</th>
+          <th>&nbsp;</th> -->
           <th>Created By</th>
           <th>Action</th>
           <th>View Resume</th>
@@ -49,8 +56,8 @@
         {% for resume in resumes %}
         <tr>
           <th><h4>{{ resume.title }}  {{resume.template_set.all.first.name}}</h4></th>
-          <th>&nbsp;</th>
-          <th>&nbsp;</th>
+          <!-- <th>&nbsp;</th>
+          <th>&nbsp;</th> -->
           <th>{{ resume.user}}</th>
           <th><a href="{% url 'update_data' resume.id %}"
             class="btn btn-warning btn-sm">edit and add more</a></th>

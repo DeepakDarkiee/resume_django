@@ -470,6 +470,12 @@ p {
     right: 5px;
     top: 11px;
 }
+ul.ul_set {
+    padding: 0 23px;
+}
+.text p {
+    word-break: break-word;
+}
 </style>
 
 
@@ -632,8 +638,11 @@ p {
                         <p><b>Project Link :- </b>{{ object.project_link }}</p>
                         <p><b>Plateform:-</b>{{ object.technology }}</p>
 
-                        <p><b>Description :- </b>{{ object.responsibilities }}</p>
-                        <p><b>Role and Responsibilities :-</b>{{ object.description }}</p>
+                        <p><b>Description :- </b>{{ object.description }}</p>
+                        <p><b>Role and Responsibilities :-</b></p>
+                        <ul>
+                            <li>{{ object.responsibilities }}</li>
+                        </ul>
                         
                     </div>
                 </div>
@@ -647,7 +656,9 @@ p {
                 <h2 class="title2">ACHIEVEMENTS</h2>
                 {% for object in resume.achievements_set.all %}
 
-                <p>{{object.achievements}}</p>
+                <ul class="ul_set">
+                    <li>{{object.achievements}}</li>
+                </ul>
                 {% endfor %}
 
             </div>
@@ -658,7 +669,11 @@ p {
                 <h2 class="title2">CERTIFICATE</h2>
                 {% for object in resume.certificate_set.all %}
 
-                <p>{{object.certificate}}</p>
+                <ul class="ul_set">
+                    <li>{{object.certificate}}</li>
+                </ul>
+
+              
                 {% endfor %}
 
             </div>

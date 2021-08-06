@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 
 <style>
-  .todo nav ul li{
-    padding: 15px 20px;
-  }
+.todo nav ul li{
+  padding: 15px 20px;
+}
 </style>
 
 {% endblock css %}
@@ -15,20 +15,20 @@
 {% block main %}
 
 
-  <div class="todo">
+<div class="todo">
 
-{% block nav %}
+  {% block nav %}
   {% include 'resume/base/nav.html' %}
-{% endblock nav %}
+  {% endblock nav %}
   
-<main class="panelD">
+  <main class="panelD">
 
-  <header>
+<!--   <header>
     <img src="img/man.svg" alt="" class="perfil">
     <img src="img/noti.svg" alt="">
     <img src="img/chat.svg" alt="">
   </header>
-  <h1 class="tituloD">Dashboard</h1>
+  <h1 class="tituloD">Dashboard</h1> -->
 
 <!-- {% if request.user.is_superuser %}
 
@@ -54,32 +54,33 @@
   <button type="submit">Add</button>
 </form>
 {% endif %}
-   -->
- 
+-->
 
+<div class="container">
   <h2>All Members<i class="fas fa-arrow-down"></i></h2>
-  <div class="tabla">
-    <table cellpadding="0" cellspacing="0" >
-      <tr class="negrita bg-dark ">
-        <th>Members</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-         <!-- <th>Created By</th> -->
-        <th>Account Approved</th>
-        
-        <th>Remove</th>
-        
-      </tr>
-      {% for child in user %}
+</div>
+<div class="tabla">
+  <table cellpadding="0" cellspacing="0" >
+    <tr class="negrita bg-dark ">
+      <th>Members</th>
+     <!--  <th>&nbsp;</th>
+      <th>&nbsp;</th> -->
+      <!-- <th>Created By</th> -->
+      <th>Account Approved</th>
+      
+      <th>Remove</th>
+      
+    </tr>
+    {% for child in user %}
 
-      <tr>
-        <th><h4>{{ child.username }}</h4></th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-         <!-- <th>{{ resumes.user}}</th> -->
-        <th>{{ child.account_approved }}</th>
-        <th><a href="{% url 'user_remove' child.id %}"
-          class="btn btn-warning btn-sm">Remove</a></th>
+    <tr>
+      <th><h4>{{ child.username }}</h4></th>
+      <!-- <th>&nbsp;</th>
+      <th>&nbsp;</th> -->
+      <!-- <th>{{ resumes.user}}</th> -->
+      <th>{{ child.account_approved }}</th>
+      <th><a href="{% url 'user_remove' child.id %}"
+        class="btn btn-warning btn-sm">Remove</a></th>
       </tr>
       {% endfor %}
       
@@ -92,6 +93,6 @@
 </div>
 
 
-   
+
 {% endblock main %}
 

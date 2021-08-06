@@ -1,13 +1,14 @@
+{% load static %}
 
 {% block nav %}
  
 
 <nav>
     <div class="logo">
-      <div><img src="" alt=""></div>
+<img src="{% static  'resume/images/header.png' %}" alt="">
     </div>
     <ul>
-      <h2><b><li>{{ user.get_full_name }}</li></b></h2>  
+      <!-- <h2><b><li>{{ user.get_full_name }}</li></b></h2> -->  
       <li><a href="/dashboard"> Dashboard</a></li>
       <li>Components</li>
       <li>Widgets<i class="fas fa-chevron-right flecha"></i></li>
