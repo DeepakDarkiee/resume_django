@@ -13,6 +13,7 @@ urlpatterns = [
     path('', Home.as_view(), name='home'),
     path("login/", sign_in, name="sign_in"),
     path("login/<uuid:id>/", sign_in, name="sign_in"),
+    path("sign_up/", sign_up, name="sign_up"),
     path("sign_up/<uuid:id>", sign_up, name="sign_up"),
     # path('pdf/', GeneratePdf.as_view()),
 

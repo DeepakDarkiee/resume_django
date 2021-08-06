@@ -4,7 +4,7 @@ from .models import *
 from django.contrib.auth.admin import UserAdmin
 
 
-class UserInline(admin.TabularInline):
+class UserInline(admin.StackedInline):
     model = User
 
 class UserAdmin(admin.ModelAdmin):

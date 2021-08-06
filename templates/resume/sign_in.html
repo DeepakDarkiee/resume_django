@@ -52,7 +52,12 @@
    </div>
    <!-- <a href="{% url 'home' %}">submit</a> -->
    <input id="login" type="submit" value="Signin"/>
+   {% if id is None %}
+   Don't have an account? <a href="/sign_up/">Sign Up</a>
+   
+   {% else %}
    Don't have an account? <a href="/sign_up/{{id}}">Sign Up</a>
+   {% endif %}
   </form>
   <!-- partial -->
   <script src='static/script.js'>
