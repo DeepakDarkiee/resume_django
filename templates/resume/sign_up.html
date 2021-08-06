@@ -104,8 +104,14 @@
    </div>
    <div class="line-break">
    </div>
-   <input id="register" type="submit" value="Register"/>
+   {% if id is None %}
+      <input id="register" type="submit" value="Register"/>
+    Already have an account? <a href="/login/">Sign In</a>
+   {% else %}
+      <input id="register" type="submit" value="Register"/>
     Already have an account? <a href="/login/{{id}}">Sign In</a>
+   {% endif %}
+
   </form>
   <!-- partial -->
   <script src="/static/script.js">
