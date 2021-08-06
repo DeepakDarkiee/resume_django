@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="/static/css/template6/edit_page.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="containers">
+        <div class="about">
+
+            <div class="row">
+
+                <div class="col-md-4 no_pad">
+                    <div class="rig_set">
+                        <div class="contactInfo">
+                            <h2 class="title">Contact Us</h2>
+                            <ul>
+                                <li>
+                                    <div class="inputWithIcon inputIconBg">
+                                        <input type="text" placeholder="Phone Number"> <i
+                                        class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="inputWithIcon inputIconBg">
+                                        <input type="text" placeholder="jon_doe@example.com">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="inputWithIcon inputIconBg">
+                                        <input type="text" placeholder="www.mywebsite.com">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="inputWithIcon inputIconBg">
+                                        <input type="text" placeholder="www.linkedin/me">
+                                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="inputWithIcon inputIconBg">
+                                        <input type="text" placeholder="Moscow, Russia">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="btnset">
+                                <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                            </div>
+                        </div>
+
+
+                        <hr>
+
+
+                        <div class="contactInfo education">
+                            <h2 class="title">Education</h2>
+                            <ul>
+                                <li>
+                                    <!-- <h5>2010 - 2013</h5>
+                             <h4>Master Degree in Computer Science</h4>
+                             <h4>University Name</h4> -->
+                             <input type="text" name="" placeholder="Qualication name...">
+                         </li>
+                         <li>
+                                    <!-- <h5>2007 - 2013</h5>
+                             <h4>Bachelor Degree Computer Science</h4>
+                             <h4>University Name</h4> -->
+                             <input type="text" name="" placeholder="University name...">
+                         </li>
+                         <li>
+                                    <!-- <h5>1997 - 2007</h5>
+                             <h4>Matriculation </h4>
+                             <h4>University Name</h4> -->
+                             <input type="text" name="" placeholder="Year of passing...">
+                         </li>
+                         <li>
+                            <input type="text" name="" placeholder="Grade...">
+                        </li>
+                    </ul>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div>
+
+
+                <hr>
+
+
+                <div class="contactInfo education">
+                    <h2 class="title">Interests</h2>
+                    <ul>
+                        <li>
+                                    <!-- <h5>2010 - 2013</h5>
+                             <h4>Master Degree in Computer Science</h4>
+                             <h4>University Name</h4> -->
+                             <input type="text" name="" placeholder="Reading">
+                         </li>
+                         <li>
+                                    <!-- <h5>2007 - 2013</h5>
+                             <h4>Bachelor Degree Computer Science</h4>
+                             <h4>University Name</h4> -->
+                             <input type="text" name="" placeholder="Gaming">
+                         </li>
+                         <li>
+                                    <!-- <h5>1997 - 2007</h5>
+                             <h4>Matriculation </h4>
+                             <h4>University Name</h4> -->
+                             <input type="text" name="" placeholder="Cooking">
+                         </li>
+                         <li>
+                            <input type="text" name="" placeholder="Singing">
+                        </li>
+                    </ul>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="name_sec">
+                
+                <input type="text" class="data full_name" id="full_name" name="full_name" placeholder="Full Name"
+                value="{{resume.resumeuserdetails_set.get.full_name}}">
+
+
+                <input type="text" class="data title"  name="title" placeholder="title"
+                value="{{resume.title}}">
+
+            </div>
+
+            <div class="pad_sec">
+                <h2 class="title2">Experience</h2>
+                <div class="text">
+                    <div class="row">
+                        <div class="col-md-6"><input type="text" placeholder="Company Name"></div>
+                        <div class="col-md-6"><input type="text" placeholder="Place"></div>
+                    </div>
+
+
+                    <!-- <textarea placeholder="Company Name" rows="4" cols="50" id="textareaInput" name="textareaInput" required=""></textarea> -->
+                    <!-- <textarea placeholder="Place" rows="4" cols="50" id="textareaInput" name="textareaInput" required=""></textarea> -->
+                    <!-- <h4>Senior UX Developer</h4> -->
+                    <textarea placeholder="Designation..." rows="4" cols="50" id="textareaInput"
+                    name="textareaInput" required=""></textarea>
+                    <textarea placeholder="Role here..." rows="4" cols="50" id="textareaInput"
+                    name="textareaInput" required=""></textarea>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div>
+
+
+                <div class="about skills">
+                    <h2 class="title2">Professionals skills</h2>
+                    <div class="row">
+
+
+                        <div class="col-md-4">
+                            <div class="box">
+                                <input type="text" name="" placeholder="Photoshop">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="box">
+                                <input type="text" name="" placeholder="Bootstrap5">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="box">
+                                <input type="text" name="" placeholder="HTML5">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="box">
+                                <input type="text" name="" placeholder="Illustrator">
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="box">
+                                <input type="text" name="" placeholder="CSS3">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box">
+                                <input type="text" name="" placeholder="Adobe XD">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div>
+
+
+                <div class="about" style="padding-top: 40px;">
+                    <h2 class="title2">CAREER OBJECTIVE</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea placeholder="Career objective...." rows="4" cols="50" id="textareaInput"
+                            name="textareaInput" required=""></textarea>
+                        </div>
+                    </div>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div>
+
+                <div class="wor_sem">
+                    <h2 class="title2">WORK SAMPLES</h2>
+
+
+                    <div class="year_company">
+                        <div class="row">
+                            <div class="col-md-12"><input type="text" placeholder="Project name..."></div>
+                            <div class="col-md-12"><input type="text" placeholder="Project link..."></div>
+                        </div>
+                        <!-- <input type="text" name="" placeholder="Project name..."> -->
+                        <!-- <textarea placeholder="Project name..." rows="4" cols="50" id="textareaInput" name="textareaInput" required=""></textarea> -->
+                        <!-- <textarea placeholder="Project link..." rows="4" cols="50" id="textareaInput" name="textareaInput" required=""></textarea> -->
+                    </div>
+
+
+
+                    <div class="text">
+                        <!-- <h4>Senior UX Developer</h4> -->
+                        <textarea placeholder="Technology..." rows="4" cols="50" id="textareaInput"
+                        name="textareaInput" required=""></textarea>
+                        <textarea placeholder="Description here..." rows="4" cols="50" id="textareaInput"
+                        name="textareaInput" required=""></textarea>
+                        <textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
+                        id="textareaInput" name="textareaInput" required=""></textarea>
+                        <div class="btnset">
+                            <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>
+                            Delete</button>
+                            <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i>
+                            Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about ACHIEVEMENTS">
+                    <h2 class="title2">ACHIEVEMENTS</h2>
+
+                    <textarea placeholder="Achievements here..." rows="4" cols="50" id="textareaInput"
+                    name="textareaInput" required=""></textarea>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div>
+                <div class="about CERTIFICATE">
+                    <h2 class="title2">CERTIFICATE</h2>
+
+                    <textarea placeholder="Certicate here..." rows="4" cols="50" id="textareaInput"
+                    name="textareaInput" required=""></textarea>
+                    <div class="btnset">
+                        <button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                        <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button>
+                    </div>
+                </div><br>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function delay(callback, ms) {
+        var timer = 0;
+        return function () {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+
+    // Add
+    $("#add-education").click(delay(function () {
+      var education_form = $('#resume-education').html();
+
+      $("#another-education").append(education_form);
+      var token = '{{csrf_token}}';
+      $.ajax({
+          headers: { "X-CSRFToken": token },
+          type: 'POST',
+          url: '/add_another/{{resume.id}}',
+          data: {
+            'element': $(this).data("name")
+        },
+        success: function (json) {
+        }
+    })
+      location.reload(true);
+  }, 10) )
+
+    $("#add-skills").click(function () {
+
+        var skill_form = $('#resume-skills').html();
+        console.log($(this).data("name"))
+        $("#another-skills").append(skill_form);
+        var token = '{{csrf_token}}';
+        $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: '/add_another/{{resume.id}}',
+            data: {
+                'element': $(this).data("name")
+            },
+            success: function (json) {
+            }
+        })
+        location.reload(true);
+    })
+
+    $("#add-hobbies").click(function () {
+
+       var hobbies_form = $('#resume-hobbies').html();
+       console.log($(this).data("name"))
+       $("#another-hobbies").append(hobbies_form);
+       var token = '{{csrf_token}}';
+       $.ajax({
+           headers: { "X-CSRFToken": token },
+           type: 'POST',
+           url: '/add_another/{{resume.id}}',
+           data: {
+             'element': $(this).data("name")
+         },
+         success: function (json) {
+         }
+     })
+       location.reload(true);
+   })
+
+    $("#add-experience").click(function () {
+
+       var experience_form = $('#resume-experience').html();
+       console.log($(this).data("name"))
+       $("#another-experience").append(experience_form);
+       var token = '{{csrf_token}}';
+       $.ajax({
+           headers: { "X-CSRFToken": token },
+           type: 'POST',
+           url: '/add_another/{{resume.id}}',
+           data: {
+             'element': $(this).data("name")
+         },
+         success: function (json) {
+         }
+     })
+       location.reload(true);
+   }) 
+
+    $("#add-worksamples").click(function () {
+
+       var worksamples_form = $('#resume-worksamples').html();
+       console.log($(this).data("name"))
+       $("#another-worksamples").append(worksamples_form);
+       var token = '{{csrf_token}}';
+       $.ajax({
+           headers: { "X-CSRFToken": token },
+           type: 'POST',
+           url: '/add_another/{{resume.id}}',
+           data: {
+             'element': $(this).data("name")
+         },
+         success: function (json) {
+         }
+     })
+       location.reload(true);
+   })
+
+
+    $("#add-achievements").click(function () {
+
+        var achievements_form = $('#resume-achievements').html();
+        console.log($(this).data("name"))
+        $("#another-achievements").append(achievements_form);
+        var token = '{{csrf_token}}';
+        $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: '/add_another/{{resume.id}}',
+            data: {
+                'element': $(this).data("name")
+            },
+            success: function (json) {
+            }
+        })
+        location.reload(true);
+    })  
+
+    $("#add-certificate").click(function () {
+
+        var certificate_form = $('#resume-certificate').html();
+        console.log($(this).data("name"))
+        $("#another-certificate").append(certificate_form);
+        var token = '{{csrf_token}}';
+        $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: '/add_another/{{resume.id}}',
+            data: {
+                'element': $(this).data("name")
+            },
+            success: function (json) {
+            }
+        })
+        location.reload(true);
+    })
+
+
+    // Update
+
+    $(document).ready(function () {
+        $(".data").keyup(delay(function () {
+            var token = '{{csrf_token}}';
+            var company_name = $('input[name^=company_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var designation = $('textarea[name^=designation]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var place = $('input[name^=place]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var role = $('textarea[name^=role]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var project_name = $('input[name^=project_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var project_link = $('textarea[name^=project_link]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var technology = $('textarea[name^=technology]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var description = $('textarea[name^=description]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var responsibilities = $('textarea[name^=responsibilities]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var achievements = $('textarea[name^=achievements]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var certificate = $('textarea[name^=certificate]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var qualification_name = $('input[name^=qualification_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var university = $('input[name^=university]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var year_of_passing = $('input[name^=year_of_passing]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var percentage_or_grade = $('input[name^=percentage_or_grade]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            
+            var skills = $('input[name^=skills]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+
+            var hobbies = $('input[name^=hobbies]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var obj = $(this)
+            var id = obj.data('id');
+            // console.log(qualification_name)
+
+            console.log(hobbies)
+            console.log(skills)
+            $.ajax({
+                headers: { "X-CSRFToken": token },
+                type: 'POST',
+                url: '/update_data/{{resume.id}}',
+                data: {
+                    'objective': $('.objective').val(),
+                    'title': $('.title').val(),
+                    'company_name[]': company_name,
+                    'designation[]': designation,
+                    'place[]': place,
+                    'role[]': role,
+                    // 'id_skill': id,
+                    'project_name[]': project_name,
+                    'project_link[]': project_link,
+                    'technology[]': technology,
+                    'description[]': description,
+                    'responsibilities[]': responsibilities,
+                    'achievements[]': achievements,
+                    'certificate[]': certificate,
+                    'qualification_name[]': qualification_name,
+                    // 'qualification_n[]':qualification_n,
+                    'university[]': university,
+                    'year_of_passing[]': year_of_passing,
+                    'percentage_or_grade[]': percentage_or_grade,
+                    'skills[]': skills,
+                    'hobbies[]': hobbies,
+                    // 'language_name[]': language_name,
+                    'address': $('.address').val(),
+                    'email': $('.email').val(),
+                    'mobile': $('.mobile').val(),
+                    'date_of_birth': $('.date_of_birth').val(),
+                    'full_name': $('.full_name').val(),
+                },
+                success: function (json) {
+                }
+            })
+
+
+        }, 300))
+
+});
+
+</script>
+</html>

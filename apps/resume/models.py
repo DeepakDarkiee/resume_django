@@ -1,11 +1,11 @@
 from django.db import models
 from .choice import COMPETENCY_CHOICES
-from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import AbstractUser
 import uuid
 from django.utils.translation import ugettext_lazy as _
-
-class User(AbstractUser):
-   account_approved = models.BooleanField(default=False)
+from apps.users.models import *
+# class User(AbstractUser):
+#    account_approved = models.BooleanField(default=False)
 
 
 class ChooseTemplate(models.Model):
@@ -26,7 +26,7 @@ class Resume(models.Model):
     
 
     def __str__(self):
-        return str(self.objective)
+        return str(self.title)
 
         
 

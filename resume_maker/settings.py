@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.resume.apps.ResumeConfig',
+    'apps.users',
+    
 
 ]
 DATE_INPUT_FORMATS = ['%d/%m/%Y', ]
@@ -86,9 +88,8 @@ DATABASES = {
     }
 }
 
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
+# import dj_database_url
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 
 
@@ -136,16 +137,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-AUTH_USER_MODEL = 'resume.User'
+AUTH_USER_MODEL = 'users.User'
 
 
 
-####################***************
 
-
-
-MEDIA_URL = 'theme_media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/theme_media')
+MEDIA_URL = '/resumeT_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/resumeT_media')
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 

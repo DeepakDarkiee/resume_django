@@ -8,3 +8,12 @@ class GenratePdf(View):
 
         imgkit.from_url('127.0.0.1:8000/resume4/', 'out.jpg')
         return HttpResponse('done')
+
+
+def get_childs(user, users):
+    users.append(user)
+    childs = user.children.all()
+    for child in childs:
+        get_childs(child, users)
+    return users
+

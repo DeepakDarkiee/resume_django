@@ -1,165 +1,730 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!DOCTYPE html>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-<style>
-  .resume{
-    border: 1px solid;
-    
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Responsive CV</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+		integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" type="text/css" href="/static/css/template4editable/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<!-- <style type="text/css">
+  .preview-btn{
+      float: right;
+      width: 100%;
+      margin-top: 25px;
   }
-</style>
-
-  <body>
-
-    <h1>Resume</h1>
-    <button  style="margin-top: 10px;" class="button btn btn-primary" onclick="getPDF()">Generate pdf</button>
 
 
-      <div class="container mt-4  ">
-      <div class="resume p-5 ">
+  </style> -->
 
-          <h1 class= "text-center mt-4"><b>My Resume</b></h1>
-          <hr>
-          <br>
-          <br>
-        <div class="row center">
-            <u><h5>Name</h5></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <u><h5> {{resume.resumeuserdetails_set.all.first.first_name}}  {{resume.resumeuserdetails_set.all.first.last_name}}</h5></u>
+<body>
+	<div class="containers">
+		<div class="name_sec">
+			<input type="text" class="data full_name" id="full_name" name="full_name" placeholder="Full Name"
+            value="{{resume.resumeuserdetails_set.get.full_name}}">
+			<!-- <input type="text" name="" placeholder="Title">
+            <input type="text" name="" placeholder="Des"> -->
+		</div>
+		<table>
+
+
+
+			<div class="con_info">
+				<div class="row">
+					<div class="col-md-4">
+						<input type="text" class="data titles" name="title" placeholder="Title" value="{{resume.title}}">
+					</div>
         </div>
-      
-        <div class="row center">
-            <u><h5>Email</h5></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <u><h5><a href="#">{{resume.resumeuserdetails_set.all.first.email}}</a></h5></u>
-        </div>
-        
-        <div class="row center">
-            <u><h5>Address</h5></u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <u><h5> {{resume.resumeuserdetails_set.all.first.address}}</h5></u>
-        </div>
-        <hr>
-        
-        <div class="row center">
-        <h4 class= ""><b>Objective : -</b></h4>     
+			</div>
 
-            <p style=" margin-left: 150px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-            </p>
-        </div>
 
-        <hr>
-      <div class="row">
-        <h4 class= ""><b>Education : -</b></h4>    
-          <table class="table">
-              <thead>
-                  <tr>
-                    <th> qualifications </th>
-                      <th>passing year</th>
-                      <th>Grade/ Percentage </th>
-                      <th> college/Board</th>
 
-                  </tr>
-              </thead>
-              <tbody>
-                {% for education in resume.education_set.all %}
-                  <tr>
-                      <td scope="row">{{education.qualification_name}}</td>
-                      <td> &nbsp {{education.year_of_passing}} </td>
-                      <td>{{education.percentage_or_grade}}</td>
-                      <td>{{education.university}}</td>
-                  </tr>
-                  {% endfor %}
-              
+			<div class="about">
+        <div class="row">
+          <div class="col-md-8">
+						<div class="pad_sec">
 
-              </tbody>
-          </table>
-     </div>
-     <h3 class= ""><b>Hobbies : -</b></h3> 
+							<h2 class="title2">Experience</h2>
+							{% for object in resume.experience_set.all %}
 
-      <div class="row">
-        <br>
-        <ul style=" margin-left: 150px;">
-          {% for hobbie in resume.hobbies_set.all %}
-         <li>{{hobbie.hobbies}}</li>
-          {% endfor %}
+							<div class="text">
+								<div class="row">
+									<div class="col-md-6"><input type="text" class="data company_name"
+											name="company_name" placeholder="Company Name"
+											value="{{object.company_name}}"></div>
+									<div class="col-md-6"><input type="text" class="data place" name="place"
+											placeholder="Place" value="{{object.place}}"></div>
+								</div>
 
-        </ul>
+								<textarea placeholder="Designation..." rows="4" cols="50" name="designation"
+									id="designation" class="data designation"
+									required="">{{object.designation}}</textarea>
+								<textarea placeholder="Role here..." rows="4" cols="50" class="data role" id="role"
+									name="role" required="">{{object.role}}</textarea>
+								<div class="btnset">
+									<a href="{% url 'deleteexperience' object.id %}"><button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>
+										Delete</button></a>
+										
+									<!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i>
+										Add</button> -->
+								</div>
+								
+							</div>
+							{% endfor %}
 
-      </div>
-      <div class="row">
-        <h4 class= ""><b>Deceleration : -</b></h4>     
+								<div class="tab">
+									<div class="form-group" id="resume-experience" style="display: none;">
+										<div class="row">
+											<div class="col-md-6"><input type="text" class="data company_name"
+													name="company_name" placeholder="Company Name"></div>
+											<div class="col-md-6"><input type="text" class="data place" name="place"
+													placeholder="Place"></div>
+										</div>
+		
+										<textarea placeholder="Designation..." rows="4" cols="50" name="designation"
+											id="designation" class="data designation"
+											required=""></textarea>
+										<textarea placeholder="Role here..." rows="4" cols="50" class="data role" id="role"
+											name="role" required=""></textarea>
+									</div>
+				
+									<div class="form-group another-experience" id="another-experience">
+				
+									</div>
+									<div class="btnset">
+										<button class="add" type="button" data-name="experience" id="add-experience"><i
+												class="fa fa-plus-square" aria-hidden="true"></i> Add Experience !</button>
+				
+										<!-- <button type="button" class="add" data-name="achievements" id="add-achievements"><i class="fa fa-plus-square" aria-hidden="true" ></i>&nbsp; Add Achievements !</button> -->
+									</div>
+								</div>
 
-        <p style=" margin-left: 150px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-        </p>
-      </div>
-     </div></div>
-    
-    <!-- Optional JavaScript -->
-   
 
-    
-    <script type="text/javascript">
-      function Copy() 
-      {
-          var Url = document.getElementById("paste-box");
-          Url.value = window.location.href;
-          Url.focus();
-          Url.select();  
-          document.execCommand("Copy");
+
+
+
+							<div class="about skills">
+								<h2 class="title2">Professionals skills</h2>
+								{% for object in resume.skills_set.all %}
+								<div class="row">
+									<div class="col-md-4">
+										<div class="box">
+											<input type="text" placeholder="Skills" class="data skills" id="skills" name="skills" value="{{ object.skills }}">
+										</div>
+									</div>
+								</div>
+								<div class="btnset">
+									<a href=" {% url 'deleteskill' object.id %}" ><button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>
+										Delete</button></a>
+									<!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i>
+										Add</button> -->
+								</div>
+								{% endfor %}
+
+								<div class="tab">
+									<div class="form-group" id="resume-skills" style="display: none;">
+										<div class="box1">
+											
+											<input type="text" class="data skills" id="skills" name="skills" placeholder="skills" >
+											 
+										</div>
+									</div>
+				
+									<div class="form-group another-skills" id="another-skills">
+				
+									</div>
+								<div class="btnset">
+									 <button class="add" type="button" data-name="skills" id="add-skills"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Skills !</button>
+								</div>
+									<!-- <button type="button" data-name="skills" id="add-skills"><i class="fa fa-plus secondary"
+											aria-hidden="true"></i>&nbsp; Add Skills !</button> -->
+								</div>
+
+
+							</div>
+							
+							
+							<div class="about" style="padding-top: 40px;">
+								<h2 class="title2">CAREER OBJECTIVE</h2>
+								<div class="row">
+									<div class="col-md-12">
+										<textarea placeholder="Career objective...." rows="4" cols="50"
+											id="textareaInput" class="data objective"  name="objective" required="">{{resume.objective}}</textarea>
+									</div>
+								</div>
+								
+							</div>
+							
+							<div class="wor_sem">
+								<h2 class="title2">WORK SAMPLES</h2>
+								{% for object in resume.worksamples_set.all %}
+								<div class="year_company">
+									<div class="row">
+										<div class="col-md-6"><input type="text"  class="data project_name"  name="project_name"
+											value="{{ object.project_name }}" placeholder="Project name..."></div>
+										<div class="col-md-6"><input type="text" class="data project_link"
+											id="project_link" name="project_link" value="{{ object.project_link }}" placeholder="Project link..."></div>
+									</div>
+								</div>
+								<div class="text">
+									<textarea placeholder="Technology..." rows="4" cols="50" 
+									id="technology" name="technology" class="data technology"  required="">{{ object.technology }}</textarea>
+									<textarea placeholder="Description here..." rows="4" cols="50" class="data description"
+                                    id="description" name="description"  required="">{{ object.description }}</textarea>
+									<textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
+									class=" data responsibilities" id="responsibilities" name="responsibilities" required="">{{ object.responsibilities }}</textarea>
+									<div class="btnset">
+										<a href="{% url 'deleteworksamples' object.id%}"><button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>
+											Delete</button></a>
+										
+									</div>
+								</div>
+								{% endfor %}
+
+								<div class="tab">
+									<div class="form-group" id="resume-worksamples" style="display: none;">
+										<div class="box">
+											<div class="year_company">
+												<!-- <h5>2020 - Present</h5> -->
+												<!-- <h5>Company Name</h5> -->
+												<input type="text" class="data project_name" id="project_name" name="project_name"
+												   placeholder="Project name...">
+											</div>
+											<div class="text">
+												<!-- <h4>Senior UX Developer</h4> -->
+												<textarea placeholder="Project link..." rows="4" cols="50" class="data project_link"
+													id="project_link" name="project_link" required=""></textarea>
+												<textarea placeholder="Technology..." rows="4" cols="50" id="technology" name="technology"
+													class="data technology" required=""></textarea>
+												<textarea placeholder="Description here..." rows="4" cols="50" class="data description"
+													id="description" name="description" required=""></textarea>
+												<textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
+													class=" data responsibilities" id="responsibilities" name="responsibilities"
+													required=""></textarea>
+												
+											</div>
+										</div>
+									</div>
+				
+									<div class="form-group another-worksamples" id="another-worksamples">
+				
+									</div>
+									<div class="btnset">
+										<button class="add" type="button" data-name="worksamples" id="add-worksamples"><i
+												class="fa fa-plus-square" aria-hidden="true"></i> Add Worksamples !</button>
+									</div>
+								</div> 
+
+							</div>
+							
+							
+							<div class="about ACHIEVEMENTS">
+								<h2 class="title2">ACHIEVEMENTS</h2>
+								{% for object in resume.achievements_set.all %}
+
+								<textarea placeholder="Achievements here..." rows="4" cols="50"  class="data achievements"
+								id="achievements" name="achievements"  required="">{{ object.achievements }}</textarea>
+								<div class="btnset">
+									<a href="{% url 'deleteachievements' object.id %}"><button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button></a>
+									<!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i>Add</button> -->
+								</div>
+
+								{% endfor %}
+
+								<div class="tab">
+									<div class="form-group " id="resume-achievements" style="display: none;">
+										<textarea placeholder="Achievements here..." rows="4" cols="50"  class="data achievements"
+								id="achievements" name="achievements"  required=""></textarea>
+									</div>
+				
+									<div class="form-group another-achievements" id="another-achievements"></div>
+									<div class="btnset">
+										<button class="add" type="button" data-name="achievements" id="add-achievements"><i
+											class="fa fa-plus-square" aria-hidden="true"></i> Add Achievements !</button>
+									</div>
+									<!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
+								</div>
+
+							</div>
+
+
+							<div class="about CERTIFICATE">
+								<h2 class="title2">CERTIFICATE</h2>
+								{% for object in resume.certificate_set.all %}
+
+								<textarea placeholder="Certicate here..." rows="4" cols="50"  class="data certificate" id="certificate"
+								name="certificate" required="">{{object.certificate}}</textarea>
+								<div class="btnset">
+									<a href="{% url 'deletecertificate' object.id %}"><button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button></a>
+									<!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i>Add</button> -->
+								</div>
+
+								{% endfor %}
+
+
+								<div class="tab">
+									<div class="form-group " id="resume-certificate" style="display: none;">
+										<textarea placeholder="Certicate here..." rows="4" cols="50"  class="data certificate" id="certificate"
+								name="certificate" required="">{{object.certificate}}</textarea>
+									</div>
+				
+									<div class="form-group another-certificate" id="another-certificate"></div>
+									<div class="btnset">
+										<button class="add" type="button" data-name="certificate" id="add-certificate"><i
+											class="fa fa-plus-square" aria-hidden="true"></i> Add Achievements !</button>
+									</div>
+									<!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
+								</div>
+							</div><br>
+						</div>
+					</div>
+
+
+					<div class="col-md-4 no_pad">
+						<div class="rig_set">
+							<div class="contactInfo">
+								<h2 class="info">Contact</h2>
+								<ul>
+									<li>
+										<div class="inputWithIcon inputIconBg">
+											<input type="text" placeholder="Phone Number" name="mobile" id="mobile"
+											value="{{resume.resumeuserdetails_set.get.mobile}}" class="data mobile"> <i
+												class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+										</div>
+									</li>
+									<li>
+										<div class="inputWithIcon inputIconBg">
+											<input type="text" placeholder="jon_doe@example.com" name="email" id="email" class="data email"
+											value="{{resume.resumeuserdetails_set.get.email}}">
+											<i class="fa fa-envelope-o" aria-hidden="true"></i>
+										</div>
+									</li>
+									<!-- <li>
+										<div class="inputWithIcon inputIconBg">
+											<input type="text" placeholder="www.mywebsite.com">
+											<i class="fa fa-globe" aria-hidden="true"></i>
+										</div>
+									</li> -->
+									<li>
+										<div class="inputWithIcon inputIconBg">
+											<input type="text" placeholder="Date of birth"  name="date_of_birth" id="date_of_birth" class="data date_of_birth"
+											value="{{resume.resumeuserdetails_set.get.date_of_birth}}">
+											<i class="fa fa-birthday-cake" aria-hidden="true"></i>
+										</div>
+									</li>
+									<li>
+										<div class="inputWithIcon inputIconBg">
+											<input type="text" placeholder="Moscow, Russia" name="address" id="address" class="data address"
+											value="{{resume.resumeuserdetails_set.get.address}}" >
+											<i class="fa fa-map-marker" aria-hidden="true"></i>
+										</div>
+									</li>
+								</ul>
+								
+							</div>
+							<hr>
+
+
+							
+							
+							<div class="contactInfo education">
+								<h3 class="info">Education</h3>
+								<!-- <ul> -->
+									{% for object in resume.education_set.all %}
+									<!-- <li> -->
+										<input type="text"  placeholder="Qualication name..."  class="data qualification_name" 
+										name="qualification_name" value="{{object.qualification_name}}">
+									<!-- </li>
+									<li> -->
+										<input type="text"  placeholder="University name..."  class="data university" name="university" value="{{object.university}}">
+									<!-- </li>
+									<li> -->
+										<input type="text"  placeholder="Year of passing..." class="data year_of_passing" name="year_of_passing"
+										 value="{{object.year_of_passing}}">
+									<!-- </li>
+									<li> -->
+										<input type="text"  placeholder="Grade..."  type="text" class="data percentage_or_grade"
+										name="percentage_or_grade" value="{{object.percentage_or_grade}}">
+									<!-- </li> -->
+								<!-- </ul> -->
+								<div class="btnset">
+									<a href="{% url 'deleteeducation' object.id %}"><button class="Delete"><i class="fa fa-trash" aria-hidden="true"></i>
+										Delete</button></a>
+								
+								</div>
+								{% endfor %}
+
+								<div class="tab">
+									<div class="form-group" id="resume-education" style="display: none;">
+										<!-- <ul> -->
+											<!-- <li> -->
+												<input type="text" class="data qualification_name" id="qualification_name"
+													name="qualification_name" 
+													placeholder="Qualification name...">
+											<!-- </li> -->
+											<!-- <li> -->
+												<input type="text" class="data university" id="university" name="university"
+													placeholder="University name..." >
+											<!-- </li>
+											<li>         -->
+												<input type="text" class="data year_of_passing" id="year_of_passing" name="year_of_passing"
+													placeholder="Year of passing..." >
+											<!-- </li>
+											<li> -->
+												<input type="text" class="data percentage_or_grade" id="percentage_or_grade"
+													name="percentage_or_grade" placeholder="Grade..." >
+											<!-- </li> -->
+										<!-- </ul> -->
+									</div>
+				
+									<div class="form-group another-education" id="another-education">
+				
+									</div>
+									<div class="btnset">
+										<button class="add" type="button" data-name="education" id="add-education"><i
+												class="fa fa-plus-square" aria-hidden="true"></i> Add Education !</button>
+									</div>
+								</div>
+							</div>
+
+
+							<hr>
+
+
+							<div class="contactInfo education">
+								<h3 class="info">Interests</h3>
+								<!-- <ul> -->
+									{% for object in resume.hobbies_set.all %}
+									<!-- <li> -->
+										<input type="text" placeholder="Hobbies" class="data hobbies" name="hobbies" id="hobbies" value="{{object.hobbies}}">
+									<!-- </li> -->
+									
+								<!-- </ul> -->
+								<div class="btnset">
+									<a href="{% url 'deletehobbie' object.id %}"><button class="Delete" type="button"><i class="fa fa-trash" aria-hidden="true"></i>
+										Delete</button></a>
+									<!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i>
+										Add</button> -->
+								</div>
+								{% endfor %}
+
+								<div class="tab">
+									<div class="form-group" id="resume-hobbies" style="display: none;">
+										<input type="text" class=" data hobbies" id="hobbies" name="hobbies" placeholder="Hobbies">
+									</div>
+				
+									<div class="form-group another-hobbies" id="another-hobbies">
+				
+									</div>
+								<div class="btnset">
+									<button class="add" type="button" data-name="hobbies" id="add-hobbies"><i class="fa fa-plus-square" aria-hidden="true"></i> Add hobbies !</button>
+								</div>
+									
+								</div>
+							</div>
+							<hr>
+
+              <div class="text-right preview-btn">
+                <a href="{% url 'template_preview4' resume.id %}" class="btn btn-info preview" > preview.</a>
+            </div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</td>
+	</tr>
+	</table>
+	</div>
+	<!-- partial -->
+
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function delay(callback, ms) {
+        var timer = 0;
+        return function () {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
+
+    $("#add-experience").click(function () {
+     
+     var experience_form = $('#resume-experience').html();
+     console.log($(this).data("name"))
+     $("#another-experience").append(experience_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })  
+
+
+
+   $("#add-skills").click(function () {
+
+var skill_form = $('#resume-skills').html();
+console.log($(this).data("name"))
+$("#another-skills").append(skill_form);
+var token = '{{csrf_token}}';
+$.ajax({
+	headers: { "X-CSRFToken": token },
+	type: 'POST',
+	url: '/add_another/{{resume.id}}',
+	data: {
+		'element': $(this).data("name")
+	},
+	success: function (json) {
+	}
+})
+location.reload(true);
+})	
+
+
+$("#add-worksamples").click(function () {
+     
+     var worksamples_form = $('#resume-worksamples').html();
+     console.log($(this).data("name"))
+     $("#another-worksamples").append(worksamples_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+
+   $("#add-achievements").click(function () {
+
+var achievements_form = $('#resume-achievements').html();
+console.log($(this).data("name"))
+$("#another-achievements").append(achievements_form);
+var token = '{{csrf_token}}';
+$.ajax({
+	headers: { "X-CSRFToken": token },
+	type: 'POST',
+	url: '/add_another/{{resume.id}}',
+	data: {
+		'element': $(this).data("name")
+	},
+	success: function (json) {
+	}
+})
+location.reload(true);
+})
+
+$("#add-certificate").click(function () {
+
+var certificate_form = $('#resume-certificate').html();
+console.log($(this).data("name"))
+$("#another-certificate").append(certificate_form);
+var token = '{{csrf_token}}';
+$.ajax({
+    headers: { "X-CSRFToken": token },
+    type: 'POST',
+    url: '/add_another/{{resume.id}}',
+    data: {
+        'element': $(this).data("name")
+    },
+    success: function (json) {
+    }
+})
+location.reload(true);
+})
+
+
+$("#add-education").click(delay(function () {
+      var education_form = $('#resume-education').html();
+     
+      $("#another-education").append(education_form);
+      var token = '{{csrf_token}}';
+      $.ajax({
+      headers: { "X-CSRFToken": token },
+      type: 'POST',
+      url: '/add_another/{{resume.id}}',
+      data: {
+        'element': $(this).data("name")
+      },
+      success: function (json) {
       }
+  })
+  location.reload(true);
+    }, 10) )
 
+
+    $("#add-hobbies").click(function () {
+     
+     var hobbies_form = $('#resume-hobbies').html();
+     console.log($(this).data("name"))
+     $("#another-hobbies").append(hobbies_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+
+
+
+	$(document).ready(function () {
+        $(".data").keyup(delay(function () {
+            var token = '{{csrf_token}}';
+            var company_name = $('input[name^=company_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var designation = $('textarea[name^=designation]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var place = $('input[name^=place]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var role = $('textarea[name^=role]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var project_name = $('input[name^=project_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var project_link = $('input[name^=project_link]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var technology = $('textarea[name^=technology]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var description = $('textarea[name^=description]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var responsibilities = $('textarea[name^=responsibilities]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var achievements = $('textarea[name^=achievements]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var certificate = $('textarea[name^=certificate]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var qualification_name = $('input[name^=qualification_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var university = $('input[name^=university]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var year_of_passing = $('input[name^=year_of_passing]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var percentage_or_grade = $('input[name^=percentage_or_grade]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var skills = $('input[name^=skills]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+
+            var hobbies = $('input[name^=hobbies]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var obj = $(this)
+            var id = obj.data('id');
+            console.log(qualification_name)
+
+
+            $.ajax({
+                headers: { "X-CSRFToken": token },
+                type: 'POST',
+                url: '/update_data/{{resume.id}}',
+                data: {
+                    'objective': $('.objective').val(),
+                    'title': $('.titles').val(),
+                    'company_name[]': company_name,
+                    'designation[]': designation,
+                    'place[]': place,
+                    'role[]': role,
+                    'id_skill': id,
+                    'project_name[]': project_name,
+                    'project_link[]': project_link,
+                    'technology[]': technology,
+                    'description[]': description,
+                    'responsibilities[]': responsibilities,
+                    'achievements[]': achievements,
+                    'certificate[]': certificate,
+                    'qualification_name[]': qualification_name,
+                    // 'qualification_n[]':qualification_n,
+                    'university[]': university,
+                    'year_of_passing[]': year_of_passing,
+                    'percentage_or_grade[]': percentage_or_grade,
+                    'skills[]': skills,
+                    'hobbies[]': hobbies,
+                    // 'language_name[]': language_name,
+                    'address': $('.address').val(),
+                    'email': $('.email').val(),
+                    'mobile': $('.mobile').val(),
+                    'date_of_birth': $('.date_of_birth').val(),
+                    'full_name': $('.full_name').val(),
+                },
+                success: function (json) {
+                }
+            })
+
+
+        }, 300))
+
+    });
 
 
 </script>
-
-
-<script type="text/javascript">
-  function getPDF(){
-
-var HTML_Width = $(".container").width();
-var HTML_Height = $(".container").height();
-var margin = 20;
-var PDF_Width = HTML_Width+(margin*2);
-var PDF_Height = (PDF_Width*1.5)+(margin*2);
-var canvas_image_width = HTML_Width;
-var canvas_image_height = HTML_Height;
-
-var totalPDFPages = Math.ceil(HTML_Height/PDF_Height)-1;
-
-
-html2canvas($(".container")[0],{allowTaint:true}).then(function(canvas) {
-  canvas.getContext('2d');
-  
-  console.log(canvas.height+"  "+canvas.width);
-  
-  
-  var imgData = canvas.toDataURL("image/jpeg", 1.0);
-  var pdf = new jsPDF('p', 'pt',  [PDF_Width, PDF_Height]);
-    pdf.addImage(imgData, 'JPG', margin, margin,canvas_image_width,canvas_image_height);
-  
-  
-  for (var i = 1; i <= totalPDFPages; i++) { 
-    pdf.addPage(PDF_Width, PDF_Height);
-    pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(margin*4),canvas_image_width,canvas_image_height);
-  }
-  
-    pdf.save("HTML-Document.pdf");
-    });
-};  
-  </script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-  </body>
-</html>

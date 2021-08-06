@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+<style>
+  .todo nav ul li{
+    padding: 15px 20px;
+  }
+</style>
+
+{% endblock css %}
+
+{% block main %}
+
+
+  <div class="todo">
+
+{% block nav %}
+  {% include 'resume/base/nav.html' %}
+{% endblock nav %}
+  
+
+
+
+<main class="panelD">
+
+  <header>
+    <img src="img/man.svg" alt="" class="perfil">
+    <img src="img/noti.svg" alt="">
+    <img src="img/chat.svg" alt="">
+  </header>
+
+  <h1 class="tituloD">Dashboard</h1>
+  <form style="float: right;" action="{%    url 'user_list' %} " method="post">
+ 
+  
+    {% csrf_token %}
+    <select class="form-control " name="team" id="">
+      <option disabled>Select</option>  
+     {% for user_team in users %}
+     <option value="{{user_team.id}}">{{user_team.username}}</option>
+     {% endfor %}
+    </select>
+    <button type="submit">Add Team Member</button>
+  </form>
+  <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
+  <div class="tabla">
+    <table cellpadding="0" cellspacing="0" >
+      <tr class="negrita bg-dark ">
+        <th>Resume Name</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>Account Approved</th>
+        
+      </tr>
+      {% for child in user %}
+
+      <tr>
+        <th><h4>{{ child.username }}</h4></th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>{{ child.account_approved }}</th>
+      </tr>
+      {% endfor %}
+      
+    </table>
+
+
+
+  </div>
+
+
+  
+  
+  
+</main>
+<br><br>
+
+</div>
+
+
+   
+{% endblock main %}
+
