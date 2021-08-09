@@ -211,21 +211,21 @@
                                 <li>
                                     <div class="inputWithIcon inputIconBg">
                                         <span> <i class="fa fa-phone fa-lg fa-fw"
-                                                aria-hidden="true"></i>{{object.mobile}}</span>
+                                                aria-hidden="true"></i> {{object.mobile}}</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="inputWithIcon inputIconBg">
                                         <span>
                                             <i class="fa fa-envelope-o"
-                                                aria-hidden="true"></i>&nbsp;{{object.email}}</span>
+                                                aria-hidden="true"></i> {{object.email}}</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="inputWithIcon inputIconBg">
                                         <span>
                                             <i class="fa fa-birthday-cake"
-                                                aria-hidden="true"></i>&nbsp;{{object.date_of_birth}}</span>
+                                                aria-hidden="true"></i> {{object.date_of_birth}}</span>
                                     </div>
                                 </li>
                                 <li>
@@ -247,30 +247,30 @@
                             <p>
                                 {% if object.qualification_name == '' %}
                                 {% else %}
-                            <p><b>Qualification :-</b>{{object.qualification_name}}</p>
+                            <p><b>Qualification :-</b> {{object.qualification_name}}</p>
                             </p>
                             {% endif %}
 
                             <p>
                                 {% if object.university == '' %}
                                 {% else %}
-                            <p><b>Univercity :- </b>{{object.university}}</p>
+                            <p><b>Univercity :- </b> {{object.university}}</p>
                             </p>
                             {% endif %}
                             <p>
                                 {% if object.year_of_passing == '' %}
                                 {% else %}
-                            <p><b>Passing :- </b>{{object.year_of_passing}}</p>
+                            <p><b>Passing :- </b> {{object.year_of_passing}}</p>
                             </p>
                             {% endif %}
                             <p>
                                 {% if object.percentage_or_grade == '' %}
                                 {% else %}
-                            <p><b>Percentage :- </b>{{object.percentage_or_grade}}</p>
+                            <p><b>Percentage :- </b> {{object.percentage_or_grade}}</p>
                             </p>
                             {% endif %}
                             <!-- </ul> -->
-                            <hr>
+                           
                             {% endfor %}
 
                         </div>

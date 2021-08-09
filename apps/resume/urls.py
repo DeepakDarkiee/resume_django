@@ -124,7 +124,8 @@ urlpatterns = [
    path('template_preview/<uuid:id>',TemplatePreviews.as_view(), name='template_preview'),
    path('template_preview2/<uuid:id>',TemplatePreviews2.as_view(), name='template_preview2'),
    path('template_preview3/<uuid:id>',TemplatePreviews3.as_view(), name='template_preview3'),                  
-   #path('template_preview4/<uuid:id>',TemplatePreviews4.as_view(), name='template_preview4'),                  
+   path('template_preview4/<uuid:id>',TemplatePreviews4.as_view(), name='template_preview4'),
+   path('template_preview5/<uuid:id>',TemplatePreviews5.as_view(), name='template_preview5'),                                    
 
 
 ]
