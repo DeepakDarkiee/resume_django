@@ -1238,7 +1238,7 @@ class UpdateDataView(View):
            
 
 
-class TemplatePreviews(View):
+class TemplatePreviews6(View):
     def get(self, request, id):
         context = {}
         user = request.user
@@ -1286,7 +1286,7 @@ class TemplatePreviews5(View):
         context['resume'] = resume
         return render(request, 'resume/template_previews5.html', context)  
 
-class TemplatePreviews6(View):
+class TemplatePreviews(View):
     def get(self, request, id):
         context = {}
         user = request.user
