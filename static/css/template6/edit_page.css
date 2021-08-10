@@ -21,6 +21,11 @@ body {
 :focus-visible{
   outline: none;
 }
+
+::placeholder{
+  font-size: 13px;
+  color: #a57169;
+}
 hr.right_hr {
     margin: 0;
     padding: 0;
@@ -32,7 +37,8 @@ hr.right_hr {
 }
 textarea {
     width: 100%;
-    border: 1px solid #1a0b45;
+    background-color: transparent;
+    border: 1px solid #d8a09a;
     border-radius: 4px;
     margin: 5px 0;
     outline: none;
@@ -46,35 +52,32 @@ textarea {
   color: #fff;
   display: flex;
   justify-content: center;
-  padding-left: 3%;
+  padding: 3%;
   /* align-items: center; */
   flex-direction: column;
-  background-image: url(../template6/img/bg.png);
+  background-image: url(bg.png);
   background-size: cover;
   background-repeat: no-repeat;
-}
-.name_sec input {
-  border-bottom: 1px solid white !important;
-  border: none;
-}
-.name_sec input {
+} 
+/* .name_sec input {
     width: 50% !important;
-}
+} */
 
 .btnset {
-    float: right;
+    text-align: right;
 }
 button.Delete {
     border: none;
-    background-color: #ff0000;
+    background-color: rgb(204 0 0);
     color: #fff;
     font-size: 12px;
     padding: 3px 5px;
+    margin :11px auto;
 }
 
 button.add{
     border: none;
-    background-color: #6e658a;
+    background-color: #f89151;
     color: #fff;
     font-size: 12px;
     padding: 3px 5px;
@@ -87,22 +90,10 @@ button.add{
 .con_info input[type="text"]{
   border: 1px solid #fff;
 }
-.con_info input[type="text"]::placeholder {
+/* .con_info input[type="text"]::placeholder {
   color: white;
-}
-h2.title2::before {
-  content: "";
-  width: 3px;
-  height: 20px;
-  /* border-radius: 50%; */
-  border-top-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  background-color: #f71701;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-}
+} */
+
 .about.interest .inputWithIcon input[type="text"] {
     padding-left: 6px;
 }
@@ -179,32 +170,23 @@ select#cars {
 .inputWithIcon {
     position: relative;
 }
-.name_sec input {
-  color: #fff;
-}
+
 textarea{
   color: #1a0b45;
 }
 .pad_sec input {
   color: #1a0b45;
 }
-.pad_sec input::placeholder {
-  font-size: 14px;
-}
-.pad_sec textarea::placeholder {
-  font-size: 14px;
-}
+
 .pad_sec{
-  padding: 3%;
+  padding: 0 3%;
 }
 .rig_set {
-  /* background-color: #f7f5ff; */
-  background-image: linear-gradient(to right top, #f7f5ff, #f6f5fd, #f5f4fa, #f4f4f8, #f3f3f5, #f3f3f5, #f3f3f5, #f3f3f5, #f4f4f8, #f5f4fa, #f6f5fd, #f7f5ff);
-  border-top: 2px solid #1a0b45;
   height: 100%;
+  padding-right: 3%;
 }
 .inputWithIcon.inputIconBg i {
-  color: #6e658a;
+  color: #f89151;
   width: 35px;
   height: 35px;
   text-align: center;
@@ -226,7 +208,7 @@ textarea{
 
 input[type="text"] {
     width: 100%;
-    border: 1px solid #1a0b45;
+    border: 1px solid #d8a09a;
     background-color: transparent;
     border-radius: 4px;
     margin: 8px 0;
@@ -234,9 +216,6 @@ input[type="text"] {
     padding: 6px;
     box-sizing: border-box;
     transition: 0.3s;
-}
-.name_sec input::placeholder {
-  color: #fff;
 }
 .wor_sem {
   padding-top: 40px;
@@ -247,6 +226,7 @@ input[type="text"] {
   max-width: 1000px;
   min-height: 1000px;
   background-color: #fff;
+  background-image: linear-gradient(to left bottom, #fabaaf, #fdc5c9, #f7ecef, #f7f7f7, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #ffffff, #fdeff0, #fabaaf);
   margin: 50px;
   /* padding: 0 0 21px 0; */
 /*  display: grid;
@@ -313,25 +293,12 @@ input[type="text"] {
   font-size: 14px;
 }
 .title {
-  color: #6e658a;
+  color: #f89151;
   font-size: 18px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 5px;
-}
-h2.title::before {
-  content: "";
-  width: 3px;
-  height: 20px;
-  /* border-radius: 50%; */
-  border-top-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-  background-color: #f71701;
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
 }
 .about.interest {
   padding-top: 40px;
@@ -404,7 +371,7 @@ h2.title::before {
   margin-bottom: 0;
 } */
 .title2 {
-  color: #6e658a;
+  color: #f89151;
   font-size: 18px;
   font-weight: 500;
   text-transform: uppercase;
@@ -443,10 +410,10 @@ p {
   align-items: center;*/
 }
 .about.ACHIEVEMENTS {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 .about.CERTIFICATE {
-  padding-top: 40px;
+  padding: 20px 0 40px 0;
 }
 .skills .box h4 {
   text-transform: uppercase;
@@ -544,7 +511,6 @@ p {
 .adw70 {
   width: 70%;
 }
-
 
 
 

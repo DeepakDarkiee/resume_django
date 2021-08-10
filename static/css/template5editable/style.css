@@ -57,7 +57,11 @@ textarea {
 }
 
 .btnset {
-    float: right;
+    text-align: right;
+}
+a.btn.btn-info.preview {
+  background-color: #1a5273;
+  margin: 0 30px;
 }
 button.Delete {
     border: none;
@@ -65,6 +69,7 @@ button.Delete {
     color: #fff;
     font-size: 12px;
     padding: 3px 5px;
+    margin :11px auto;
 }
 
 button.add{

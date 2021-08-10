@@ -1222,7 +1222,7 @@ class UpdateDataView(View):
     def get(self, request, id):
         resume = Resume.objects.get(id=id)
         if resume.template.name == "template":
-            return render(request, 'resume/template.html', {'resume': resume})
+            return render(request, 'resume/template6.html', {'resume': resume})
         if resume.template.name == "template2":
             return render(request, 'resume/template2.html', {'resume': resume})
         if resume.template.name == "template3":   
@@ -1232,7 +1232,7 @@ class UpdateDataView(View):
         if resume.template.name == "template5":
             return render(request, 'resume/template5.html', {'resume': resume}) 
         if resume.template.name == "template6":
-            return render(request, 'resume/template6.html', {'resume': resume}) 
+            return render(request, 'resume/template.html', {'resume': resume}) 
             
              
            
@@ -1244,7 +1244,7 @@ class TemplatePreviews(View):
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews.html', context)
+        return render(request, 'resume/template_previews6.html', context)
 
 
 
@@ -1285,3 +1285,11 @@ class TemplatePreviews5(View):
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
         return render(request, 'resume/template_previews5.html', context)  
+
+class TemplatePreviews6(View):
+    def get(self, request, id):
+        context = {}
+        user = request.user
+        resume = Resume.objects.filter(id=id).last()
+        context['resume'] = resume
+        return render(request, 'resume/template_previews.html', context)  
