@@ -21,6 +21,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      word-break: break-all;
       font-family: "Poppins", SansSerif;
   }
   @media print {
@@ -40,10 +41,14 @@
       outline: none !important;
       border: none;
   }
+  .text p {
+    word-break: break-word;
+}
 
   :focus-visible{
       outline: none;
   }
+  word-break: break-all;
   p {
     margin-bottom: 15px;
 }

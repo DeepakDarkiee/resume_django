@@ -46,9 +46,13 @@ textarea:focus {
 /*-------------right side ---------------*/
 .profile-area {
   background: #cccccc;
-  padding: 30px;
+  padding: 30px 0;
   text-align: center;
   text-transform: capitalize;
+  height: 100%;
+}
+.profile-area ul {
+  padding-left: 20px;
 }
 .profile-area h1 {
   font-size: 30px;
@@ -115,6 +119,9 @@ textarea:focus {
   background-repeat: no-repeat;
   background-position: center;
 }
+.set {
+  padding: 18px;
+}
 .skillset .level-title {
   font-size: 14px;
   margin-bottom: 12px;
@@ -147,4 +154,221 @@ textarea:focus {
 input:focus {
   outline: none !important;
   border: 0 !important;
+}
+
+    
+@page { margin:50; }
+/*@page { size:  auto; margin: 50px; }*/
+@media print {
+
+#noprint {
+  visibility: hidden;
+}
+} 
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f5f5f5;
+}
+page-break-after: always
+section{
+  padding-top: 50px;
+}
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0a072f;
+  font-family: sans-serif;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+text-align: left;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+h6 {
+margin: 12px auto;
+}
+p {
+margin: 0;
+padding: 10px 0;
+
+}
+.btnset button {
+font-size: 12px;
+font-weight: bold;
+}
+.btnset a {
+font-size: 12px;
+font-weight: bold;
+}
+::focus{
+  outline: none !important;
+}
+/*.container {
+max-width: 960px;
+margin: 30px auto;
+padding: 20px;
+}*/
+.avatar-upload {
+position: relative;
+max-width: 205px;
+margin: 0px auto;
+}
+.avatar-upload .avatar-edit {
+position: absolute;
+right: 12px;
+z-index: 1;
+top: 10px;
+}
+.avatar-upload .avatar-edit input {
+display: none;
+}
+.avatar-upload .avatar-edit input + label {
+display: inline-block;
+width: 34px;
+height: 34px;
+margin-bottom: 0;
+border-radius: 100%;
+background: #FFFFFF;
+border: 1px solid transparent;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+cursor: pointer;
+font-weight: normal;
+transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+background: #f1f1f1;
+border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+content: "\f040";
+font-family: 'FontAwesome';
+color: #757575;
+position: absolute;
+top: 10px;
+left: 0;
+right: 0;
+text-align: center;
+margin: auto;
+}
+.avatar-upload .avatar-preview {
+width: 192px;
+height: 192px;
+position: relative;
+border-radius: 100%;
+border: 6px solid #F8F8F8;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+width: 100%;
+height: 100%;
+border-radius: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+}
+
+
+/**/
+
+/*.wrapper {
+width: 969px;
+margin: 0 auto;
+margin-top: 60px;
+margin-bottom: 100px;
+background-color: #fff;
+}*/
+
+.wrapper {
+width: 1062px;
+margin: 0 auto;
+margin-top: 60px;
+margin-bottom: 100px;
+background-color: #fff;
+}
+
+
+.pro h2 {
+font-size: 45px;
+font-family: 'Open Sans';
+font-weight: 600;
+line-height: 1.5;
+color: #0a072f;
+}
+
+.pro p {
+font-size: 12px;
+font-weight: 600;
+}
+
+input.inp-set {
+width: 100%;
+height: 40px;
+}
+
+
+.table thead th {
+border-bottom: 1px solid #b1b3b5 !important;
+}
+.table-bordered td, .table-bordered th {
+border: 1px solid #b1b3b5;
+}
+.form-group label {
+font-size: 12px;
+font-weight: 600;
+color: #0a072f;
+padding-bottom: 3px;
+}
+
+
+.btnset {
+position: fixed;
+right: 1%;
+top: 5%;
+z-index: 99999999999999999999;
+}
+button.btn.btnsub {
+background-color: #4c4c4c;
+color: #FFF;
+font-weight: bold;
+}
+
+word-break: break-all;
+
+.profile-area {
+text-align: center;
+text-transform: capitalize;
+height: 100%;
+}
+
+.pro_set {
+background: #cccccc;
+padding: 30px;
+}
+
+td.set {
+padding: 20px 18px;
+}
+
+.wrapper ul li {
+  text-align: left;
+  line-height: 2;
+  word-break: break-all;
+  font-size: 15px;
+}
+
+td.profile-area h2 {
+text-align: left;
+padding-top: 20px;
+}
+
+.test {
+padding: 0 18px;
+}
+
+ul.achie li {
+line-height: 1.5;
+word-break: break-word;
 }
