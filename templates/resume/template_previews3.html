@@ -1,5 +1,4 @@
-    <!DOCTYPE html>
-
+<!DOCTYPE html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,14 +11,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     </head>
     <style type="text/css">
-
+    *{
+        word-break: break-all;
+    }
     .dow_btn button {
         font-size: 12px;
     }
-
     .dow_btn a {
         font-size: 12px;
     }
@@ -27,28 +26,21 @@
         position: fixed;
         top: 50px;
         right: 5px;
-    }    
+    }
     @media print {
-
         #noprint {
           visibility: hidden;
       }
-  } 
+  }
 </style>
-
 <body>
     <div class="containers">
         <div class="name_sec">
             {% for object in resume.resumeuserdetails_set.all %}
-
             <h1>{{resume.resumeuserdetails_set.all.first.full_name}}</h1>
-
             <p>{{resume.title}}</p>
             {% endfor %}
-
         </div>
-
-
         <div class="row">
             <div class="col-md-4">
                 <div class="left_Side">
@@ -56,7 +48,6 @@
                         <h3 class="title">Contact Info</h3>
                         <ul>
                             {% for object in resume.resumeuserdetails_set.all %}
-
                             <li>
                                 <div class="inputWithIcon inputIconBg"> <span><i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>{{object.mobile}}</span>
                                 </div>
@@ -80,25 +71,35 @@
                             </ul>
                             {% endfor %}
 
-
                             <div class="contactInfo education">
                                 <h3 class="title">Education</h3>
                                 <ul>
                                     {% for object in resume.education_set.all %}
-
-                                    <p><b>Qualification :-</b>{{object.qualification_name}}</p>                                
+                                    {% if object.qualification_name == '' %}
+                                    {% else %}
+                                    <p><b>Qualification :-</b>{{object.qualification_name}}</p>
+                                    {% endif %}
+                                    {% if object.university == '' %}
+                                    {% else %}
                                     <p><b>Univercity :- </b>{{object.university}}</p>
+                                    {% endif %}
 
+                                    {% if object.year_of_passing == '' %}
+                                    {% else %}
                                     <p><b>Passing :- </b>{{object.year_of_passing}}</p>
+                                    {% endif %}
+                                    
 
+                                    {% if object.percentage_or_grade == '' %}
+                                    {% else %}
                                     <p><b>Percentage :- </b>{{object.percentage_or_grade}}</p>
-
+                                    {% endif %}
                                 </ul>
                                 <br>
                                 {% endfor %}
-
                             </div>
-                            <div class="contactInfo language">
+
+                            <!-- <div class="contactInfo language">
                                 <h3 class="title">Languages</h3>
                                 <ul>
                                     <li> <span class="text">English</span>
@@ -107,31 +108,33 @@
                                         </ul>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
 
                             <div class="about skills">
                                 <h2 class="title2">Professionals skills</h2>
+                                {% for object in resume.skills_set.all %}
                                 <div class="box">
-                                    {% for object in resume.skills_set.all %}
-
+                                    {% if object.skills == '' %}
+                                    {% else %}
+                                    
                                     <p>{{object.skills}}</p>
+                                    {% endif %}
                                 </div>
                                 {% endfor %}
 
-
                                 <div class="about interest">
                                     <h2 class="title2">Interests</h2>
-
                                     {% for object in resume.hobbies_set.all %}
-
                                     <div class="inputWithIcon inputIconBg">
+                                        {% if object.hobbies == '' %}
+                                        {% else %}
                                         <p>{{object.hobbies}}</p>
-                                    </div>                                
-
+                                        {% endif %}
+                                    </div>
                                     {% endfor %}
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -142,59 +145,107 @@
                             <h2 class="title2">CAREER OBJECTIVE</h2>
                             <p>{{resume.objective}}</p>
                         </div>
+
                         <div class="about">
                             <h2 class="title2">Experience</h2>
+                            {% for object in resume.experience_set.all %}
                             <div class="box">
-                                {% for object in resume.experience_set.all %}
-
+                                
                                 <div class="year_company">
+                                    {% if object.company_name == '' %}
+                                    {% else %}
                                     <p><b>Company Name:-</b>{{ object.company_name }}</p>
+                                    {% endif %}
+                                    
+
+                                    {% if object.place == '' %}
+                                    {% else %}
                                     <p><b>Place :-</b>{{ object.place }}</p>
+                                    {% endif %}
                                 </div>
                                 <div class="text">
+                                    {% if object.designation == '' %}
+                                    {% else %}
                                     <p><b>Designation :-</b>{{ object.designation }}</p>
+                                    {% endif %}
+                                    {% if object.role == '' %}
+                                    {% else %}
                                     <p><b>Role:-</b>{{ object.role }}</p>
+                                    {% endif %}
                                 </div>
                             </div>
                             {% endfor %}
-
                             <h2 class="title2">WORK SAMPLES</h2>
+                            {% for object in resume.worksamples_set.all %}
                             <div class="box">
-                                {% for object in resume.worksamples_set.all %}
-
+                                
                                 <div class="text">
+                                    {% if object.project_name == '' %}
+                                    {% else %}
                                     <p><b>Project Name:-</b>{{ object.project_name }}</p>
+                                    {% endif %}
+                                    
+                                    {% if object.project_link == '' %}
+                                    {% else %}
                                     <p><b>Project Link:-</b>{{ object.project_link }}</p>
+                                    {% endif %}
+                                    
+                                    {% if object.technology == '' %}
+                                    {% else %}
                                     <p><b>Technology:-</b>{{ object.technology }}</p>
+                                    {% endif %}
+                                    
+                                    {% if object.responsibilities == '' %}
+                                    {% else %}
                                     <p><b>Responsibilities:-</b>{{object.responsibilities }}</p>
+                                    {% endif %}
+                                    
+                                    {% if object.description == '' %}
+                                    {% else %}
                                     <p><b>Description:-</b>{{ object.description }}</p>
-
+                                    {% endif %}
                                 </div>
                             </div>
                             {% endfor %}
-
                         </div>
 
                         <div class="about">
+                            {% if resume.achievements_set.all %}
+                                {% for object in resume.achievements_set.all %}
+                                {% if forloop.first and object.achievements != ''%}
                             <h2 class="title2">ACHIEVEMENTS</h2>
-                            {% for object in resume.achievements_set.all %}
-
+                             {% endif %}
+                                {% if object.achievements == '' %}
+                                {% else %}
                             <p>{{object.achievements}}</p>
-                            {% endfor %}                        
+                            {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                {% endif %}
                         </div>
 
                         <div class="about">
-                            <h2 class="title2">CERTIFICATE</h2>
+                            {% if resume.certificate_set.all %}
                             {% for object in resume.certificate_set.all %}
+                            {% if forloop.first and object.certificate != ''%}
 
+                            <h2 class="title2">CERTIFICATE</h2>
+                            {% endif %}
+                            {% if object.certificate == '' %}
+                            {% else %}
                             <p>{{object.certificate}}</p>
+                            {% endif %}
                             {% endfor %}
+                            {% else %}
+                            {% endif %}
 
+                        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="dow_btn">
             <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
             More</button></a>
@@ -209,8 +260,6 @@
             <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
             {% endif %}
         </div>
-
-
     </body>
     <script>
       $(".download").click(function(){
