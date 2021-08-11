@@ -14,7 +14,7 @@
 
     <style type="text/css">
 
-  
+    
 
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
     * {
@@ -23,33 +23,33 @@
       box-sizing: border-box;
       word-break: break-all;
       font-family: "Poppins", SansSerif;
+      word-break: break-all;
   }
   @media print {
 
     #noprint {
       visibility: hidden;
-    }
-  } 
-  body {
-      #background-color: lightblue;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-  }
-  ::focut{
-      outline: none !important;
-      border: none;
   }
   .text p {
     word-break: break-word;
+} 
+body {
+  #background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+::focut{
+  outline: none !important;
+  border: none;
 }
 
-  :focus-visible{
-      outline: none;
-  }
-  word-break: break-all;
-  p {
+:focus-visible{
+  outline: none;
+}
+word-break: break-all;
+p {
     margin-bottom: 15px;
 }
 textarea {
@@ -98,9 +98,9 @@ select#cars {
 }
 .avatar-upload {
     display: none;
-  position: relative;
-  max-width: 205px;
-  margin: 0px auto;
+    position: relative;
+    max-width: 205px;
+    margin: 0px auto;
 }
 .avatar-upload .avatar-edit {
   position: absolute;
@@ -493,7 +493,7 @@ ul.ul_set {
 
         <div class="row">
             <div class="col-md-4 no-padding">
-               <div class="left_Side">
+             <div class="left_Side">
                 <div class="profileText">
                     <div class="imgBx">
                         <!-- <img class="photo" src="bilalkhan.png"> -->
@@ -513,7 +513,7 @@ ul.ul_set {
 
                 </div>
             </div>
-          
+            
             {% for object in resume.resumeuserdetails_set.all %}
 
             <h2>{{resume.resumeuserdetails_set.all.first.full_name}}</h2>
@@ -560,10 +560,10 @@ ul.ul_set {
             <ul style="padding-top:10px">
                 {% for object in resume.education_set.all %}
 
-                    <p><b>Qualification</b> :- {{object.qualification_name}}</p>
-                    <p>University :- {{object.university}}</p>
-                    <p>Passing :-{{object.year_of_passing}}</p>
-                    <p>Percentage :- {{object.percentage_or_grade}}%</p>
+                <p><b>Qualification</b> :- {{object.qualification_name}}</p>
+                <p>University :- {{object.university}}</p>
+                <p>Passing :-{{object.year_of_passing}}</p>
+                <p>Percentage :- {{object.percentage_or_grade}}%</p>
 
             </ul>
             <br>
@@ -678,7 +678,7 @@ ul.ul_set {
                     <li>{{object.certificate}}</li>
                 </ul>
 
-              
+                
                 {% endfor %}
 
             </div>
@@ -689,17 +689,17 @@ ul.ul_set {
 
 <div class="dow_btn">
     <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
-              More</button></a>
-              {% if  request.user.is_authenticated  %}
-              {% if not  request.user.account_approved %}
-              <a  onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a>
-              {% else %}
-              <a href="#" id="noprint" class="btn btn-info download">
-                Download</a>
-              {% endif %}
-              {% else %}
-              <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
-              {% endif %}
+    More</button></a>
+    {% if  request.user.is_authenticated  %}
+    {% if not  request.user.account_approved %}
+    <a  onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a>
+    {% else %}
+    <a href="#" id="noprint" class="btn btn-info download">
+    Download</a>
+    {% endif %}
+    {% else %}
+    <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
+    {% endif %}
 </div>
 
 </div>
@@ -708,8 +708,8 @@ ul.ul_set {
 <!-- partial -->
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-  integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- <script>
   $(".download").click(function(){
@@ -722,6 +722,6 @@ ul.ul_set {
     $(".wrapper").css("margin-top","-25px");
     $(".wrapper").css("margin-bottom", "0px");
     window.print()
-  })
+})
 </script>
 </html>

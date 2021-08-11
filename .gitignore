@@ -12,7 +12,7 @@ venv/
 .env
 # Compiled Java class files
 *.class
-
+db.sqlite3/
 # Compiled Python bytecode
 *.py[cod]
 

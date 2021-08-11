@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Responsive CV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -17,7 +17,11 @@
 </head>
 <style type="text/css">
 
-    .dow_btn button {
+*{
+    word-break: break-all;
+}
+
+.dow_btn button {
     font-size: 12px;
 }
 
@@ -39,6 +43,18 @@
   *{
         word-break: break-all;
     }
+.dow_btn {
+    position: fixed;
+    top: 50px;
+    right: 5px;
+}    
+@media print {
+
+    #noprint {
+      visibility: hidden;
+  }
+} 
+word-break: break-all;
 </style>
 
 <body>
@@ -94,7 +110,7 @@
                                 {% else %}
                                 <p><b>Role:-</b>{{ object.role }}</p>
                                 {% endif %}
-                            {% endfor %}
+                                {% endfor %}
                             </div>
                             
                             
@@ -195,7 +211,7 @@
                                 {% else %}
 
                                 <p>{{object.certificate}}</p>
-                                  <hr>
+                                <hr>
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
@@ -203,97 +219,121 @@
                             </div>
                         </div>
                     </div>
-                
+                    
 
 
-                <div class="col-md-5 no_pad">
-                    <div class="rig_set">
-                        <div class="contactInfo">
-                            <h2 class="title">Contact</h2>
-                            <ul>
-                                {% for object in resume.resumeuserdetails_set.all %}
-                                <li>
-                                    <div class="inputWithIcon inputIconBg">
-                                        <span> <i class="fa fa-phone fa-lg fa-fw"
+                    <div class="col-md-5 no_pad">
+                        <div class="rig_set">
+                            <div class="contactInfo">
+                                <h2 class="title">Contact</h2>
+                                <ul>
+                                    {% for object in resume.resumeuserdetails_set.all %}
+                                    <li>
+                                        <div class="inputWithIcon inputIconBg">
+                                            <span> <i class="fa fa-phone fa-lg fa-fw"
                                                 aria-hidden="true"></i> {{object.mobile}}</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="inputWithIcon inputIconBg">
-                                        <span>
-                                            <i class="fa fa-envelope-o"
-                                                aria-hidden="true"></i> {{object.email}}</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="inputWithIcon inputIconBg">
-                                        <span>
-                                            <i class="fa fa-birthday-cake"
-                                                aria-hidden="true"></i> {{object.date_of_birth}}</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="inputWithIcon inputIconBg">
-                                        <span>
-                                            <i class="fa fa-linkedin"
-                                                aria-hidden="true"></i>&nbsp;{{object.address}}</span>
-                                    </div>
-                                </li>
-                            </ul>
-                            {% endfor %}
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="inputWithIcon inputIconBg">
+                                                <span>
+                                                    <i class="fa fa-envelope-o"
+                                                    aria-hidden="true"></i> {{object.email}}</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="inputWithIcon inputIconBg">
+                                                    <span>
+                                                        <i class="fa fa-birthday-cake"
+                                                        aria-hidden="true"></i> {{object.date_of_birth}}</span>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="inputWithIcon inputIconBg">
+                                                        <span>
+                                                            <i class="fa fa-linkedin"
+                                                            aria-hidden="true"></i>&nbsp;{{object.address}}</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                {% endfor %}
+                                            </div>
+                                            <hr>
+
+                                            <div class="contactInfo education">
+                                                <h3 class="title">Education</h3>
+                                                {% for object in resume.education_set.all %}
+
+                                                <p>
+                                                    {% if object.qualification_name == '' %}
+                                                    {% else %}
+                                                    <p><b>Qualification :-</b> {{object.qualification_name}}</p>
+                                                </p>
+                                                {% endif %}
+
+                                                <p>
+                                                    {% if object.university == '' %}
+                                                    {% else %}
+                                                    <p><b>Univercity :- </b> {{object.university}}</p>
+                                                </p>
+                                                {% endif %}
+                                                <p>
+                                                    {% if object.year_of_passing == '' %}
+                                                    {% else %}
+                                                    <p><b>Passing :- </b> {{object.year_of_passing}}</p>
+                                                </p>
+                                                {% endif %}
+                                                <p>
+                                                    {% if object.percentage_or_grade == '' %}
+                                                    {% else %}
+                                                    <p><b>Percentage :- </b> {{object.percentage_or_grade}}</p>
+                                                </p>
+                                                {% endif %}
+                                                <!-- </ul> -->
+                                                
+                                                {% endfor %}
+
+                                            </div>
+                                            
+                                            <hr>
+                                            
+                                            <div class="contactInfo education">
+                                                <h3 class="title">Interests</h3>
+                                                <!-- <ul> -->
+                                                    {% for object in resume.hobbies_set.all %}
+
+                                                    <p>
+                                                        {% if object.hobbies == '' %}
+                                                        {% else %}
+                                                        <p>{{object.hobbies}}</p>
+                                                    </p>
+                                                    {% endif %}
+                                                    <!-- </ul> -->
+                                                    {% endfor %}
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            
+                                        </div>
+                                    </div></div>
+                                </div>
+                            </div>
+                            
                         </div>
-                        <hr>
-
-                        <div class="contactInfo education">
-                            <h3 class="title">Education</h3>
-                            {% for object in resume.education_set.all %}
-
-                            <p>
-                                {% if object.qualification_name == '' %}
-                                {% else %}
-                            <p><b>Qualification :-</b> {{object.qualification_name}}</p>
-                            </p>
+                        <!-- partial -->
+                        <div class="dow_btn">
+                            <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
+                            More</button></a>
+                            {% if request.user.is_authenticated %}
+                            {% if not request.user.account_approved %}
+                            <a onclick="alert('pending approval')" href=""><button class="btn btn-primary">Download</button></a>
+                            {% else %}
+                            <a href="#" id="noprint" class="btn btn-info download">
+                            Download</a>
                             {% endif %}
-
-                            <p>
-                                {% if object.university == '' %}
-                                {% else %}
-                            <p><b>Univercity :- </b> {{object.university}}</p>
-                            </p>
+                            {% else %}
+                            <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
                             {% endif %}
-                            <p>
-                                {% if object.year_of_passing == '' %}
-                                {% else %}
-                            <p><b>Passing :- </b> {{object.year_of_passing}}</p>
-                            </p>
-                            {% endif %}
-                            <p>
-                                {% if object.percentage_or_grade == '' %}
-                                {% else %}
-                            <p><b>Percentage :- </b> {{object.percentage_or_grade}}</p>
-                            </p>
-                            {% endif %}
-                            <!-- </ul> -->
-                           
-                            {% endfor %}
-
-                        </div>
-                        
-                        <hr>
-                        
-                        <div class="contactInfo education">
-                            <h3 class="title">Interests</h3>
-                            <!-- <ul> -->
-                            {% for object in resume.hobbies_set.all %}
-
-                            <p>
-                                {% if object.hobbies == '' %}
-                                {% else %}
-                            <p>{{object.hobbies}}</p>
-                            </p>
-                            {% endif %}
-                            <!-- </ul> -->
-                            {% endfor %}
                         </div>
                         <hr>
                     </div>

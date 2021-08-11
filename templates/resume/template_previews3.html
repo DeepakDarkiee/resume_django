@@ -16,6 +16,10 @@
     </head>
     <style type="text/css">
 
+    *{
+        word-break: break-all;
+    }
+
     .dow_btn button {
         font-size: 12px;
     }
@@ -124,7 +128,7 @@
                                 {% endfor %}
 
 
-                                <div class="about interest">
+                                <div class="about interest ">
                                     <h2 class="title2">Interests</h2>
 
                                     {% for object in resume.hobbies_set.all %}
@@ -137,9 +141,9 @@
                                 </div>
                             </div>
                             
-                        </div>
-                    </div>
-                </div>
+                      
+                  
+             
 
                 <div class="col-md-8">
                     <div class="right_Side">
@@ -178,7 +182,7 @@
                             </div>
                             {% endfor %}
 
-                        </div>
+                       
 
                         <div class="about">
                             <h2 class="title2">ACHIEVEMENTS</h2>
