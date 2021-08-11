@@ -38,10 +38,10 @@
           visibility: hidden;
       }
   } 
- 
-   *{
-        word-break: break-all;
-    }  
+
+  *{
+    word-break: break-all;
+}  
 
 </style>
 
@@ -140,92 +140,89 @@
                                     {% endfor %}
                                 </div>
                             </div>
-                            
-                      
-                  
-             
+                             
 
-                <div class="col-md-8">
-                    <div class="right_Side">
-                        <div class="about">
-                            <h2 class="title2">CAREER OBJECTIVE</h2>
-                            <p>{{resume.objective}}</p>
-                        </div>
-                        <div class="about">
-                            <h2 class="title2">Experience</h2>
-                            <div class="box">
-                                {% for object in resume.experience_set.all %}
+                            <div class="col-md-8">
+                                <div class="right_Side">
+                                    <div class="about">
+                                        <h2 class="title2">CAREER OBJECTIVE</h2>
+                                        <p>{{resume.objective}}</p>
+                                    </div>
+                                    <div class="about">
+                                        <h2 class="title2">Experience</h2>
+                                        <div class="box">
+                                            {% for object in resume.experience_set.all %}
 
-                                <div class="year_company">
-                                    <p><b>Company Name:-</b>{{ object.company_name }}</p>
-                                    <p><b>Place :-</b>{{ object.place }}</p>
-                                </div>
-                                <div class="text">
-                                    <p><b>Designation :-</b>{{ object.designation }}</p>
-                                    <p><b>Role:-</b>{{ object.role }}</p>
+                                            <div class="year_company">
+                                                <p><b>Company Name:-</b>{{ object.company_name }}</p>
+                                                <p><b>Place :-</b>{{ object.place }}</p>
+                                            </div>
+                                            <div class="text">
+                                                <p><b>Designation :-</b>{{ object.designation }}</p>
+                                                <p><b>Role:-</b>{{ object.role }}</p>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+                                        <h2 class="title2">WORK SAMPLES</h2>
+                                        <div class="box">
+                                            {% for object in resume.worksamples_set.all %}
+
+                                            <div class="text">
+                                                <p><b>Project Name:-</b>{{ object.project_name }}</p>
+                                                <p><b>Project Link:-</b>{{ object.project_link }}</p>
+                                                <p><b>Technology:-</b>{{ object.technology }}</p>
+                                                <p><b>Responsibilities:-</b>{{object.responsibilities }}</p>
+                                                <p><b>Description:-</b>{{ object.description }}</p>
+
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+
+
+                                        <div class="about">
+                                            <h2 class="title2">ACHIEVEMENTS</h2>
+                                            {% for object in resume.achievements_set.all %}
+
+                                            <p>{{object.achievements}}</p>
+                                            {% endfor %}                        
+                                        </div>
+
+                                        <div class="about">
+                                            <h2 class="title2">CERTIFICATE</h2>
+                                            {% for object in resume.certificate_set.all %}
+
+                                            <p>{{object.certificate}}</p>
+                                            {% endfor %}
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            {% endfor %}
-
-                            <h2 class="title2">WORK SAMPLES</h2>
-                            <div class="box">
-                                {% for object in resume.worksamples_set.all %}
-
-                                <div class="text">
-                                    <p><b>Project Name:-</b>{{ object.project_name }}</p>
-                                    <p><b>Project Link:-</b>{{ object.project_link }}</p>
-                                    <p><b>Technology:-</b>{{ object.technology }}</p>
-                                    <p><b>Responsibilities:-</b>{{object.responsibilities }}</p>
-                                    <p><b>Description:-</b>{{ object.description }}</p>
-
-                                </div>
-                            </div>
-                            {% endfor %}
-
-                       
-
-                        <div class="about">
-                            <h2 class="title2">ACHIEVEMENTS</h2>
-                            {% for object in resume.achievements_set.all %}
-
-                            <p>{{object.achievements}}</p>
-                            {% endfor %}                        
+                        </div>
+                        <div class="dow_btn">
+                            <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
+                            More</button></a>
+                            {% if  request.user.is_authenticated  %}
+                            {% if not  request.user.account_approved %}
+                            <a  onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a>
+                            {% else %}
+                            <a href="#" id="noprint" class="btn btn-info download">
+                            Download</a>
+                            {% endif %}
+                            {% else %}
+                            <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
+                            {% endif %}
                         </div>
 
-                        <div class="about">
-                            <h2 class="title2">CERTIFICATE</h2>
-                            {% for object in resume.certificate_set.all %}
 
-                            <p>{{object.certificate}}</p>
-                            {% endfor %}
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="dow_btn">
-            <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
-            More</button></a>
-            {% if  request.user.is_authenticated  %}
-            {% if not  request.user.account_approved %}
-            <a  onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a>
-            {% else %}
-            <a href="#" id="noprint" class="btn btn-info download">
-            Download</a>
-            {% endif %}
-            {% else %}
-            <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
-            {% endif %}
-        </div>
-
-
-    </body>
-    <script>
-      $(".download").click(function(){
-        $(".wrapper").css("margin-top","-25px");
-        $(".wrapper").css("margin-bottom", "0px");
-        window.print()
-    })
-</script>
-</html>
+                    </body>
+                    <script>
+                      $(".download").click(function(){
+                        $(".wrapper").css("margin-top","-25px");
+                        $(".wrapper").css("margin-bottom", "0px");
+                        window.print()
+                    })
+                </script>
+                </html>
