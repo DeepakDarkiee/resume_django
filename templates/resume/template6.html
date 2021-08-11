@@ -65,9 +65,7 @@
                             <textarea placeholder="Role here..." rows="4" cols="50" class="data role" name="role"
                                 id="role" required="">{{ object.role }}</textarea>
                             <div class="btnset">
-                                <a href="{% url 'deleteexperience' object.id %}"><button class="Delete"><i
-                                            class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
-                                <!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button> -->
+                                <button type="button"  class="Delete  delete_experience_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                             </div>
                             {% endfor %}
                             <div class="tab">
@@ -135,9 +133,7 @@
                                     id="responsibilities" name="responsibilities" class="data responsibilities"
                                     required="">{{ object.responsibilities }}</textarea>
                                 <div class="btnset">
-                                    <a href="{% url 'deleteworksamples' object.id %}"><button class="Delete"><i
-                                                class="fa fa-trash" aria-hidden="true"></i>
-                                            Delete</button></a>
+                                     <button type="button"  class="Delete  delete_worksamples_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
 
                                 </div>
                             </div>
@@ -246,9 +242,7 @@
                             </ul>
 
                             <div class="btnset">
-                                <a href="{% url 'deleteeducation' object.id %}"><button class="Delete"><i
-                                            class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
-                                <!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button> -->
+                                <button type="submit" class="Delete  delete_education_class"  data-id="{{object.id}}">Delete</button>
                             </div>
                             {% endfor %}
 
@@ -297,9 +291,7 @@
                                 </li>
                             </ul>
                             <div class="btnset">
-                                <a href="{% url 'deleteskill' object.id %}"><button class="Delete"><i
-                                            class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
-                                <!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button> -->
+                                <button type="button"  class="Delete  delete_skills_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                             </div>
                             {% endfor %}
                             <div class="tab">
@@ -335,8 +327,7 @@
 
                             </ul>
                             <div class="btnset">
-                                <a href="{% url 'deletehobbie' object.id %}"><button class="Delete"><i
-                                            class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
+                                <button type="button"  class="Delete  delete_hobbies_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                             </div>
                             {% endfor %}
                             <div class="tab">
@@ -378,9 +369,7 @@
                                 name="achievements" class="data achievements"
                                 required="">{{ object.achievements }}</textarea>
                             <div class="btnset">
-                                <a href="{% url 'deleteachievements' object.id %}"><button class="Delete"><i
-                                            class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
-                                <!-- <button class="add"><i class="fa fa-plus-square" aria-hidden="true"></i> Add</button> -->
+                                <button type="button"  class="Delete  delete_achievements_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button> 
                             </div>
                             {% endfor %}
 
@@ -414,8 +403,7 @@
                                 name="certificate" class="data certificate"
                                 required="">{{ object.certificate }}</textarea>
                             <div class="btnset">
-                                <a href="{% url 'deletecertificate' object.id %}"><button class="Delete"><i
-                                            class="fa fa-trash" aria-hidden="true"></i> Delete</button></a>
+                                <button type="button"  class="Delete  delete_certificate_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                             </div>
                             {% endfor %}
                             <div class="tab">
@@ -718,4 +706,120 @@
     }, 300));
 
 
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $(".delete_education_class").on('click',function() {
+        var id=$(this).data("id")
+        var token = '{{csrf_token}}';
+        $.ajax({
+            // headers: { "X-CSRFToken": token },
+            type: 'GET',
+            url: '/deleteeducation/'+id+'/',
+            data: {
+                'data':"None",
+            },
+            success: function (json) {
+                window.location.reload(true);
+            }
+        })
+    })
+  });
+  $(document).ready(function () {
+      $(".delete_skills_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteskill/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_hobbies_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deletehobbie/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_experience_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteexperience/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_worksamples_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteworksamples/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_achievements_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteachievements/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_certificate_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deletecertificate/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });  
 </script>

@@ -28,6 +28,7 @@ import string
 from django.contrib.auth.models import User
 date = date.strftime
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse, JsonResponse
 User = get_user_model()
 
 
@@ -995,93 +996,87 @@ class CreateResumeView(View):
 
 
 class DeleteExperience(View):
-
     def get(self, request, id):
         experience = Experience.objects.get(id=id)
         experience.delete()
-
         resume_id = experience.resume.id
         # print(hobbies.resume.id)
         return redirect("/update_data/"+str(resume_id))
+
 
 
 class DeleteExperience(View):
-
     def get(self, request, id):
         experience = Experience.objects.get(id=id)
-        experience.delete()
-
         resume_id = experience.resume.id
+        experience.delete()
+        return JsonResponse({'status':True})
         # print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
-
+        # return redirect("/update_data/"+str(resume_id))
 
 
 
 class DeleteEducation(View):
-
     def get(self, request, id):
         education = Education.objects.get(id=id)
-        education.delete()
-
         resume_id = education.resume.id
-        # print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
+        education.delete()
+        return JsonResponse({'status':True})
+        # return redirect("/update_data/"+str(resume_id))
+
 
 
 class DeleteWorkSamples(View):
-
     def get(self, request, id):
         deleteworksamples = WorkSamples.objects.get(id=id)
-        deleteworksamples.delete()
-
         resume_id = deleteworksamples.resume.id
+        deleteworksamples.delete()
+        return JsonResponse({'status':True})
         # print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
+        # return redirect("/update_data/"+str(resume_id))
 
 
 class DeleteAchievements(View):
-
     def get(self, request, id):
         deleteachievements = Achievements.objects.get(id=id)
-        deleteachievements.delete()
-
         resume_id = deleteachievements.resume.id
+        deleteachievements.delete()
+        return JsonResponse({'status':True})
         # print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
+        # return redirect("/update_data/"+str(resume_id))
+
 
 
 class DeleteCertificate(View):
-
     def get(self, request, id):
         certificate = Certificate.objects.get(id=id)
-        certificate.delete()
-
         resume_id = certificate.resume.id
+        certificate.delete()
+        return JsonResponse({'status':True})
         # print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
+        # return redirect("/update_data/"+str(resume_id))
+
 
 
 class DeleteSkills(View):
-
     def get(self, request, id):
         skills = Skills.objects.get(id=id)
-
-        skills.delete()
         resume_id = skills.resume.id
-        print(skills.resume.id)
-        return redirect("/update_data/"+str(resume_id))
+        skills.delete()
+        # print(skills.resume.id)
+        return JsonResponse({'status':True})
+        # return redirect("/update_data/"+str(resume_id))
+
 
 
 class DeleteHobbies(View):
-
     def get(self, request, id):
         hobbies = Hobbies.objects.get(id=id)
-        hobbies.delete()
-
         resume_id = hobbies.resume.id
-        print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
+        hobbies.delete()
+        return JsonResponse({'status':True})
+
+        
 
 # ImageUpload for template
 class ImageUpload(View):
@@ -1293,3 +1288,5 @@ class TemplatePreviews(View):
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
         return render(request, 'resume/template_previews.html', context)  
+
+

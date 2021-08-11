@@ -58,7 +58,7 @@
               <textarea class="form-control data role" name="role" id="role" 
                 placeholder="role here..." rows="6" onkeyup="AutoGrowTextArea(this)">{{object.role}}</textarea>
                 <!-- <button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button>  -->
-                <a   href="{% url 'deleteexperience' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                <button type="button"  class="Delete  delete_experience_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button> 
                 <hr>
                 {% endfor %}
 
@@ -104,7 +104,7 @@
                 placeholder="Description here..." rows="6"
                 onkeyup="AutoGrowTextArea(this)">{{object.responsibilities}}</textarea>
                 <!-- <button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button>  -->
-                <a   href="{% url 'deleteworksamples' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                 <button type="button"  class="Delete  delete_worksamples_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 <hr>
              
               {% endfor %}
@@ -145,7 +145,7 @@
                 onkeyup="AutoGrowTextArea(this)">{{object.achievements}}</textarea>
                 <!-- <button type="button"><i class="fa fa-trash secondary" aria-hidden="true" ></i></button>  -->
                 <hr>
-                <a   href="{% url 'deleteachievements' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                 <button type="button"  class="Delete  delete_achievements_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
               {% endfor %}
              
 
@@ -167,7 +167,7 @@
               <textarea class="form-control mt-3 data certificate" id="certificate" name="certificate"
                 placeholder="certificate here..." rows="4"
                 onkeyup="AutoGrowTextArea(this)">{{object.certificate}}</textarea>
-                <a   href="{% url 'deletecertificate' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                <button type="button"  class="Delete  delete_certificate_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button> 
                 <hr>
               {% endfor %}
 
@@ -263,7 +263,7 @@
                 onkeyup="AutoGrowTextArea(this)">{{object.percentage_or_grade}}</textarea>
                 <div class="form-group delete-education" >
                   <!-- <button type="button"  data-name="education" id="delete-education" data-id="{{object.id}}" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button> -->
-                  <a   href="{% url 'deleteeducation' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                  <button type="submit" class="Delete  delete_education_class"  data-id="{{object.id}}">Delete</button>
               </div>
               {% endfor %}
 
@@ -291,7 +291,7 @@
                     name="skills" placeholder="skills ..."
                     onkeyup="AutoGrowTextArea(this)">{{ object.skills }}</textarea>
                     <!-- <button type="button"><i class="fa fa-trash secondary" aria-hidden="true" ></i></button> -->
-                    <a   href="{% url 'deleteskill' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                    <button type="button"  class="Delete  delete_skills_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                     {% endfor %}
                     <!-- <input type="hidden" name="r_id" value="{{ resume.id }}"> -->
                 </div>
@@ -321,16 +321,9 @@
                   name="hobbies" placeholder="hobbies ..."
                   onkeyup="AutoGrowTextArea(this)">{{ object.hobbies }}</textarea>
                   
-                  <a   href="{% url 'deletehobbie' object.id %}"><button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button></a>
+                  <button type="button"  class="Delete  delete_hobbies_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                    {% endfor %}
-                  <!-- <ul>
-                    {% for object in resume.hobbies_set.all %}
-                    <li>
-                      <input type="text" name="hobbies" value="{{ object.hobbies}}" class="level-title data hobbies"
-                        id="hobbies" placeholder="a">
-                    </li>
-                    {% endfor %}
-                  </ul> -->
+                  
                 </div>
               </div>
 
@@ -715,4 +708,120 @@ $.ajax({
 
 
 
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $(".delete_education_class").on('click',function() {
+        var id=$(this).data("id")
+        var token = '{{csrf_token}}';
+        $.ajax({
+            // headers: { "X-CSRFToken": token },
+            type: 'GET',
+            url: '/deleteeducation/'+id+'/',
+            data: {
+                'data':"None",
+            },
+            success: function (json) {
+                window.location.reload(true);
+            }
+        })
+    })
+  });
+  $(document).ready(function () {
+      $(".delete_skills_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteskill/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_hobbies_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deletehobbie/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_experience_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteexperience/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_worksamples_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteworksamples/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_achievements_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteachievements/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_certificate_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deletecertificate/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });  
 </script>
