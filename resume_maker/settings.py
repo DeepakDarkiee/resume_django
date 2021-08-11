@@ -77,6 +77,8 @@ TEMPLATES = [
     },
 ]
 
+####
+
 WSGI_APPLICATION = 'resume_maker.wsgi.application'
 
 
