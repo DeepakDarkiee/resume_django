@@ -21,8 +21,6 @@
   {% include 'resume/base/nav.html' %}
   {% endblock nav %}
 
-
-
   <main class="panelD">
 
 <!--     <header>
@@ -33,53 +31,51 @@
 
     <!-- <h1 class="tituloD">Dashboard</h1> -->
     <div class="container">
-    <div class="row">
-      <div class="col-md-6"><h2 class="tem">Team Leader: {{user.parent}}</h2></div>
-      <div class="col-md-6"><a href="/"><button type="button"  style="float: right;     margin: 9px 0;">Create Another Resume</button></a></div>
-    </div>
-    
-    
-    
-
-    <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
-    </div>
-    <div class="tabla">
-      <table cellpadding="0" cellspacing="0" >
-        <tr class="negrita bg-dark ">
-          <th>Resume Name</th>
-          <!-- <th>&nbsp;</th>
-          <th>&nbsp;</th> -->
-          <th>Created By</th>
-          <th>Action</th>
-          <th>View Resume</th>
-        </tr>
-        {% for resume in resumes %}
-        <tr>
-          <th><h4>{{ resume.title }}  {{resume.template_set.all.first.name}}</h4></th>
-          <!-- <th>&nbsp;</th>
-          <th>&nbsp;</th> -->
-          <th>{{ resume.user}}</th>
-          <th><a href="{% url 'update_data' resume.id %}"
-            class="btn btn-warning btn-sm">edit and add more</a></th>
-            {% if   resume.template.name == "template"%}
-            <th><a href="{% url 'template_preview' resume.id %}"
-
-              class="btn btn-success btn-sm">View</a></th>
-              {% else %}
-              <th><a href="{% url 'template_preview2' resume.id %}"
-
-                class="btn btn-success btn-sm">View</a></th>
-                {% endif %}
-
-              </tr>
-              {% endfor %}
-
-            </table>
-          </div>
-
-        </main>
-
+      <div class="row">
+        <div class="col-md-6"><h2 class="tem">Team Leader: {{user.parent}}</h2></div>
+        <div class="col-md-6"><a href="/"><button type="button"  style="float: right;     margin: 9px 0;">Create Another Resume</button></a></div>
       </div>
 
-      {% endblock main %}
+      <h2>Your Resume's<i class="fas fa-arrow-down"></i></h2>
+    </div>
+    <div class="tabla">
+     <table cellpadding="0" cellspacing="0" >
+      <tr class="negrita bg-dark ">
+        <th>Resume Name</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>Action</th>
+        <th>View Resume</th>
+      </tr>
+      {% for resume in resumes %}
+      <tr>
+        <th><h4>{{ resume.title }}</h4></th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th><a href="{% url 'update_data' resume.id %}" class="btn btn-warning btn-sm">edit and add more</a></th>
+        {% if resume.template.name == "template" %}
+        <th><a href="{% url 'template_preview6' resume.id %}" class="btn btn-success btn-sm">View</a></th>
+        {% elif resume.template.name == "template2" %}
+        <th><a href="{% url 'template_preview2' resume.id %}" class="btn btn-success btn-sm">View</a></th>
+        {% elif resume.template.name == "template3" %}
+        <th><a href="{% url 'template_preview3' resume.id%}" class="btn btn-success btn-sm">View</a></th>
+        {% elif resume.template.name == "template4" %}
+        <th><a href="{% url 'template_preview4' resume.id %}" class="btn btn-success btn-sm">View</a></th>
+        {% elif resume.template.name == "template5" %}
+        <th><a href="{% url 'template_preview5' resume.id %}" class="btn btn-success btn-sm">View</a></th>
+        {% elif resume.template.name == "template6" %}
+        <th><a href="{% url 'template_preview' resume.id %}" class="btn btn-success btn-sm">View</a></th>
+        {% else %}
+        <th></th>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+</main>
+
+</div>
+
+{% endblock main %}
 
