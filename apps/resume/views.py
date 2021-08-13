@@ -1,5 +1,5 @@
 from datetime import date
-
+from django.contrib.auth import authenticate
 import pdfkit
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
