@@ -1,1209 +1,1308 @@
 <!DOCTYPE html>
+
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Responsive CV</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-   <link rel="stylesheet" type="text/css" href="/static/css/template5editable/style.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="/static/css/template5editable/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style type="text/css">
-   button.add {
-   border: none;
-   background-color: #0c3147;
-   color: #fff;
-   font-size: 12px;
-   padding: 3px 5px;
-   }
-   @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
-   * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: "Poppins", SansSerif;
-   }
-   body {
-   background-color: lightblue !important;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   min-height: 100vh;
-   }
-   ::focut{
-   outline: none !important;
-   border: none;
-   }
-   :focus-visible{
-   outline: none;
-   }
-   hr.right_hr {
-   margin: 0;
-   padding: 0;
-   border: none;
-   max-width: 80px;
-   height: 2px;
-   margin-bottom: 13px;
-   background-color: #003147;
-   }
-   textarea {
-   width: 100%;
-   border: 2px solid #aaa;
-   border-radius: 4px;
-   margin: 5px 0;
-   outline: none;
-   padding: 6px;
-   box-sizing: border-box;
-   transition: 0.3s;
-   }
-   .name_sec {
-   width: 100%;
-   height: 250px;
-   background-color: #101f26;
-   color: #fff;
-   display: flex;
-   justify-content: center;
-   padding-left: 3%;
-   /* align-items: center; */
-   flex-direction: column;
-   }
-   .name_sec input {
-   width: 30% !important;
-   }
-   .btnset {
-   text-align: right;
-   }
-   a.btn.btn-info.preview {
-   background-color: #1a5273;
-   margin: 0 30px;
-   }
-   button.Delete {
-   border: none;
-   background-color: #ff0000;
-   color: #fff;
-   font-size: 12px;
-   padding: 3px 5px;
-   margin :11px auto;
-   }
-   button.add{
-   border: none;
-   background-image: linear-gradient(to right top, #0c3147, #103951, #13415c, #174967, #1a5272, #1a5272, #1a5272, #1a5272, #174967, #13415c, #103951, #0c3147);
-   color: #fff;
-   font-size: 12px;
-   padding: 3px 5px;
-   }
-   .con_info {
-   background-color: #d64339;
-   padding: 5px 30px;
-   }
-   .con_info input[type="text"]{
-   border: 2px solid #fff;
-   }
-   .con_info input[type="text"]::placeholder {
-   color: white;
-   }
-   h2.title2::before {
-   content: "";
-   width: 35px;
-   height: 45px;
-   background-color: #d64339;
-   position: relative;
-   display: inline-block;
-   vertical-align: middle;
-   margin-right: 5px;
-   }
-   .about.interest .inputWithIcon input[type="text"] {
-   padding-left: 6px;
-   }
-   select#cars {
-   width: 100%;
-   border: 2px solid #aaa;
-   background-color: #fff;
-   border-radius: 4px;
-   margin: 8px 0;
-   outline: none;
-   padding: 6px;
-   box-sizing: border-box;
-   transition: 0.3s;
-   }
-   .avatar-upload {
-   position: relative;
-   max-width: 205px;
-   margin: 0px auto;
-   }
-   .avatar-upload .avatar-edit {
-   position: absolute;
-   right: 12px;
-   z-index: 1;
-   top: 10px;
-   }
-   .avatar-upload .avatar-edit input {
-   display: none;
-   }
-   .avatar-upload .avatar-edit input + label {
-   display: inline-block;
-   width: 34px;
-   height: 34px;
-   margin-bottom: 0;
-   border-radius: 100%;
-   background: #FFFFFF;
-   border: 1px solid transparent;
-   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-   cursor: pointer;
-   font-weight: normal;
-   transition: all 0.2s ease-in-out;
-   }
-   .avatar-upload .avatar-edit input + label:hover {
-   background: #f1f1f1;
-   border-color: #d6d6d6;
-   }
-   .avatar-upload .avatar-edit input + label:after {
-   content: "\f040";
-   font-family: 'FontAwesome';
-   color: #757575;
-   position: absolute;
-   top: 10px;
-   left: 0;
-   right: 0;
-   text-align: center;
-   margin: auto;
-   }
-   .avatar-upload .avatar-preview {
-   width: 192px;
-   height: 192px;
-   position: relative;
-   border-radius: 100%;
-   border: 6px solid #F8F8F8;
-   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-   }
-   .avatar-upload .avatar-preview > div {
-   width: 100%;
-   height: 100%;
-   border-radius: 100%;
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: center;
-   }
-   .inputWithIcon {
-   position: relative;
-   }
-   .name_sec input {
-   color: #fff;
-   }
-   textarea{
-   color: #d64339;
-   }
-   .pad_sec input {
-   color: #d64339;
-   }
-   .inputWithIcon.inputIconBg i {
-   color: #fff;
-   width: 35px;
-   height: 38px;
-   text-align: center;
-   padding: 11px 4px;
-   border-radius: 50%;
-   }
-   .inputWithIcon i {
-   position: absolute;
-   left: 0;
-   top: 8px;
-   padding: 9px 8px;
-   color: #aaa;
-   transition: 0.3s;
-   }
-   .inputWithIcon input[type="text"] {
-   padding-left: 28px;
-   }
-   input[type="text"] {
-   width: 100%;
-   border: 2px solid #aaa;
-   background-color: transparent;
-   border-radius: 4px;
-   margin: 8px 0;
-   outline: none;
-   padding: 6px;
-   box-sizing: border-box;
-   transition: 0.3s;
-   }
-   .pad_sec {
-   padding: 0 3%;
-   }
-   .containers {
-   position: relative;
-   width: 100%;
-   max-width: 1000px;
-   min-height: 1000px;
-   background-color: #fff;
-   margin: 50px;
-   padding: 0 0 21px 0;
-   /*  display: grid;
-   grid-template-columns: 1fr 2fr;*/
-   box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1);
-   border-bottom: 2px solid #1a5272;
-   }
-   /* .container .left_Side {
-   position: relative;
-   padding: 20px;
-   } */
-   .profileText {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding-bottom: 20px;
-   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-   }
-   .profileText .imgBx {
-   position: relative;
-   width: 200px;
-   height: 200px;
-   /*border-radius: 50%;*/
-   overflow: hidden;
-   }
-   .profileText .imgBx img {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   }
-   .photo {
-   width: 100%;
-   height: auto;
-   }
-   .profileText h2 {
-   color: #fff;
-   font-size: 1.5em;
-   margin-top: 20px;
-   text-transform: uppercase;
-   text-align: center;
-   font-weight: 600;
-   line-height: 1.4em;
-   }
-   .profileText h2 span {
-   font-size: 0.8em;
-   font-weight: 300;
-   }
-   .contactInfo {
-   padding-top: 0px;
-   min-width: 270px;
-   margin-bottom: 20px;
-   /*width: 250px;*/
-   }
-   .title {
-   color: #0c3147;
-   text-transform: uppercase;
-   font-weight: 600;
-   letter-spacing: 1px;
-   margin-bottom: 0px;
-   }
-   .contactInfo ul {
-   position: relative;
-   }
-   .contactInfo ul li {
-   list-style: none;
-   position: relative;
-   margin: 10px 0;
-   cursor: pointer;
-   }
-   .contactInfo ul li .icon {
-   display: inline-block;
-   width: 30px;
-   font-size: 18px;
-   color: #03a9f4;
-   }
-   .contactInfo ul li span {
-   color: #fff;
-   font-weight: 300;
-   }
-   .contactInfo.education h5 {
-   color: #03a9f4;
-   font-weight: 500;
-   }
-   .contactInfo.education h4:nth-child(2) {
-   color: #fff;
-   font-weight: 500;
-   }
-   .contactInfo.education h4 {
-   color: #fff;
-   font-weight: 300;
-   }
-   .contactInfo.language .percent {
-   position: relative;
-   width: 100%;
-   height: 6px;
-   background-color: #081921;
-   display: block;
-   margin-top: 5px;
-   }
-   .contactInfo.language .percent div {
-   position: relative;
-   top: 0;
-   left: 0;
-   height: 100%;
-   background-color: #03a9f4;
-   }
-   .contactInfo.language {
-   padding-top: 40px;
-   }
-   .containers .right_Side {
-   position: relative;
-   background-color: #fff;
-   /* padding: 0 20px; */
-   }
-   .about {
-   margin-bottom: 20px;
-   }
-   .about.skills {
-   padding-top: 40px;
-   }
-   .about.interest ul li {
-   margin: 0;
-   }
-   /* .about:last-child {
-   margin-bottom: 0;
-   } */
-   .title2 {
-   color: #003147;
-   font-size: 20px;
-   font-weight: 500;
-   text-transform: uppercase;
-   letter-spacing: 1px;
-   margin-bottom: 15px;
-   }
-   p {
-   color: #081921;
-   }
-   .about .box {
-   display: flex;
-   gap: 1rem;
-   flex-direction: row;
-   margin: 10px 0;
-   }
-   .about .box .year_company {
-   min-width: 270px;
-   }
-   .about .box .year_company h5 {
-   text-transform: uppercase;
-   color: #848c90;
-   font-weight: 600;
-   }
-   .about .box .text h4 {
-   text-transform: uppercase;
-   color: #2a7da2;
-   font-size: 16px;
-   }
-   .skills .box {
-   position: relative;
-   width: 100%;
-   /*  display: grid;
-   grid-template-columns: 150px 1fr;
-   justify-content: center;
-   align-items: center;*/
-   }
-   .skills .box h4 {
-   text-transform: uppercase;
-   color: #848c90;
-   font-weight: 500;
-   }
-   /*.box1 {
-   display: flex;
-   gap: 1rem;
-   }*/
-   .about.skills .box {
-   margin: 3px auto;
-   }
-   .skills .box .percent {
-   position: relative;
-   width: 100%;
-   height: 10px;
-   background-color: #f0f0f0;
-   }
-   .skills .box .percent div {
-   position: absolute;
-   top: 0;
-   left: 0;
-   height: 100%;
-   background-color: #03a9f4;
-   }
-   /*.interest ul {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 1rem;
-   }*/
-   .about.interest .inputWithIcon.inputIconBg i {
-   width: 35px;
-   background-color: #0c3147;
-   color: #fff;
-   }
-   .interest ul li {
-   list-style: none;
-   color: black;
-   font-weight: 500;
-   margin: 10px 0;
-   }
-   .interest ul li .fa {
-   color: #03a9f4;
-   font-size: 18px;
-   width: 20px;
-   }
-   @media (max-width: 1000px) {
-   .containers {
-   margin: 10px;
-   grid-template-columns: repeat(1, 1fr);
-   }
-   .interest ul {
-   grid-template-columns: repeat(2, 1fr);
-   }
-   }
-   @media (max-width: 600px) {
-   .about .box {
-   flex-direction: column;
-   }
-   .about .box .year_company {
-   margin-bottom: 5px;
-   }
-   .interest ul {
-   grid-template-columns: repeat(1, 1fr);
-   }
-   .skills .box {
-   grid-template-columns: repeat(1, 1fr);
-   }
-   }
-   .englishw50 {
-   width: 60%;
-   }
-   .russianw90 {
-   width: 90%;
-   }
-   .frenchw30 {
-   width: 30%;
-   }
-   .htmlws30 {
-   width: 50%;
-   }
-   .cssws45 {
-   width: 45%;
-   }
-   .jsws70 {
-   width: 70%;
-   }
-   .phws40 {
-   width: 40%;
-   }
-   .ilws60 {
-   width: 60%;
-   }
-   .adw70 {
-   width: 70%;
-   }
+button.add {
+    border: none;
+    background-color: #0c3147;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 5px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", SansSerif;
+}
+
+body {
+  background-color: lightblue !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+::focut{
+  outline: none !important;
+  border: none;
+}
+
+:focus-visible{
+  outline: none;
+}
+hr.right_hr {
+    margin: 0;
+    padding: 0;
+    border: none;
+    max-width: 80px;
+    height: 2px;
+    margin-bottom: 13px;
+    background-color: #003147;
+}
+textarea {
+    width: 100%;
+    border: 2px solid #aaa;
+    border-radius: 4px;
+    margin: 5px 0;
+    outline: none;
+    padding: 6px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.name_sec {
+  width: 100%;
+  height: 250px;
+  background-color: #101f26;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  padding-left: 3%;
+  /* align-items: center; */
+  flex-direction: column;
+}
+.name_sec input {
+    width: 30% !important;
+}
+
+.btnset {
+    text-align: right;
+}
+a.btn.btn-info.preview {
+  background-color: #1a5273;
+  margin: 0 30px;
+}
+button.Delete {
+    border: none;
+    background-color: #ff0000;
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 5px;
+    margin :11px auto;
+}
+
+button.add{
+    border: none;
+    background-image: linear-gradient(to right top, #0c3147, #103951, #13415c, #174967, #1a5272, #1a5272, #1a5272, #1a5272, #174967, #13415c, #103951, #0c3147);
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 5px;
+}
+
+.con_info {
+  background-color: #d64339;
+  padding: 5px 30px;
+}
+
+.con_info input[type="text"]{
+  border: 2px solid #fff;
+}
+
+.con_info input[type="text"]::placeholder {
+  color: white;
+}
+
+h2.title2::before {
+  content: "";
+  width: 35px;
+  height: 45px;
+  background-color: #d64339;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.about.interest .inputWithIcon input[type="text"] {
+    padding-left: 6px;
+}
+
+select#cars {
+    width: 100%;
+    border: 2px solid #aaa;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 6px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+.avatar-upload {
+  position: relative;
+  max-width: 205px;
+  margin: 0px auto;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 12px;
+  z-index: 1;
+  top: 10px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+}
+.avatar-upload .avatar-edit input + label:after {
+  content: "\f040";
+  font-family: 'FontAwesome';
+  color: #757575;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.inputWithIcon {
+    position: relative;
+}
+.name_sec input {
+  color: #fff;
+}
+textarea{
+  color: #d64339;
+}
+.pad_sec input {
+  color: #d64339;
+}
+.inputWithIcon.inputIconBg i {
+  color: #fff;
+  width: 35px;
+  height: 38px;
+  text-align: center;
+  padding: 11px 4px;
+  border-radius: 50%;
+}
+.inputWithIcon i {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    padding: 9px 8px;
+    color: #aaa;
+    transition: 0.3s;
+}
+.inputWithIcon input[type="text"] {
+    padding-left: 28px;
+}
+
+input[type="text"] {
+    width: 100%;
+     border: 2px solid #aaa;
+     background-color: transparent;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 6px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+.pad_sec {
+  padding: 0 3%;
+}
+.containers {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  min-height: 1000px;
+  background-color: #fff;
+  margin: 50px;
+  padding: 0 0 21px 0;
+/*  display: grid;
+  grid-template-columns: 1fr 2fr;*/
+  box-shadow: 0 35px 55px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #1a5272;
+}
+/* .container .left_Side {
+  position: relative;
+  padding: 20px;
+} */
+.profileText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.profileText .imgBx {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  /*border-radius: 50%;*/
+  overflow: hidden;
+}
+.profileText .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photo {
+  width: 100%;
+  height: auto;
+}
+.profileText h2 {
+  color: #fff;
+  font-size: 1.5em;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+.profileText h2 span {
+  font-size: 0.8em;
+  font-weight: 300;
+}
+.contactInfo {
+  padding-top: 0px;
+  min-width: 270px;
+  margin-bottom: 20px;
+  /*width: 250px;*/
+}
+.title {
+  color: #0c3147;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+}
+.contactInfo ul {
+  position: relative;
+}
+.contactInfo ul li {
+  list-style: none;
+  position: relative;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.contactInfo ul li .icon {
+  display: inline-block;
+  width: 30px;
+  font-size: 18px;
+  color: #03a9f4;
+}
+.contactInfo ul li span {
+  color: #fff;
+  font-weight: 300;
+}
+.contactInfo.education h5 {
+  color: #03a9f4;
+  font-weight: 500;
+}
+.contactInfo.education h4:nth-child(2) {
+  color: #fff;
+  font-weight: 500;
+}
+.contactInfo.education h4 {
+  color: #fff;
+  font-weight: 300;
+}
+.contactInfo.language .percent {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background-color: #081921;
+  display: block;
+  margin-top: 5px;
+}
+.contactInfo.language .percent div {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #03a9f4;
+}
+.contactInfo.language {
+    padding-top: 40px;
+}
+.containers .right_Side {
+  position: relative;
+  background-color: #fff;
+  /* padding: 0 20px; */
+}
+.about {
+  margin-bottom: 20px;
+}
+.about.skills {
+    padding-top: 40px;
+}
+.about.interest ul li {
+    margin: 0;
+}
+/* .about:last-child {
+  margin-bottom: 0;
+} */
+.title2 {
+  color: #003147;
+  font-size: 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+p {
+  color: #081921;
+}
+.about .box {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  margin: 10px 0;
+}
+.about .box .year_company {
+  min-width: 270px;
+}
+.about .box .year_company h5 {
+  text-transform: uppercase;
+  color: #848c90;
+  font-weight: 600;
+}
+.about .box .text h4 {
+  text-transform: uppercase;
+  color: #2a7da2;
+  font-size: 16px;
+}
+.skills .box {
+  position: relative;
+  width: 100%;
+/*  display: grid;
+  grid-template-columns: 150px 1fr;
+  justify-content: center;
+  align-items: center;*/
+}
+.skills .box h4 {
+  text-transform: uppercase;
+  color: #848c90;
+  font-weight: 500;
+}
+/*.box1 {
+    display: flex;
+    gap: 1rem;
+}*/
+.about.skills .box {
+    margin: 3px auto;
+}
+.skills .box .percent {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background-color: #f0f0f0;
+}
+.skills .box .percent div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #03a9f4;
+}
+/*.interest ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}*/
+.about.interest .inputWithIcon.inputIconBg i {
+    width: 35px;
+    background-color: #0c3147;
+    color: #fff;
+}
+.interest ul li {
+  list-style: none;
+  color: black;
+  font-weight: 500;
+  margin: 10px 0;
+}
+.interest ul li .fa {
+  color: #03a9f4;
+  font-size: 18px;
+  width: 20px;
+}
+@media (max-width: 1000px) {
+  .containers {
+    margin: 10px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .interest ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .about .box {
+    flex-direction: column;
+  }
+  .about .box .year_company {
+    margin-bottom: 5px;
+  }
+  .interest ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .skills .box {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.englishw50 {
+  width: 60%;
+}
+.russianw90 {
+  width: 90%;
+}
+.frenchw30 {
+  width: 30%;
+}
+.htmlws30 {
+  width: 50%;
+}
+.cssws45 {
+  width: 45%;
+}
+.jsws70 {
+  width: 70%;
+}
+.phws40 {
+  width: 40%;
+}
+.ilws60 {
+  width: 60%;
+}
+.adw70 {
+  width: 70%;
+}
+
+
+
+
 </style>
+
 <body>
-   <div class="containers">
-      <div class="name_sec">
-         <input type="text" class="data full_name" id="full_name" name="full_name" placeholder="Full name"
-            value="{{resume.resumeuserdetails_set.get.full_name}}">
-         <input type="text" class="data title" id="title" name="title" placeholder="Title" value="{{resume.title}}">
-         <!-- <input type="text" name="" placeholder="Des"> -->
-      </div>
-      <table>
-         <div class="con_info">
-            <div class="row">
-               <div class="col-md-3">
-                  <div class="inputWithIcon inputIconBg">
-                     <input type="text" name="mobile" id="mobile"
-                        value="{{resume.resumeuserdetails_set.get.mobile}}" class="data mobile"
-                        placeholder="Phone Number"> <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="inputWithIcon inputIconBg">
-                     <input type="text" name="email" id="email" class="data email"
-                        value="{{resume.resumeuserdetails_set.get.email}}" placeholder="jon_doe@example.com">
-                     <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="inputWithIcon inputIconBg">
-                     <input type="text" name="address" id="address" class="data address"
-                        value="{{resume.resumeuserdetails_set.get.address}}" placeholder="Address">
-                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                  </div>
-               </div>
-               <div class="col-md-3">
-                  <div class="inputWithIcon inputIconBg">
-                     <input type="text" name="date_of_birth" id="date_of_birth" class="data date_of_birth"
-                        value="{{resume.resumeuserdetails_set.get.date_of_birth}}" placeholder="Date of birth">
-                     <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-                  </div>
-               </div>
+    <div class="containers">
+        <div class="name_sec">
+            <input type="text" class="data full_name" id="full_name" name="full_name" placeholder="Full name"
+                value="{{resume.resumeuserdetails_set.get.full_name}}">
+            <input type="text" class="data title" id="title" name="title" placeholder="Title" value="{{resume.title}}">
+            <!-- <input type="text" name="" placeholder="Des"> -->
+        </div>
+        <table>
+
+
+
+            <div class="con_info">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="inputWithIcon inputIconBg">
+                            <input type="text" name="mobile" id="mobile"
+                                value="{{resume.resumeuserdetails_set.get.mobile}}" class="data mobile"
+                                placeholder="Phone Number"> <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="inputWithIcon inputIconBg">
+                            <input type="text" name="email" id="email" class="data email"
+                                value="{{resume.resumeuserdetails_set.get.email}}" placeholder="jon_doe@example.com">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="inputWithIcon inputIconBg">
+                            <input type="text" name="address" id="address" class="data address"
+                                value="{{resume.resumeuserdetails_set.get.address}}" placeholder="Address">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="inputWithIcon inputIconBg">
+                            <input type="text" name="date_of_birth" id="date_of_birth" class="data date_of_birth"
+                                value="{{resume.resumeuserdetails_set.get.date_of_birth}}" placeholder="Date of birth">
+                            <i class="fa fa-birthday-cake" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-         </div>
-         <div class="pad_sec">
-            <div class="about skills">
-               <h2 class="title2">Professionals skills</h2>
-               {% for object in resume.skills_set.all %}
-               <div class="row">
-                  <div class="col-md-3">
-                     <div class="box">
-                        <input type="text" class="data skills" name="skills" placeholder="skills"
-                           value="{{ object.skills }}" placeholder="Skills">
-                     </div>
-                     <div class="btnset">
-                        <button type="button"  class="Delete  delete_skills_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                     </div>
-                  </div>
-               </div>
-               {% endfor %}
-               <div class="tab">
-                  <div class="form-group" id="resume-skills" style="display: none;">
-                     <div class="row">
+
+            <div class="pad_sec">
+
+                <div class="about skills">
+                    <h2 class="title2">Professionals skills</h2>
+                    {% for object in resume.skills_set.all %}
+                    <div class="row">
                         <div class="col-md-3">
-                           <div class="box">
-                              <input type="text" class="data skills" name="skills" placeholder="skills"
-                                 placeholder="Skills">
-                           </div>
+                            <div class="box">
+                                <input type="text" class="data skills" name="skills" placeholder="skills"
+                                    value="{{ object.skills }}" placeholder="Skills">
+                            </div>
+
+                            <div class="btnset">
+                                <button type="button"  class="Delete  delete_skills_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="form-group another-skills" id="another-skills">
-                  </div>
-                  <div class="row">
-                     <div class="col-md-12">
-                        <div class="btnset">
-                           <button class="add" type="button" data-name="skills" id="add-skills"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Skills !</button>
+                    </div>
+
+                    {% endfor %}
+
+                    <div class="tab">
+                        <div class="form-group" id="resume-skills" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="box">
+                                        <input type="text" class="data skills" name="skills" placeholder="skills"
+                                             placeholder="Skills">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="contactInfo education">
-               <h2 class="title2">EDUCATION</h2>
-               {% for object in resume.education_set.all %}
-               <div class="row">
-                  <div class="col-md-3"><input type="text" class="data qualification_name"
-                     name="qualification_name" value="{{object.qualification_name}}"
-                     placeholder="Qualification name..."></div>
-                  <div class="col-md-3"><input type="text" class="data university" name="university"
-                     placeholder="University name..." value="{{object.university}}"></div>
-                  <div class="col-md-3"><input type="text" class="data year_of_passing" name="year_of_passing"
-                     placeholder="Year of passing..." value="{{object.year_of_passing}}"></div>
-                  <div class="col-md-3"><input type="text" class="data percentage_or_grade"
-                     name="percentage_or_grade" placeholder="Grade..."
-                     value="{{object.percentage_or_grade}}"></div>
-               </div>
-               <div class="btnset">
-                  <button type="submit" class="Delete  delete_education_class"  data-id="{{object.id}}">Delete</button>
-               </div>
-               {% endfor %}
-               <div class="tab">
-                  <div class="form-group" id="resume-education" style="display: none;">
-                     <!-- <ul> -->
-                     <!-- <li> -->
-                     <input type="text" class="data qualification_name" id="qualification_name"
-                        name="qualification_name"
-                        placeholder="Qualification name...">
-                     <!-- </li> -->
-                     <!-- <li> -->
-                     <input type="text" class="data university" id="university" name="university"
-                        placeholder="University name..." >
-                     <!-- </li>
-                        <li>         -->
-                     <input type="text" class="data year_of_passing" id="year_of_passing" name="year_of_passing"
-                        placeholder="Year of passing..." >
-                     <!-- </li>
-                        <li> -->
-                     <input type="text" class="data percentage_or_grade" id="percentage_or_grade"
-                        name="percentage_or_grade" placeholder="Grade..." >
-                     <!-- </li> -->
-                     <!-- </ul> -->
-                  </div>
-                  <div class="form-group another-education" id="another-education">
-                  </div>
-                  <div class="btnset">
-                     <button class="add" type="button" data-name="education" id="add-education"><i
-                        class="fa fa-plus-square" aria-hidden="true"></i> Add Education !</button>
-                  </div>
-               </div>
-            </div>
-            <div class="about">
-               <h2 class="title2">CAREER OBJECTIVE</h2>
-               <div class="row">
-                  <div class="col-md-12">
-                     <textarea rows="4" cols="50" class="data objective" placeholder="Career objective...."
-                        rows="4" cols="50" id="objective" name="objective"
-                        required="">{{resume.objective}} </textarea>
-                  </div>
-               </div>
-            </div>
-            <div class="about">
-               <h2 class="title2">Experience</h2>
-               <div class="row">
-                  {% for object in resume.experience_set.all %}
-                  <div class="col-md-4">
-                     <div class="year_company">
-                        <input type="text" class="data company_name" name="company_name"
-                           placeholder="Company Name" value="{{object.company_name}}">
-                        <input type="text" class="data place" name="place" placeholder="Place"
-                           value="{{object.place}}">
-                     </div>
-                  </div>
-                  <div class="col-md-8">
-                     <div class="text">
-                        <!-- <h4>Senior UX Developer</h4> -->
-                        <textarea placeholder="Designation..." rows="4" cols="50" name="designation"
-                           id="designation" class="data designation"
-                           required="">{{ object.designation }}</textarea>
-                        <textarea placeholder="Role here..." rows="4" cols="50" class="data role" name="role"
-                           id="role" required="">{{ object.role }}</textarea>
-                        <div class="btnset">
-                           <button type="button"  class="Delete  delete_experience_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+
+                        <div class="form-group another-skills" id="another-skills">
+
                         </div>
-                     </div>
-                  </div>
-                  {% endfor %}
-                  <div class="tab">
-                     <div class="form-group" id="resume-experience" style="display: none;">
+
                         <div class="row">
-                           <div class="col-md-6"><input type="text" class="data company_name"
-                              name="company_name" placeholder="Company Name"></div>
-                           <div class="col-md-6"><input type="text" class="data place" name="place"
-                              placeholder="Place"></div>
-                        </div>
-                        <textarea placeholder="Designation..." rows="4" cols="50" name="designation"
-                           id="designation" class="data designation"
-                           required=""></textarea>
-                        <textarea placeholder="Role here..." rows="4" cols="50" class="data role" id="role"
-                           name="role" required=""></textarea>
-                     </div>
-                     <div class="form-group another-experience" id="another-experience">
-                     </div>
-                  </div>
-               </div>
-               <div class="btnset">
-                  <button class="add" type="button" data-name="experience" id="add-experience"><i
-                     class="fa fa-plus-square" aria-hidden="true"></i> Add Experience !</button>
-               </div>
-            </div>
-            <div class="about interest">
-               <h2 class="title2">Interests</h2>
-               {% for object in resume.hobbies_set.all %}
-               <div class="row">
-                  <div class="col-md-3">
-                     <div class="inputWithIcon inputIconBg">
-                        <input type="text" class=" data hobbies" name="hobbies" placeholder="Hobbies"
-                           value="{{object.hobbies}}">
-                     </div>
-                  </div>
-               </div>
-               <div class="btnset">
-                  <button type="button"  class="Delete  delete_hobbies_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-               </div>
-               {% endfor %}
-               <div class="tab">
-                  <div class="form-group" id="resume-hobbies" style="display: none;">
-                     <input type="text" class=" data hobbies" id="hobbies" name="hobbies" placeholder="Hobbies">
-                  </div>
-                  <div class="form-group another-hobbies" id="another-hobbies">
-                  </div>
-                  <div class="btnset">
-                     <button class="add" type="button" data-name="hobbies" id="add-hobbies"><i class="fa fa-plus-square" aria-hidden="true"></i> Add hobbies !</button>
-                  </div>
-               </div>
-            </div>
-            <div class="about">
-               <h2 class="title2">WORK SAMPLES</h2>
-               <div class="row">
-                  {% for object in resume.worksamples_set.all %}
-                  <div class="col-md-4">
-                     <div class="year_company">
-                        <input type="text" class="data project_name" name="project_name"
-                           value="{{object.project_name}}" placeholder="Project name...">
-                     </div>
-                  </div>
-                  <div class="col-md-8">
-                     <div class="text">
-                        <!-- <h4>Senior UX Developer</h4> -->
-                        <textarea placeholder="Project link..." rows="4" cols="50" class="data project_link"
-                           id="project_link" name="project_link" required="">{{ object.project_link }}</textarea>
-                        <textarea placeholder="Technology..." rows="4" cols="50" id="technology" name="technology"
-                           class="data technology" required="">{{ object.technology }}</textarea>
-                        <textarea placeholder="Description here..." rows="4" cols="50" class="data description"
-                           id="description" name="description" required="">{{ object.description }}</textarea>
-                        <textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
-                           class=" data responsibilities" id="responsibilities" name="responsibilities"
-                           required="">{{ object.responsibilities }}</textarea>
+                            <div class="col-md-12">
                         <div class="btnset">
-                           <button type="button"  class="Delete  delete_worksamples_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                            <button class="add" type="button" data-name="skills" id="add-skills"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Skills !</button>
                         </div>
-                     </div>
-                  </div>
-                  {% endfor %}
-                  <div class="tab">
-                     <div class="form-group " id="resume-worksamples" style="display: none;">
+                    </div>
+                    </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="contactInfo education">
+                    <h2 class="title2">EDUCATION</h2>
+                    {% for object in resume.education_set.all %}
+                    <div class="row">
+                        <div class="col-md-3"><input type="text" class="data qualification_name"
+                                name="qualification_name" value="{{object.qualification_name}}"
+                                placeholder="Qualification name..."></div>
+
+                        <div class="col-md-3"><input type="text" class="data university" name="university"
+                                placeholder="University name..." value="{{object.university}}"></div>
+
+                        <div class="col-md-3"><input type="text" class="data year_of_passing" name="year_of_passing"
+                                placeholder="Year of passing..." value="{{object.year_of_passing}}"></div>
+
+                        <div class="col-md-3"><input type="text" class="data percentage_or_grade"
+                                name="percentage_or_grade" placeholder="Grade..."
+                                value="{{object.percentage_or_grade}}"></div>
+                    </div>
+                    <div class="btnset">
+                        <button type="submit" class="Delete  delete_education_class"  data-id="{{object.id}}">Delete</button>
+                    </div>
+                    {% endfor %}
+
+                    <div class="tab">
+                        <div class="form-group" id="resume-education" style="display: none;">
+                            <!-- <ul> -->
+                                <!-- <li> -->
+                                    <input type="text" class="data qualification_name" id="qualification_name"
+                                        name="qualification_name"
+                                        placeholder="Qualification name...">
+                                <!-- </li> -->
+                                <!-- <li> -->
+                                    <input type="text" class="data university" id="university" name="university"
+                                        placeholder="University name..." >
+                                <!-- </li>
+                                <li>         -->
+                                    <input type="text" class="data year_of_passing" id="year_of_passing" name="year_of_passing"
+                                        placeholder="Year of passing..." >
+                                <!-- </li>
+                                <li> -->
+                                    <input type="text" class="data percentage_or_grade" id="percentage_or_grade"
+                                        name="percentage_or_grade" placeholder="Grade..." >
+                                <!-- </li> -->
+                            <!-- </ul> -->
+                        </div>
+
+                        <div class="form-group another-education" id="another-education">
+
+                        </div>
+                        <div class="btnset">
+                            <button class="add" type="button" data-name="education" id="add-education"><i
+                                    class="fa fa-plus-square" aria-hidden="true"></i> Add Education !</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="about">
+                    <h2 class="title2">CAREER OBJECTIVE</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea rows="4" cols="50" class="data objective" placeholder="Career objective...."
+                                rows="4" cols="50" id="objective" name="objective"
+                                required="">{{resume.objective}} </textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about">
+                    <h2 class="title2">Experience</h2>
+                    <div class="row">
+                        {% for object in resume.experience_set.all %}
                         <div class="col-md-4">
-                           <div class="year_company">
-                              <input type="text" class="data project_name" name="project_name"
-                                 placeholder="Project name...">
-                           </div>
+                            <div class="year_company">
+                                <input type="text" class="data company_name" name="company_name"
+                                    placeholder="Company Name" value="{{object.company_name}}">
+                                <input type="text" class="data place" name="place" placeholder="Place"
+                                    value="{{object.place}}">
+                            </div>
                         </div>
+
                         <div class="col-md-8">
-                           <div class="text">
-                              <!-- <h4>Senior UX Developer</h4> -->
-                              <textarea placeholder="Project link..." rows="4" cols="50" class="data project_link"
-                                 name="project_link" required=""></textarea>
-                              <textarea placeholder="Technology..." rows="4" cols="50"  name="technology"
-                                 class="data technology" required=""></textarea>
-                              <textarea placeholder="Description here..." rows="4" cols="50" class="data description"
-                                 name="description" required=""></textarea>
-                              <textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
-                                 class=" data responsibilities"  name="responsibilities"
-                                 required=""></textarea>
-                           </div>
+                            <div class="text">
+                                <!-- <h4>Senior UX Developer</h4> -->
+                                <textarea placeholder="Designation..." rows="4" cols="50" name="designation"
+                                    id="designation" class="data designation"
+                                    required="">{{ object.designation }}</textarea>
+                                <textarea placeholder="Role here..." rows="4" cols="50" class="data role" name="role"
+                                    id="role" required="">{{ object.role }}</textarea>
+                                <div class="btnset">
+                                     <button type="button"  class="Delete  delete_experience_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                     <!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
-                  </div>
-               </div>
-               <div class="form-group another-worksamples" id="another-worksamples"></div>
-               <div class="btnset">
-                  <button class="add" type="button" data-name="worksamples" id="add-worksamples"><i
-                     class="fa fa-plus-square" aria-hidden="true"></i> Add Worksamples !</button>
-               </div>
+                        {% endfor %}
+
+                        <div class="tab">
+                            <div class="form-group" id="resume-experience" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6"><input type="text" class="data company_name"
+                                            name="company_name" placeholder="Company Name"></div>
+                                    <div class="col-md-6"><input type="text" class="data place" name="place"
+                                            placeholder="Place"></div>
+                                </div>
+
+                                <textarea placeholder="Designation..." rows="4" cols="50" name="designation"
+                                    id="designation" class="data designation"
+                                    required=""></textarea>
+                                <textarea placeholder="Role here..." rows="4" cols="50" class="data role" id="role"
+                                    name="role" required=""></textarea>
+                            </div>
+
+                            <div class="form-group another-experience" id="another-experience">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="btnset">
+                        <button class="add" type="button" data-name="experience" id="add-experience"><i
+                                class="fa fa-plus-square" aria-hidden="true"></i> Add Experience !</button>
+
+                    </div>
+                </div>
+
+
+                <div class="about interest">
+                    <h2 class="title2">Interests</h2>
+                    {% for object in resume.hobbies_set.all %}
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="inputWithIcon inputIconBg">
+                                <input type="text" class=" data hobbies" name="hobbies" placeholder="Hobbies"
+                                    value="{{object.hobbies}}">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="btnset">
+                        <button type="button"  class="Delete  delete_hobbies_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </div>
+                    {% endfor %}
+
+                    <div class="tab">
+                        <div class="form-group" id="resume-hobbies" style="display: none;">
+                            <input type="text" class=" data hobbies" id="hobbies" name="hobbies" placeholder="Hobbies">
+                        </div>
+
+                        <div class="form-group another-hobbies" id="another-hobbies">
+
+                        </div>
+                    <div class="btnset">
+                        <button class="add" type="button" data-name="hobbies" id="add-hobbies"><i class="fa fa-plus-square" aria-hidden="true"></i> Add hobbies !</button>
+                    </div>
+
+                    </div>
+                </div>
+
+                <div class="about">
+                <h2 class="title2">WORK SAMPLES</h2>
+                <div class="row">
+                    {% for object in resume.worksamples_set.all %}
+
+                    <div class="col-md-4">
+                        <div class="year_company">
+                            <input type="text" class="data project_name" name="project_name"
+                                value="{{object.project_name}}" placeholder="Project name...">
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="text">
+                            <!-- <h4>Senior UX Developer</h4> -->
+                            <textarea placeholder="Project link..." rows="4" cols="50" class="data project_link"
+                                id="project_link" name="project_link" required="">{{ object.project_link }}</textarea>
+                            <textarea placeholder="Technology..." rows="4" cols="50" id="technology" name="technology"
+                                class="data technology" required="">{{ object.technology }}</textarea>
+                            <textarea placeholder="Description here..." rows="4" cols="50" class="data description"
+                                id="description" name="description" required="">{{ object.description }}</textarea>
+                            <textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
+                                class=" data responsibilities" id="responsibilities" name="responsibilities"
+                                required="">{{ object.responsibilities }}</textarea>
+                            <div class="btnset">
+                                <button type="button"  class="Delete  delete_worksamples_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="tab">
+                        <div class="form-group " id="resume-worksamples" style="display: none;">
+                            <div class="col-md-4">
+                                <div class="year_company">
+                                    <input type="text" class="data project_name" name="project_name"
+                                     placeholder="Project name...">
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="text">
+                                    <!-- <h4>Senior UX Developer</h4> -->
+                                    <textarea placeholder="Project link..." rows="4" cols="50" class="data project_link"
+                                      name="project_link" required=""></textarea>
+                                    <textarea placeholder="Technology..." rows="4" cols="50"  name="technology"
+                                        class="data technology" required=""></textarea>
+                                    <textarea placeholder="Description here..." rows="4" cols="50" class="data description"
+                                        name="description" required=""></textarea>
+                                    <textarea placeholder="Role and Responsibilities here..." rows="4" cols="50"
+                                        class=" data responsibilities"  name="responsibilities"
+                                        required=""></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
+                    </div>
+
+                </div>
+                <div class="form-group another-worksamples" id="another-worksamples"></div>
+                <div class="btnset">
+                    <button class="add" type="button" data-name="worksamples" id="add-worksamples"><i
+                        class="fa fa-plus-square" aria-hidden="true"></i> Add Worksamples !</button>
+                </div>
             </div>
-            <div class="about">
-               <h2 class="title2">ACHIEVEMENTS</h2>
-               {% for object in resume.achievements_set.all %}
-               <textarea placeholder="Achievements here..." rows="4" cols="50" class="data achievements"
-                  id="achievements" name="achievements" required="">{{ object.achievements }}</textarea>
-               <div class="btnset">
-                  <button type="button"  class="Delete  delete_achievements_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-               </div>
-               {% endfor %}
-               <div class="tab">
-                  <div class="form-group " id="resume-achievements" style="display: none;">
-                     <textarea placeholder="Achievements here..." rows="4" cols="50"  class="data achievements"
-                        id="achievements" name="achievements"  required=""></textarea>
-                  </div>
-                  <div class="form-group another-achievements" id="another-achievements"></div>
-                  <div class="btnset">
-                     <button class="add" type="button" data-name="achievements" id="add-achievements"><i
-                        class="fa fa-plus-square" aria-hidden="true"></i> Add Achievements !</button>
-                  </div>
-                  <!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
-               </div>
+
+
+
+
+                <div class="about">
+                    <h2 class="title2">ACHIEVEMENTS</h2>
+                    {% for object in resume.achievements_set.all %}
+
+                    <textarea placeholder="Achievements here..." rows="4" cols="50" class="data achievements"
+                        id="achievements" name="achievements" required="">{{ object.achievements }}</textarea>
+                    <div class="btnset">
+                        <button type="button"  class="Delete  delete_achievements_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </div>
+                    {% endfor %}
+
+                    <div class="tab">
+                        <div class="form-group " id="resume-achievements" style="display: none;">
+                            <textarea placeholder="Achievements here..." rows="4" cols="50"  class="data achievements"
+                    id="achievements" name="achievements"  required=""></textarea>
+                        </div>
+
+                        <div class="form-group another-achievements" id="another-achievements"></div>
+                        <div class="btnset">
+                            <button class="add" type="button" data-name="achievements" id="add-achievements"><i
+                                class="fa fa-plus-square" aria-hidden="true"></i> Add Achievements !</button>
+                        </div>
+                        <!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
+                    </div>
+                </div>
+
+
+                <div class="about">
+                    <h2 class="title2">CERTIFICATE</h2>
+                    {% for object in resume.certificate_set.all%}
+                    <textarea placeholder="Certicate here..." rows="4" cols="50" class="data certificate"
+                        id="certificate" name="certificate" required="">{{ object.certificate }}</textarea>
+                    <div class="btnset">
+                        <button type="button"  class="Delete  delete_certificate_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                    </div>
+                    {% endfor %}
+
+                    <div class="tab">
+                        <div class="form-group " id="resume-certificate" style="display: none;">
+                            <textarea placeholder="Certicate here..." rows="4" cols="50"  class="data certificate" id="certificate"
+                    name="certificate" required="">{{object.certificate}}</textarea>
+                        </div>
+
+                        <div class="form-group another-certificate" id="another-certificate"></div>
+                        <div class="btnset">
+                            <button class="add" type="button" data-name="certificate" id="add-certificate"><i
+                                class="fa fa-plus-square" aria-hidden="true"></i> Add Achievements !</button>
+                        </div>
+                        <!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
+                    </div>
+                </div>
             </div>
-            <div class="about">
-               <h2 class="title2">CERTIFICATE</h2>
-               {% for object in resume.certificate_set.all%}
-               <textarea placeholder="Certicate here..." rows="4" cols="50" class="data certificate"
-                  id="certificate" name="certificate" required="">{{ object.certificate }}</textarea>
-               <div class="btnset">
-                  <button type="button"  class="Delete  delete_certificate_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-               </div>
-               {% endfor %}
-               <div class="tab">
-                  <div class="form-group " id="resume-certificate" style="display: none;">
-                     <textarea placeholder="Certicate here..." rows="4" cols="50"  class="data certificate" id="certificate"
-                        name="certificate" required="">{{object.certificate}}</textarea>
-                  </div>
-                  <div class="form-group another-certificate" id="another-certificate"></div>
-                  <div class="btnset">
-                     <button class="add" type="button" data-name="certificate" id="add-certificate"><i
-                        class="fa fa-plus-square" aria-hidden="true"></i> Add Achievements !</button>
-                  </div>
-                  <!-- <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button> -->
-               </div>
+            </td>
+            </tr>
+            <div class="text-right preview-btn">
+                <a href="{% url 'template_preview5' resume.id %}" class="btn btn-info preview" >preview</a>
             </div>
-         </div>
-         </td>
-         </tr>
-         <div class="text-right preview-btn">
-            <a href="{% url 'template_preview5' resume.id %}" class="btn btn-info preview" >preview</a>
-         </div>
-      </table>
-   </div>
-   <!-- partial -->
-   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
-   <script>
-      function delay(callback, ms) {
-          var timer = 0;
-          return function() {
-              var context = this,
-                  args = arguments;
-              clearTimeout(timer);
-              timer = setTimeout(function() {
-                  callback.apply(context, args);
-              }, ms || 0);
-          };
-      }
+        </table>
 
-      $("#add-education").click(delay(function() {
-          var education_form = $('#resume-education').html();
+    </div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
-          $("#another-education").append(education_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      }, 10))
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
 
-      $("#add-experience").click(function() {
-
-          var experience_form = $('#resume-experience').html();
-          console.log($(this).data("name"))
-          $("#another-experience").append(experience_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      })
-
-      $("#add-worksamples").click(function() {
-
-          var worksamples_form = $('#resume-worksamples').html();
-          console.log($(this).data("name"))
-          $("#another-worksamples").append(worksamples_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      })
-
-      $("#add-achievements").click(function() {
-
-          var achievements_form = $('#resume-achievements').html();
-          console.log($(this).data("name"))
-          $("#another-achievements").append(achievements_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      })
-
-      $("#add-certificate").click(function() {
-
-          var certificate_form = $('#resume-certificate').html();
-          console.log($(this).data("name"))
-          $("#another-certificate").append(certificate_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      })
-
-      $("#add-skills").click(function() {
-          var skill_form = $('#resume-skills').html();
-          console.log($(this).data("name"))
-          $("#another-skills").append(skill_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      })
-
-      $("#add-hobbies").click(function() {
-
-          var hobbies_form = $('#resume-hobbies').html();
-          console.log($(this).data("name"))
-          $("#another-hobbies").append(hobbies_form);
-          var token = '{{csrf_token}}';
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/add_another/{{resume.id}}',
-              data: {
-                  'element': $(this).data("name")
-              },
-              success: function(json) {}
-          })
-      })
-
-      $(document).on("keyup", ".data", function() {
-          var token = '{{csrf_token}}';
-          var company_name = $('input[name^=company_name]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var designation = $('textarea[name^=designation]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var place = $('input[name^=place]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var role = $('textarea[name^=role]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-
-          var project_name = $('input[name^=project_name]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var project_link = $('textarea[name^=project_link]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var technology = $('textarea[name^=technology]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var description = $('textarea[name^=description]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var responsibilities = $('textarea[name^=responsibilities]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-
-          var achievements = $('textarea[name^=achievements]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-
-          var certificate = $('textarea[name^=certificate]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-
-          var qualification_name = $('input[name^=qualification_name]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var university = $('input[name^=university]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var year_of_passing = $('input[name^=year_of_passing]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var percentage_or_grade = $('input[name^=percentage_or_grade]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
-          var skills = $('input[name^=skills]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+    integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function delay(callback, ms) {
+        var timer = 0;
+        return function () {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
 
 
-          var hobbies = $('input[name^=hobbies]').map(function(idx, elem) {
-              return $(elem).val();
-          }).get();
+// add
 
-          var obj = $(this)
-          var id = obj.data('id');
-          console.log(qualification_name)
+$("#add-education").click(delay(function () {
+      var education_form = $('#resume-education').html();
+
+      $("#another-education").append(education_form);
+      var token = '{{csrf_token}}';
+      $.ajax({
+          headers: { "X-CSRFToken": token },
+          type: 'POST',
+          url: '/add_another/{{resume.id}}',
+          data: {
+            'element': $(this).data("name")
+        },
+        success: function (json) {
+        }
+    })
+      location.reload(true);
+  }, 10) )
+
+    $("#add-experience").click(function () {
+
+       var experience_form = $('#resume-experience').html();
+       console.log($(this).data("name"))
+       $("#another-experience").append(experience_form);
+       var token = '{{csrf_token}}';
+       $.ajax({
+           headers: { "X-CSRFToken": token },
+           type: 'POST',
+           url: '/add_another/{{resume.id}}',
+           data: {
+             'element': $(this).data("name")
+         },
+         success: function (json) {
+         }
+     })
+       location.reload(true);
+   })
+
+    $("#add-worksamples").click(function () {
+
+       var worksamples_form = $('#resume-worksamples').html();
+       console.log($(this).data("name"))
+       $("#another-worksamples").append(worksamples_form);
+       var token = '{{csrf_token}}';
+       $.ajax({
+           headers: { "X-CSRFToken": token },
+           type: 'POST',
+           url: '/add_another/{{resume.id}}',
+           data: {
+             'element': $(this).data("name")
+         },
+         success: function (json) {
+         }
+     })
+       location.reload(true);
+   })
+
+    $("#add-achievements").click(function () {
+
+        var achievements_form = $('#resume-achievements').html();
+        console.log($(this).data("name"))
+        $("#another-achievements").append(achievements_form);
+        var token = '{{csrf_token}}';
+        $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: '/add_another/{{resume.id}}',
+            data: {
+                'element': $(this).data("name")
+            },
+            success: function (json) {
+            }
+        })
+        location.reload(true);
+    })
+
+    $("#add-certificate").click(function () {
+
+        var certificate_form = $('#resume-certificate').html();
+        console.log($(this).data("name"))
+        $("#another-certificate").append(certificate_form);
+        var token = '{{csrf_token}}';
+        $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: '/add_another/{{resume.id}}',
+            data: {
+                'element': $(this).data("name")
+            },
+            success: function (json) {
+            }
+        })
+        location.reload(true);
+    })
+
+    $("#add-skills").click(function () {
+
+        var skill_form = $('#resume-skills').html();
+        console.log($(this).data("name"))
+        $("#another-skills").append(skill_form);
+        var token = '{{csrf_token}}';
+        $.ajax({
+            headers: { "X-CSRFToken": token },
+            type: 'POST',
+            url: '/add_another/{{resume.id}}',
+            data: {
+                'element': $(this).data("name")
+            },
+            success: function (json) {
+            }
+        })
+        location.reload(true);
+    })
+
+    $("#add-hobbies").click(function () {
+
+       var hobbies_form = $('#resume-hobbies').html();
+       console.log($(this).data("name"))
+       $("#another-hobbies").append(hobbies_form);
+       var token = '{{csrf_token}}';
+       $.ajax({
+           headers: { "X-CSRFToken": token },
+           type: 'POST',
+           url: '/add_another/{{resume.id}}',
+           data: {
+             'element': $(this).data("name")
+         },
+         success: function (json) {
+         }
+     })
+       location.reload(true);
+   })
 
 
-          $.ajax({
-              headers: {
-                  "X-CSRFToken": token
-              },
-              type: 'POST',
-              url: '/update_data/{{resume.id}}',
-              data: {
-                  'objective': $('.objective').val(),
-                  'title': $('.title').val(),
-                  'company_name[]': company_name,
-                  'designation[]': designation,
-                  'place[]': place,
-                  'role[]': role,
-                  'id_skill': id,
-                  'project_name[]': project_name,
-                  'project_link[]': project_link,
-                  'technology[]': technology,
-                  'description[]': description,
-                  'responsibilities[]': responsibilities,
-                  'achievements[]': achievements,
-                  'certificate[]': certificate,
-                  'qualification_name[]': qualification_name,
-                  // 'qualification_n[]':qualification_n,
-                  'university[]': university,
-                  'year_of_passing[]': year_of_passing,
-                  'percentage_or_grade[]': percentage_or_grade,
-                  'skills[]': skills,
-                  'hobbies[]': hobbies,
-                  // 'language_name[]': language_name,
-                  'address': $('.address').val(),
-                  'email': $('.email').val(),
-                  'mobile': $('.mobile').val(),
-                  'date_of_birth': $('.date_of_birth').val(),
-                  'full_name': $('.full_name').val(),
-              },
-              success: function(json) {}
-          })
-      })
-   </script>
-   <script type="text/javascript">
+    $(document).ready(function () {
+        $(".data").keyup(delay(function () {
+            var token = '{{csrf_token}}';
+            var company_name = $('input[name^=company_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var designation = $('textarea[name^=designation]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var place = $('input[name^=place]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var role = $('textarea[name^=role]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var project_name = $('input[name^=project_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var project_link = $('textarea[name^=project_link]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var technology = $('textarea[name^=technology]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var description = $('textarea[name^=description]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var responsibilities = $('textarea[name^=responsibilities]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var achievements = $('textarea[name^=achievements]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var certificate = $('textarea[name^=certificate]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var qualification_name = $('input[name^=qualification_name]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var university = $('input[name^=university]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var year_of_passing = $('input[name^=year_of_passing]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+            var percentage_or_grade = $('input[name^=percentage_or_grade]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var skills = $('input[name^=skills]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+
+            var hobbies = $('input[name^=hobbies]').map(function (idx, elem) {
+                return $(elem).val();
+            }).get();
+
+            var obj = $(this)
+            var id = obj.data('id');
+            console.log(qualification_name)
+
+
+            $.ajax({
+                headers: { "X-CSRFToken": token },
+                type: 'POST',
+                url: '/update_data/{{resume.id}}',
+                data: {
+                    'objective': $('.objective').val(),
+                    'title': $('.title').val(),
+                    'company_name[]': company_name,
+                    'designation[]': designation,
+                    'place[]': place,
+                    'role[]': role,
+                    'id_skill': id,
+                    'project_name[]': project_name,
+                    'project_link[]': project_link,
+                    'technology[]': technology,
+                    'description[]': description,
+                    'responsibilities[]': responsibilities,
+                    'achievements[]': achievements,
+                    'certificate[]': certificate,
+                    'qualification_name[]': qualification_name,
+                    // 'qualification_n[]':qualification_n,
+                    'university[]': university,
+                    'year_of_passing[]': year_of_passing,
+                    'percentage_or_grade[]': percentage_or_grade,
+                    'skills[]': skills,
+                    'hobbies[]': hobbies,
+                    // 'language_name[]': language_name,
+                    'address': $('.address').val(),
+                    'email': $('.email').val(),
+                    'mobile': $('.mobile').val(),
+                    'date_of_birth': $('.date_of_birth').val(),
+                    'full_name': $('.full_name').val(),
+                },
+                success: function (json) {
+                }
+            })
+
+
+        }, 300))
+
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delete_education_class").on('click',function() {
+            var id=$(this).data("id")
+            var token = '{{csrf_token}}';
+            $.ajax({
+                // headers: { "X-CSRFToken": token },
+                type: 'GET',
+                url: '/deleteeducation/'+id+'/',
+                data: {
+                    'data':"None",
+                },
+                success: function (json) {
+                    window.location.reload(true);
+                }
+            })
+        })
+      });
       $(document).ready(function () {
-          $(".delete_education_class").on('click',function() {
+          $(".delete_skills_class").on('click',function() {
               var id=$(this).data("id")
               var token = '{{csrf_token}}';
               $.ajax({
-                  // headers: { "X-CSRFToken": token },
                   type: 'GET',
-                  url: '/deleteeducation/'+id+'/',
-                  data: {
-                      'data':"None",
+                  url : '/deleteskill/'+id+'/',
+                  data :{
+                      'data': "None",
                   },
                   success: function (json) {
                       window.location.reload(true);
                   }
               })
           })
-        });
-        $(document).ready(function () {
-            $(".delete_skills_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    type: 'GET',
-                    url : '/deleteskill/'+id+'/',
-                    data :{
-                        'data': "None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-        });
-        $(document).ready(function () {
-            $(".delete_hobbies_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    type: 'GET',
-                    url : '/deletehobbie/'+id+'/',
-                    data :{
-                        'data': "None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-        });
-        $(document).ready(function () {
-            $(".delete_experience_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    type: 'GET',
-                    url : '/deleteexperience/'+id+'/',
-                    data :{
-                        'data': "None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-        });
-        $(document).ready(function () {
-            $(".delete_worksamples_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    type: 'GET',
-                    url : '/deleteworksamples/'+id+'/',
-                    data :{
-                        'data': "None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-        });
-        $(document).ready(function () {
-            $(".delete_achievements_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    type: 'GET',
-                    url : '/deleteachievements/'+id+'/',
-                    data :{
-                        'data': "None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-        });
-        $(document).ready(function () {
-            $(".delete_certificate_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    type: 'GET',
-                    url : '/deletecertificate/'+id+'/',
-                    data :{
-                        'data': "None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-        });
-   </script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-      integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
-      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
-</html>
+      });
+      $(document).ready(function () {
+          $(".delete_hobbies_class").on('click',function() {
+              var id=$(this).data("id")
+              var token = '{{csrf_token}}';
+              $.ajax({
+                  type: 'GET',
+                  url : '/deletehobbie/'+id+'/',
+                  data :{
+                      'data': "None",
+                  },
+                  success: function (json) {
+                      window.location.reload(true);
+                  }
+              })
+          })
+      });
+      $(document).ready(function () {
+          $(".delete_experience_class").on('click',function() {
+              var id=$(this).data("id")
+              var token = '{{csrf_token}}';
+              $.ajax({
+                  type: 'GET',
+                  url : '/deleteexperience/'+id+'/',
+                  data :{
+                      'data': "None",
+                  },
+                  success: function (json) {
+                      window.location.reload(true);
+                  }
+              })
+          })
+      });
+      $(document).ready(function () {
+          $(".delete_worksamples_class").on('click',function() {
+              var id=$(this).data("id")
+              var token = '{{csrf_token}}';
+              $.ajax({
+                  type: 'GET',
+                  url : '/deleteworksamples/'+id+'/',
+                  data :{
+                      'data': "None",
+                  },
+                  success: function (json) {
+                      window.location.reload(true);
+                  }
+              })
+          })
+      });
+      $(document).ready(function () {
+          $(".delete_achievements_class").on('click',function() {
+              var id=$(this).data("id")
+              var token = '{{csrf_token}}';
+              $.ajax({
+                  type: 'GET',
+                  url : '/deleteachievements/'+id+'/',
+                  data :{
+                      'data': "None",
+                  },
+                  success: function (json) {
+                      window.location.reload(true);
+                  }
+              })
+          })
+      });
+      $(document).ready(function () {
+          $(".delete_certificate_class").on('click',function() {
+              var id=$(this).data("id")
+              var token = '{{csrf_token}}';
+              $.ajax({
+                  type: 'GET',
+                  url : '/deletecertificate/'+id+'/',
+                  data :{
+                      'data': "None",
+                  },
+                  success: function (json) {
+                      window.location.reload(true);
+                  }
+              })
+          })
+      });
+    </script>

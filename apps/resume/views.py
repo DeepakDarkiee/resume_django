@@ -1144,11 +1144,12 @@ class UpdateDataView(View):
             Get template selected by user.
         """
         resume = Resume.objects.get(id=id)
+        achivement= Achievements.objects.filter(resume=resume)
 
         if resume.template.name == "template":
-            return render(request, 'resume/template6.html', {'resume': resume})
+            return render(request, 'resume/template.html', {'resume': resume})
         if resume.template.name == "template2":
-            return render(request, 'resume/template2.html', {'resume': resume})
+            return render(request, 'resume/template2.html', {'resume': resume,'achivement':achivement})
         if resume.template.name == "template3":
             return render(request, 'resume/template3.html', {'resume': resume})
         if resume.template.name == "template4":
@@ -1156,16 +1157,16 @@ class UpdateDataView(View):
         if resume.template.name == "template5":
             return render(request, 'resume/template5.html', {'resume': resume})
         if resume.template.name == "template6":
-            return render(request, 'resume/template.html', {'resume': resume})
+            return render(request, 'resume/template6.html', {'resume': resume})
 
 
-class TemplatePreviews6(View):
+class TemplatePreviews(View):
     def get(self, request, id):
         context = {}
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews6.html', context)
+        return render(request, 'resume/template_previews.html', context)
 
 
 class TemplatePreviews2(View):
@@ -1204,10 +1205,10 @@ class TemplatePreviews5(View):
         return render(request, 'resume/template_previews5.html', context)
 
 
-class TemplatePreviews(View):
+class TemplatePreviews6(View):
     def get(self, request, id):
         context = {}
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews.html', context)
+        return render(request, 'resume/template_previews6.html', context)

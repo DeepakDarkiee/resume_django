@@ -19,8 +19,8 @@
   <title></title>
   <style type="text/css">
  .preview{
-  
-    margin-bottom: 50px; 
+
+    margin-bottom: 50px;
     margin-right: 50px;
 
  }
@@ -40,7 +40,7 @@
               <textarea id="objective" rows="6" cols="200" class="form-control mt-3 mb-4 data objective"
                 name="objective" id="objective" placeholder="Career objective...." rows="6"
                 onkeyup="AutoGrowTextArea(this)">{{resume.objective}}</textarea>
-                              
+
 
               <h2>EXPERIENCES</h2>
               {% for object in resume.experience_set.all %}
@@ -52,13 +52,13 @@
               <textarea class="form-control data designation" name="designation" id="designation"
                  placeholder="Designation..."
                 onkeyup="AutoGrowTextArea(this)">{{object.designation}}</textarea>
-              <textarea class="form-control data place" name="place" id="place" 
+              <textarea class="form-control data place" name="place" id="place"
                 placeholder="Place..." onkeyup="AutoGrowTextArea(this)">{{object.place}}</textarea>
               <p class="role-text">role :-</p>
-              <textarea class="form-control data role" name="role" id="role" 
+              <textarea class="form-control data role" name="role" id="role"
                 placeholder="role here..." rows="6" onkeyup="AutoGrowTextArea(this)">{{object.role}}</textarea>
                 <!-- <button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button>  -->
-                <button type="button"  class="Delete  delete_experience_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button> 
+                <button type="button"  class="Delete  delete_experience_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 <hr>
                 {% endfor %}
 
@@ -70,20 +70,20 @@
               <textarea class="form-control data designation" name="designation" id="designation"
                  placeholder="Designation..."
                 onkeyup="AutoGrowTextArea(this)"></textarea>
-              <textarea class="form-control data place" name="place" id="place" 
+              <textarea class="form-control data place" name="place" id="place"
                 placeholder="Place..." onkeyup="AutoGrowTextArea(this)"></textarea>
               <p class="role-text">role :-</p>
-              <textarea class="form-control data role" name="role" id="role" 
+              <textarea class="form-control data role" name="role" id="role"
                 placeholder="Description here..." rows="6" onkeyup="AutoGrowTextArea(this)"></textarea>
                    </div>
-                 
+
                      <div class="form-group another-experience" id="another-experience">
-                       
+
                      </div>
                         <button type="button" data-name="experience" id="add-experience"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Experience</button>
-                        
-                  </div>  
-             
+
+                  </div>
+
 
               <h2 class="mt-5">WORK SAMPLES</h2>
 
@@ -106,7 +106,7 @@
                 <!-- <button type="button" ><i class="fa fa-trash secondary" aria-hidden="true" ></i></button>  -->
                  <button type="button"  class="Delete  delete_worksamples_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 <hr>
-             
+
               {% endfor %}
 
               <div class="tab" >
@@ -127,18 +127,18 @@
                 placeholder="Description here..." rows="6"
                 onkeyup="AutoGrowTextArea(this)"></textarea>
                  </div>
-               
+
                    <div class="form-group another-worksamples" id="another-worksamples">
-                     
+
                    </div>
                       <button type="button"  data-name="worksamples" id="add-worksamples"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add WorkSamples</button>
-                     
-                </div>  
+
+                </div>
 
 
               <h2>ACHIEVEMENTS</h2>
 
-              
+
               {% for object in resume.achievements_set.all %}
               <textarea class="form-control mt-3 data achievements" id="achievements" name="achievements"
                 placeholder="achievements here..." rows="4"
@@ -147,7 +147,7 @@
                 <hr>
                  <button type="button"  class="Delete  delete_achievements_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
               {% endfor %}
-             
+
 
               <div class="tab" >
                 <div class= "form-group" id="resume-achievements" style="display: none;" >
@@ -155,9 +155,9 @@
                   placeholder="achievements here..." rows="4"
                   onkeyup="AutoGrowTextArea(this)"></textarea>
                  </div>
-               
+
                    <div class="form-group another-achievements" id="another-achievements">
-                     
+
                    </div>
                       <button type="button" data-name="achievements" id="add-achievements"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Achievements !</button>
                 </div>
@@ -167,7 +167,7 @@
               <textarea class="form-control mt-3 data certificate" id="certificate" name="certificate"
                 placeholder="certificate here..." rows="4"
                 onkeyup="AutoGrowTextArea(this)">{{object.certificate}}</textarea>
-                <button type="button"  class="Delete  delete_certificate_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button> 
+                <button type="button"  class="Delete  delete_certificate_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                 <hr>
               {% endfor %}
 
@@ -177,7 +177,7 @@
                 placeholder="certificate here..." rows="4"
                 onkeyup="AutoGrowTextArea(this)">{{object.certificate}}</textarea>
                  </div>
-               
+
                    <div class="form-group another-certificate" id="another-certificate"></div>
                       <button type="button"  data-name="certificate" id="add-certificate"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Certificate !</button>
                 </div>
@@ -203,7 +203,7 @@
                     </div>
                     </form>
                     <div class="avatar-preview">
-                      
+
                       {% if resume.resumeuserdetails_set.get.photo.url is not null   %}
                       <div id="imagePreview" style="background-image: url('{{resume.resumeuserdetails_set.get.photo.url}}')">
                         {%else%}
@@ -213,11 +213,11 @@
                     </div>
                 </div>
               </div>
-              
+
 
               <!-- <h2 class="container-block-title pt-4">Education</h2> -->
 
-              
+
               <!-- <input class="data" type="hidden" name="id" data-id="{{object.id}}" value="{{object.id}}" > -->
               <textarea class="form-control mt-3 data full_name" id="full_name"
                 name="full_name" placeholder="full_name"
@@ -232,19 +232,19 @@
                 <textarea class="form-control data email" id="email"
                   name="email" placeholder="email..."
                   onkeyup="AutoGrowTextArea(this)">{{resume.resumeuserdetails_set.get.email}}</textarea>
-                  
+
                 <textarea class="form-control data mobile" id="mobile"
                 name="mobile" placeholder="mobile..."
                 onkeyup="AutoGrowTextArea(this)">{{resume.resumeuserdetails_set.get.mobile}}</textarea>
-  
+
                 <textarea class="form-control data date_of_birth" id="date_of_birth"
                 name="date_of_birth" placeholder="date_of_birth..."
                 onkeyup="AutoGrowTextArea(this)">{{resume.resumeuserdetails_set.get.date_of_birth}}</textarea>
-  
 
-                
-              
-              
+
+
+
+
 
  <!-- - - - - -- - - - - - -- - - - - - - - - - - - - - - - -->
               <h2 class="container-block-title pt-4">Education</h2>
@@ -274,9 +274,9 @@
           <textarea class="form-control data year_of_passing" id="year_of_passing" name="year_of_passing" placeholder="year of passing..." onkeyup="AutoGrowTextArea(this)"></textarea>
           <textarea class="form-control data percentage_or_grade" id="percentage_or_grade" name="percentage_or_grade" placeholder="grade..." onkeyup="AutoGrowTextArea(this)"></textarea>
              </div>
-           
+
                <div class="form-group another-education" id="another-education">
-                 
+
                </div>
                   <button type="button"  data-name="education" id="add-education"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Education !</button>
             </div>
@@ -297,10 +297,10 @@
                 </div>
               </div>
 
-                                    
+
               <div class="tab" >
                 {% for object in resume.skills_set.all %}
-               
+
               <div class="form-group" id="resume-skills" style="display: none;" >
                 <textarea class="form-control mt-3 data skills" id="skills"
                     name="skills" placeholder="skills ..."
@@ -308,7 +308,7 @@
                </div>
               {% endfor %}
                  <div class="form-group another-skills" id="another-skills">
-                   
+
                  </div>
                     <button type="button"  data-name="skills"  id="add-skills"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Skills !</button>
               </div>
@@ -320,16 +320,16 @@
                   <textarea class="form-control mt-3 data hobbies" id="hobbies"
                   name="hobbies" placeholder="hobbies ..."
                   onkeyup="AutoGrowTextArea(this)">{{ object.hobbies }}</textarea>
-                  
+
                   <button type="button"  class="Delete  delete_hobbies_class"  data-id="{{object.id}}"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                    {% endfor %}
-                  
+
                 </div>
               </div>
 
               <div class="tab" >
                 <!-- {% for object in resume.skills_set.all %} -->
-               
+
               <div class="form-group" id="resume-hobbies" style="display: none;" >
                 <textarea class="form-control mt-3 data hobbies" id="hobbies"
                   name="hobbies" placeholder="hobbies ..."
@@ -337,23 +337,23 @@
                </div>
               <!-- {% endfor %} -->
                  <div class="form-group another-hobbies" id="another-hobbies">
-                   
+
                  </div>
                     <button type="button"  data-name="hobbies"  id="add-hobbies"><i class="fa fa-plus secondary" aria-hidden="true" ></i>&nbsp; Add Hobbies !</button>
               </div>
 
               <!-- <h2 class="container-block-title pt-4">Language</h2>
-              <div class="skillset pt-2">  
+              <div class="skillset pt-2">
                   <div class="item">
-                    
+
                       {% for object in resume.language_set.all %}
-                       
+
                         <textarea type="text" name="language_name"  class="level-title data language_name" id="language_name" placeholder="a" onkeyup="AutoGrowTextArea(this)">{{object.language_name}} </textarea>
-                        
-                     
+
+
                      {% endfor %}
-                                        
-                  </div>                               
+
+                  </div>
               </div> -->
             </div>
           </div>
@@ -363,9 +363,9 @@
       <div class="text-right">
         <a href="{% url 'template_preview' resume.id %}" class="btn btn-info preview" > preview.</a>
       </div>
-   
+
       <!-- <a href="{% url 'template_preview' resume.id %}"><button>Link Text</button></a> -->
-      
+
 
 
       <!-- Optional JavaScript -->
@@ -409,375 +409,388 @@
         }
 
       </script>
-
-      <script>
-        function delay(callback, ms) {
-            var timer = 0;
-            return function() {
-                var context = this,
-                    args = arguments;
-                clearTimeout(timer);
-                timer = setTimeout(function() {
-                    callback.apply(context, args);
-                }, ms || 0);
-            };
-        }
-
-        $("#add-education").click(delay(function() {
-            var education_form = $('#resume-education').html();
-
-            $("#another-education").append(education_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        }, 10))
-
-        $("#add-experience").click(function() {
-
-            var experience_form = $('#resume-experience').html();
-            console.log($(this).data("name"))
-            $("#another-experience").append(experience_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        })
-
-        $("#add-worksamples").click(function() {
-
-            var worksamples_form = $('#resume-worksamples').html();
-            console.log($(this).data("name"))
-            $("#another-worksamples").append(worksamples_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        })
-
-        $("#add-achievements").click(function() {
-
-            var achievements_form = $('#resume-achievements').html();
-            console.log($(this).data("name"))
-            $("#another-achievements").append(achievements_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        })
-
-        $("#add-certificate").click(function() {
-
-            var certificate_form = $('#resume-certificate').html();
-            console.log($(this).data("name"))
-            $("#another-certificate").append(certificate_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        })
-
-        $("#add-skills").click(function() {
-            var skill_form = $('#resume-skills').html();
-            console.log($(this).data("name"))
-            $("#another-skills").append(skill_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        })
-
-        $("#add-hobbies").click(function() {
-
-            var hobbies_form = $('#resume-hobbies').html();
-            console.log($(this).data("name"))
-            $("#another-hobbies").append(hobbies_form);
-            var token = '{{csrf_token}}';
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/add_another/{{resume.id}}',
-                data: {
-                    'element': $(this).data("name")
-                },
-                success: function(json) {}
-            })
-        })
-
-        $(document).on("keyup", ".data", function() {
-            var token = '{{csrf_token}}';
-            var company_name = $('input[name^=company_name]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var designation = $('textarea[name^=designation]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var place = $('input[name^=place]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var role = $('textarea[name^=role]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-
-            var project_name = $('input[name^=project_name]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var project_link = $('textarea[name^=project_link]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var technology = $('textarea[name^=technology]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var description = $('textarea[name^=description]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var responsibilities = $('textarea[name^=responsibilities]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-
-            var achievements = $('textarea[name^=achievements]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-
-            var certificate = $('textarea[name^=certificate]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-
-            var qualification_name = $('input[name^=qualification_name]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var university = $('input[name^=university]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var year_of_passing = $('input[name^=year_of_passing]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var percentage_or_grade = $('input[name^=percentage_or_grade]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-            var skills = $('input[name^=skills]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-
-
-            var hobbies = $('input[name^=hobbies]').map(function(idx, elem) {
-                return $(elem).val();
-            }).get();
-
-            var obj = $(this)
-            var id = obj.data('id');
-            console.log(qualification_name)
-
-
-            $.ajax({
-                headers: {
-                    "X-CSRFToken": token
-                },
-                type: 'POST',
-                url: '/update_data/{{resume.id}}',
-                data: {
-                    'objective': $('.objective').val(),
-                    'title': $('.title').val(),
-                    'company_name[]': company_name,
-                    'designation[]': designation,
-                    'place[]': place,
-                    'role[]': role,
-                    'id_skill': id,
-                    'project_name[]': project_name,
-                    'project_link[]': project_link,
-                    'technology[]': technology,
-                    'description[]': description,
-                    'responsibilities[]': responsibilities,
-                    'achievements[]': achievements,
-                    'certificate[]': certificate,
-                    'qualification_name[]': qualification_name,
-                    // 'qualification_n[]':qualification_n,
-                    'university[]': university,
-                    'year_of_passing[]': year_of_passing,
-                    'percentage_or_grade[]': percentage_or_grade,
-                    'skills[]': skills,
-                    'hobbies[]': hobbies,
-                    // 'language_name[]': language_name,
-                    'address': $('.address').val(),
-                    'email': $('.email').val(),
-                    'mobile': $('.mobile').val(),
-                    'date_of_birth': $('.date_of_birth').val(),
-                    'full_name': $('.full_name').val(),
-                },
-                success: function(json) {}
-            })
-        })
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".delete_education_class").on('click',function() {
-                var id=$(this).data("id")
-                var token = '{{csrf_token}}';
-                $.ajax({
-                    // headers: { "X-CSRFToken": token },
-                    type: 'GET',
-                    url: '/deleteeducation/'+id+'/',
-                    data: {
-                        'data':"None",
-                    },
-                    success: function (json) {
-                        window.location.reload(true);
-                    }
-                })
-            })
-          });
-          $(document).ready(function () {
-              $(".delete_skills_class").on('click',function() {
-                  var id=$(this).data("id")
-                  var token = '{{csrf_token}}';
-                  $.ajax({
-                      type: 'GET',
-                      url : '/deleteskill/'+id+'/',
-                      data :{
-                          'data': "None",
-                      },
-                      success: function (json) {
-                          window.location.reload(true);
-                      }
-                  })
-              })
-          });
-          $(document).ready(function () {
-              $(".delete_hobbies_class").on('click',function() {
-                  var id=$(this).data("id")
-                  var token = '{{csrf_token}}';
-                  $.ajax({
-                      type: 'GET',
-                      url : '/deletehobbie/'+id+'/',
-                      data :{
-                          'data': "None",
-                      },
-                      success: function (json) {
-                          window.location.reload(true);
-                      }
-                  })
-              })
-          });
-          $(document).ready(function () {
-              $(".delete_experience_class").on('click',function() {
-                  var id=$(this).data("id")
-                  var token = '{{csrf_token}}';
-                  $.ajax({
-                      type: 'GET',
-                      url : '/deleteexperience/'+id+'/',
-                      data :{
-                          'data': "None",
-                      },
-                      success: function (json) {
-                          window.location.reload(true);
-                      }
-                  })
-              })
-          });
-          $(document).ready(function () {
-              $(".delete_worksamples_class").on('click',function() {
-                  var id=$(this).data("id")
-                  var token = '{{csrf_token}}';
-                  $.ajax({
-                      type: 'GET',
-                      url : '/deleteworksamples/'+id+'/',
-                      data :{
-                          'data': "None",
-                      },
-                      success: function (json) {
-                          window.location.reload(true);
-                      }
-                  })
-              })
-          });
-          $(document).ready(function () {
-              $(".delete_achievements_class").on('click',function() {
-                  var id=$(this).data("id")
-                  var token = '{{csrf_token}}';
-                  $.ajax({
-                      type: 'GET',
-                      url : '/deleteachievements/'+id+'/',
-                      data :{
-                          'data': "None",
-                      },
-                      success: function (json) {
-                          window.location.reload(true);
-                      }
-                  })
-              })
-          });
-          $(document).ready(function () {
-              $(".delete_certificate_class").on('click',function() {
-                  var id=$(this).data("id")
-                  var token = '{{csrf_token}}';
-                  $.ajax({
-                      type: 'GET',
-                      url : '/deletecertificate/'+id+'/',
-                      data :{
-                          'data': "None",
-                      },
-                      success: function (json) {
-                          window.location.reload(true);
-                      }
-                  })
-              })
-          });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-    integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 </body>
+
 </html>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+  integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+<script>
+  function delay(callback, ms) {
+    var timer = 0;
+    return function () {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  }
+
+// Add
+
+    $("#add-education").click(delay(function () {
+      var education_form = $('#resume-education').html();
+
+      $("#another-education").append(education_form);
+      var token = '{{csrf_token}}';
+      $.ajax({
+      headers: { "X-CSRFToken": token },
+      type: 'POST',
+      url: '/add_another/{{resume.id}}',
+      data: {
+        'element': $(this).data("name")
+      },
+      success: function (json) {
+      }
+  })
+  location.reload(true);
+    }, 10) )
+
+    $("#add-skills").click(function () {
+
+      var skill_form = $('#resume-skills').html();
+      console.log($(this).data("name"))
+      $("#another-skills").append(skill_form);
+      var token = '{{csrf_token}}';
+      $.ajax({
+      headers: { "X-CSRFToken": token },
+      type: 'POST',
+      url: '/add_another/{{resume.id}}',
+      data: {
+        'element': $(this).data("name")
+      },
+      success: function (json) {
+      }
+  })
+  location.reload(true);
+    })
+
+    $("#add-experience").click(function () {
+
+     var experience_form = $('#resume-experience').html();
+     console.log($(this).data("name"))
+     $("#another-experience").append(experience_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+   $("#add-worksamples").click(function () {
+
+     var worksamples_form = $('#resume-worksamples').html();
+     console.log($(this).data("name"))
+     $("#another-worksamples").append(worksamples_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+   $("#add-achievements").click(function () {
+
+     var achievements_form = $('#resume-achievements').html();
+     console.log($(this).data("name"))
+     $("#another-achievements").append(achievements_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+   $("#add-certificate").click(function () {
+
+     var certificate_form = $('#resume-certificate').html();
+     console.log($(this).data("name"))
+     $("#another-certificate").append(certificate_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+   $("#add-hobbies").click(function () {
+
+     var hobbies_form = $('#resume-hobbies').html();
+     console.log($(this).data("name"))
+     $("#another-hobbies").append(hobbies_form);
+     var token = '{{csrf_token}}';
+     $.ajax({
+     headers: { "X-CSRFToken": token },
+     type: 'POST',
+     url: '/add_another/{{resume.id}}',
+     data: {
+       'element': $(this).data("name")
+     },
+     success: function (json) {
+     }
+ })
+ location.reload(true);
+   })
+
+
+
+
+
+// Update
+$(document).ready(function () {
+  $(".data").keyup(delay(function () {
+    var token = '{{csrf_token}}';
+
+
+    var company_name = $('textarea[name^=company_name]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var designation = $('textarea[name^=designation]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var place = $('textarea[name^=place]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var role = $('textarea[name^=role]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    var project_name = $('textarea[name^=project_name]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var project_link = $('textarea[name^=project_link]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var technology = $('textarea[name^=technology]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var description = $('textarea[name^=description]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var responsibilities = $('textarea[name^=responsibilities]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    var achievements = $('textarea[name^=achievements]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    var certificate = $('textarea[name^=certificate]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    var qualification_name = $('textarea[name^=qualification_name]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var university = $('textarea[name^=university]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var year_of_passing = $('textarea[name^=year_of_passing]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+    var percentage_or_grade = $('textarea[name^=percentage_or_grade]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    var skills = $('textarea[name^=skills]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+
+    var hobbies = $('textarea[name^=hobbies]').map(function (idx, elem) {
+      return $(elem).val();
+    }).get();
+
+    var obj = $(this)
+    var id = obj.data('id');
+
+$.ajax({
+      headers: { "X-CSRFToken": token },
+      type: 'POST',
+      url: '/update_data/{{resume.id}}',
+      data: {
+        'objective': $('.objective').val(),
+        'title': $('.title').val(),
+        'company_name[]': company_name,
+        'designation[]': designation,
+        'place[]': place,
+        'role[]': role,
+        'id_skill': id,
+        'project_name[]': project_name,
+        'project_link[]': project_link,
+        'technology[]': technology,
+        'description[]': description,
+        'responsibilities[]': responsibilities,
+        'achievements[]': achievements,
+        'certificate[]': certificate,
+        'qualification_name[]': qualification_name,
+        // 'qualification_n[]':qualification_n,
+        'university[]': university,
+        'year_of_passing[]': year_of_passing,
+        'percentage_or_grade[]': percentage_or_grade,
+        'skills[]': skills,
+        'hobbies[]': hobbies,
+        // 'language_name[]': language_name,
+        'address': $('.address').val(),
+        'email': $('.email').val(),
+        'mobile': $('.mobile').val(),
+        'date_of_birth': $('.date_of_birth').val(),
+        'full_name': $('.full_name').val(),
+
+
+
+
+      },
+      success: function (json) {
+      }
+    })
+
+  }, 300));
+</script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $(".delete_education_class").on('click',function() {
+        var id=$(this).data("id")
+        var token = '{{csrf_token}}';
+        $.ajax({
+            // headers: { "X-CSRFToken": token },
+            type: 'GET',
+            url: '/deleteeducation/'+id+'/',
+            data: {
+                'data':"None",
+            },
+            success: function (json) {
+                window.location.reload(true);
+            }
+        })
+    })
+  });
+  $(document).ready(function () {
+      $(".delete_skills_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteskill/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_hobbies_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deletehobbie/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_experience_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteexperience/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_worksamples_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteworksamples/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_achievements_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deleteachievements/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+  $(document).ready(function () {
+      $(".delete_certificate_class").on('click',function() {
+          var id=$(this).data("id")
+          var token = '{{csrf_token}}';
+          $.ajax({
+              type: 'GET',
+              url : '/deletecertificate/'+id+'/',
+              data :{
+                  'data': "None",
+              },
+              success: function (json) {
+                  window.location.reload(true);
+              }
+          })
+      })
+  });
+</script>

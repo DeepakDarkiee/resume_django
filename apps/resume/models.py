@@ -137,12 +137,13 @@ class Achievements(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE,null=True)
     achievements = models.CharField(max_length=300)
+    date=models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.resume)
 
     class Meta:
-        ordering = ['id']
+        ordering = ['date']
 
 class Language(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

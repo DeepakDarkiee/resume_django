@@ -1,4 +1,3 @@
-
 {% load static %}
 <html>
 <head>
@@ -336,7 +335,7 @@
             </div>
             <div class="about">
                 <h2 class="title2">ACHIEVEMENTS</h2>
-                {% for object in resume.achievements_set.all %}
+                {% for object in achivement %}
                 <textarea placeholder="Achievements here..." rows="4" cols="50" class="data achievements"
                     id="achievements" name="achievements" required="">{{object.achievements}}</textarea>
                 <div class="btnset">
