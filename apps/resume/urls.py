@@ -1,23 +1,12 @@
+from django.conf.urls.static import static
 from django.urls import path
-from . import views
-from . import resumetemplate_view
 
-from django.conf import settings
-from django.conf.urls.static import static
+from . import resumetemplate_view
+from . import views
 from .views import *
-from .choice import *
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
-    path("login/", sign_in, name="sign_in"),
-    path("login/<uuid:id>/", sign_in, name="sign_in"),
-    path("sign_up/", sign_up, name="sign_up"),
-    path("sign_up/<uuid:id>", sign_up, name="sign_up"),
-    # path('pdf/', GeneratePdf.as_view()),
-
-
     path('dashboard', Dashboard.as_view(), name='dashboard'),
     path('fresher', FresherResumeInput.as_view(), name='fresher_input'),
     path('experience', ExperienceResumeInput.as_view(), name='experience_input'),
@@ -41,7 +30,6 @@ urlpatterns = [
     path('updateresume/<uuid:id>/',
          views.ViewResumeDetail.as_view(), name='updateresume'),
 
-
     path('add-edu/', views.AddEducation.as_view(), name='add_education'),
     path('update-edu/', views.UpdateEducation.as_view(), name='update_edu'),
     path('deleteEdu/', views.DeleteEducation.as_view(), name='deleteEdu'),
@@ -52,14 +40,12 @@ urlpatterns = [
     path('add-hobbie/', views.AddHobbiesData.as_view(), name='add_hobbies'),
     path('update_hobbie/', UpdateHobbies.as_view(), name='update_hobbie'),
 
-
     path('add-achievements/', views.AddAchievementsData.as_view(),
          name='add_achievements'),
     path('deleteachievements/<uuid:id>/',
          views.DeleteAchievements.as_view(), name='deleteachievements'),
     path('update_achievements/', UpdateAchievements.as_view(),
          name='update_achievements'),
-
 
     path('add-experience/', views.AddExperienceData.as_view(), name='add_experience'),
     path('deleteexperience/', views.DeleteExperience.as_view(),
@@ -75,7 +61,6 @@ urlpatterns = [
     path('template4', choose_template4, name='template4'),
 
     # path('update-resumeskills',ResumeUpdateSkills.as_view(),name='update-resumeskills'),
-
 
     # path('resumeupdate-edu/', views.ResumeUpdateEducation.as_view(), name='resumeupdate_edu'),
 
@@ -95,11 +80,10 @@ urlpatterns = [
     path('update_data/<uuid:id>', UpdateDataView.as_view(), name='update_data'),
     path('add_another/<uuid:id>', AddAnother.as_view(), name='add_another'),
     #     path('delete_block/<int:id>', DeleteBlock.as_view(), name='delete_block'),
-    
+
     #     path('create_data_template/', CreateTemplateData.as_view(), name='create_data_template'),
     path('create_resume/<int:id>', CreateResumeView.as_view(), name='create_resume'),
     path('image_upload/<uuid:id>', ImageUpload.as_view(), name='image_upload'),
-
 
     path('deleteeducation/<uuid:id>/',
          views.DeleteEducation.as_view(), name='deleteeducation'),
@@ -115,19 +99,14 @@ urlpatterns = [
     path('deletehobbie/<uuid:id>/',
          views.DeleteHobbies.as_view(), name='deletehobbie'),
 
-    
+    #######################################################################################
 
-
-#######################################################################################
-
-
-   path('template_preview/<uuid:id>',TemplatePreviews.as_view(), name='template_preview'),
-   path('template_preview2/<uuid:id>',TemplatePreviews2.as_view(), name='template_preview2'),
-   path('template_preview3/<uuid:id>',TemplatePreviews3.as_view(), name='template_preview3'),                  
-   path('template_preview4/<uuid:id>',TemplatePreviews4.as_view(), name='template_preview4'),
-   path('template_preview5/<uuid:id>',TemplatePreviews5.as_view(), name='template_preview5'),                                    
-   path('template_preview6/<uuid:id>',TemplatePreviews6.as_view(), name='template_preview6'),                                    
-
+    path('template_preview/<uuid:id>', TemplatePreviews.as_view(), name='template_preview'),
+    path('template_preview2/<uuid:id>', TemplatePreviews2.as_view(), name='template_preview2'),
+    path('template_preview3/<uuid:id>', TemplatePreviews3.as_view(), name='template_preview3'),
+    path('template_preview4/<uuid:id>', TemplatePreviews4.as_view(), name='template_preview4'),
+    path('template_preview5/<uuid:id>', TemplatePreviews5.as_view(), name='template_preview5'),
+    path('template_preview6/<uuid:id>', TemplatePreviews6.as_view(), name='template_preview6'),
 
 ]
 if settings.DEBUG:

@@ -1,89 +1,23 @@
-import datetime
-from .utils import get_childs
-from django.http import HttpResponse
-from django.core import mail
-from django.contrib.auth import authenticate, login, logout
-from django.template.loader import get_template
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
-from django.db import IntegrityError
-from django.core.mail import send_mail
-from resume_maker import settings
-from django.http import HttpResponse
-from collections import UserString
-from django.http.response import HttpResponse, HttpResponseRedirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from .forms import UserForm
-from django.shortcuts import redirect, render
-from django.views import View
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-import pdfkit
-from .models import *
-from apps.users.models import *
-from .forms import *
-import random
 from datetime import date
-import string
-from django.contrib.auth.models import User
+
+import pdfkit
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import redirect, render
+from django.utils.decorators import method_decorator
+from django.views import View
+
+from resume_maker import settings
+from .forms import *
+from .utils import get_childs
+
 date = date.strftime
 from django.contrib.auth import get_user_model
 from django.http import HttpResponse, JsonResponse
+
 User = get_user_model()
-
-
-def sign_up(request, id=None):
-    if request.method == "POST":
-        print(request.POST)
-        first_name = request.POST["firstname"]
-        last_name = request.POST["lastname"]
-        username = request.POST["username"]
-        password = request.POST["password"]
-        # print(request.POST['r_id'])
-        # email = request.POST["email"]
-        try:
-
-            user = User.objects.create_user(
-                first_name=first_name, last_name=last_name, username=username, password=password)
-            # resume_id = request.POST.get("r_id")
-            if id is not None:
-                resume = Resume.objects.get(id=id)
-                resume.user = user
-                resume.save()
-            if user.is_active == False:
-                return render(request, 'resume/sign_in.html')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                form = login(request, user)
-                messages.success(request, f' welcome {username} !!')
-                return redirect('dashboard')
-
-        except IntegrityError as e:
-            return render(request, "resume/sign_up.html", {"status": "Mr/Miss. {} your Account Already  Exist".format(username),'id':id})
-    else:
-        return render(request, "resume/sign_up.html",{'id':id})
-
-
-def sign_in(request, id=None):
-    if request.method == 'POST':
-
-        # AuthenticationForm_can_also_be_used__
-
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if id is not None:
-            resume = Resume.objects.get(id=id)
-            resume.user = user
-            resume.save()
-        if user is not None:    
-            form = login(request, user)
-            messages.success(request, f' welcome {username} !!')
-            return redirect('dashboard')
-        else:
-            messages.info(request,f'account does not exist please sign in')
-    form = AuthenticationForm()
-    return render(request, 'resume/sign_in.html',{'id':id})
 
 
 def mail(user, password):
@@ -91,7 +25,7 @@ def mail(user, password):
     msg = f"Congratulations for your successfull ResumeForm username {user} ,password {password}"
     to = "nisha.thoughtwin@gmail.com"
     res = send_mail(subject, msg, settings.EMAIL_HOST_USER, [to])
-    if(res == 1):
+    if (res == 1):
         msg = "Mail Sent Successfully"
     else:
         msg = "Mail could not sent"
@@ -100,15 +34,15 @@ def mail(user, password):
 
 class Home(View):
     def get(self, request):
-        theme=ChooseTemplate.objects.all()
-        response =HttpResponse("200 ok")
-        response.set_cookie('last_work', '') 
-        last_work=None
+        theme = ChooseTemplate.objects.all()
+        response = HttpResponse("200 ok")
+        response.set_cookie('last_work', '')
+        last_work = None
         try:
-            last_work  = request.COOKIES['last_work']
+            last_work = request.COOKIES['last_work']
         except KeyError as ke:
             pass
-        return render(request, 'index.html',{'theme':theme,'last_work':last_work})
+        return render(request, 'index.html', {'theme': theme, 'last_work': last_work})
 
 
 class Dashboard(View):
@@ -117,14 +51,12 @@ class Dashboard(View):
     def get(self, request):
         user = request.user
         if user.is_superuser:
-            resumes=Resume.objects.all()
+            resumes = Resume.objects.all()
         else:
-            childs = get_childs(user,[])
+            childs = get_childs(user, [])
             resumes = Resume.objects.filter(user__in=childs)
             # resume = team_resume | user_resume
         return render(request, 'resume/dashboard.html', {'resumes': resumes, })
-
-
 
 
 class FresherResumeInput(View):
@@ -150,7 +82,7 @@ class FresherResumeInput(View):
             for skill in skills:
                 skill = Skills.objects.create(resume=resume, skills=skill)
 
-             # handel hobbies:
+            # handel hobbies:
             hobbies = request.POST.getlist("hobbies")
             for hobby in hobbies:
                 hobby = Hobbies.objects.create(resume=resume, hobbies=hobby)
@@ -195,16 +127,16 @@ class FresherResumeInput(View):
                 for l in request.POST.getlist('university'):
                     if e < len(request.POST.getlist('university')) and l not in temp_l:
                         i.university = l
-                        temp_l.append(l+"1")
+                        temp_l.append(l + "1")
                         break
                     else:
                         i.university = l
 
                 i.save()
-                e = e+1
+                e = e + 1
 
                 i.save()
-                e = e+1
+                e = e + 1
 
         if request.user.is_authenticated:
             user = request.user
@@ -260,7 +192,8 @@ class ExperienceResumeInput(View):
             address = request.POST.get('address')
             photo = request.FILES.get('photo')
             resume_user = ResumeUserDetails(resume=resume,
-                                            email=email, mobile=mobile, date_of_birth=date_of_birth, address=address, photo=photo)
+                                            email=email, mobile=mobile, date_of_birth=date_of_birth, address=address,
+                                            photo=photo)
             resume_user.save()
 
             # handel skills
@@ -269,7 +202,7 @@ class ExperienceResumeInput(View):
             for skill in skills:
                 skill = Skills.objects.create(resume=resume, skills=skill)
 
-             # handel hobbies:
+            # handel hobbies:
             hobbies = request.POST.getlist("hobbies")
             for hobby in hobbies:
                 hobby = Hobbies.objects.create(resume=resume, hobbies=hobby)
@@ -314,13 +247,13 @@ class ExperienceResumeInput(View):
                 for l in request.POST.getlist('university'):
                     if e < len(request.POST.getlist('university')) and l not in temp_l:
                         i.university = l
-                        temp_l.append(l+"1")
+                        temp_l.append(l + "1")
                         break
                     else:
                         i.university = l
 
                 i.save()
-                e = e+1
+                e = e + 1
 
             # handle Experience request
             experience = request.POST.getlist('company_name')
@@ -371,10 +304,9 @@ class ExperienceResumeInput(View):
                     else:
                         i.place = n
                 i.save()
-                e = e+1
+                e = e + 1
 
-
-# handle worksample request
+            # handle worksample request
             worksamples = request.POST.getlist('project_name')
             e = 1
             temp_j = []
@@ -423,7 +355,7 @@ class ExperienceResumeInput(View):
                         i.date = n
 
                 i.save()
-                e = e+1
+                e = e + 1
 
             print(request.POST)
             if request.user.is_authenticated:
@@ -472,6 +404,7 @@ class Template1(View):
         context['skillsform'] = skillsform
 
         return render(request, 'resume/template1.html', context)
+
 
 # @method_decorator(login_required, name='dispatch')
 # class Template1(View):
@@ -548,9 +481,12 @@ class ViewResumeDetail(View):
         certificate = Certificate.objects.filter(resume=resume)
         # languageform = LanguageForm()
         # language = Language.objects.filter(resume=resume)
-        context = {'resume': resume, 'eduform': eduform, 'education': education, 'skillsform': skillsform, 'skills': skills, 'hobbiesform': hobbiesform,
-                   'hobbies': hobbies, 'achievementsform': achievementsform, 'achievements': achievements, 'experienceform': experienceform, 'experience': experience,
-                   'worksamplesform': worksamplesform, 'worksamples': worksamples, 'certificateform': certificateform, 'certificate': certificate,
+        context = {'resume': resume, 'eduform': eduform, 'education': education, 'skillsform': skillsform,
+                   'skills': skills, 'hobbiesform': hobbiesform,
+                   'hobbies': hobbies, 'achievementsform': achievementsform, 'achievements': achievements,
+                   'experienceform': experienceform, 'experience': experience,
+                   'worksamplesform': worksamplesform, 'worksamples': worksamples, 'certificateform': certificateform,
+                   'certificate': certificate,
                    }
         return render(request, 'resume/updatedata.html', context)
 
@@ -560,7 +496,6 @@ class ViewResumeDetail(View):
 class AddEducation(View):
     @method_decorator(login_required)
     def post(self, request, id):
-
         resume = Resume.objects.get(pk=request.POST.get('id'))
         qualification = request.POST.get("qualification_name")
         year = request.POST.get("year_of_passing")
@@ -579,7 +514,6 @@ class UpdateEducation(View):
 
     @method_decorator(login_required)
     def post(self, request):
-
         degree = request.POST.get("qualification_name")
         year = request.POST.get("year_of_passing")
         percentage = request.POST.get("percentage_or_grade")
@@ -638,12 +572,13 @@ class UpdateSkills(View):
 class DeleteSkills(View):
     @method_decorator(login_required)
     def get(self, request, id):
-
         skills = Skills.objects.get(id=id)
 
         skills.delete()
 
         return HttpResponseRedirect("/dashboard/")
+
+
 # ..................................................................
 
 
@@ -682,6 +617,7 @@ class DeleteHobbies(View):
         hobbies.delete()
         return redirect("dashboard")
 
+
 # .................................................................
 
 
@@ -719,13 +655,14 @@ class DeleteAchievements(View):
         achievements = Achievements.objects.get(id=id)
         achievements.delete()
         return HttpResponseRedirect("/dashboard")
+
+
 # ..................................................................
 
 
 class AddExperienceData(View):
     @method_decorator(login_required)
     def post(self, request):
-
         resume = Resume.objects.get(pk=request.POST.get('id'))
         company_name = request.POST.get("company_name")
         designation = request.POST.get("designation")
@@ -769,13 +706,13 @@ class DeleteExperience(View):
         resume_id = request.POST.get("r_id")
         return redirect("template1")
 
+
 # ..............................................................................
 
 
 class AddWorkSamples(View):
     @method_decorator(login_required)
     def post(self, request):
-
         resume = Resume.objects.get(pk=request.POST.get('id'))
         project_name = request.POST.get("project_name")
         project_link = request.POST.get("project_link")
@@ -785,7 +722,8 @@ class AddWorkSamples(View):
         date = request.POST.get("date")
 
         addworksample = Experience(resume=resume, project_name=project_name, project_link=project_link,
-                                   technology=technology, description=description, responsibilities=responsibilities, date=date)
+                                   technology=technology, description=description, responsibilities=responsibilities,
+                                   date=date)
 
         addworksample.save()
         print(request.POST)
@@ -818,11 +756,11 @@ class DeleteWorkSamples(View):
         resume_id = request.POST.get("r_id")
         return redirect("template1")
 
+
 # ..............................................................................
 
 
 def choose_template1(request):
-
     form1 = ResumeForm
 
     form2 = ResumeUserDetailsForm
@@ -838,12 +776,12 @@ def choose_template1(request):
     template1 = "resume_templates/template1.html"
     choose_template = ChooseTemplate.objects.create(name=template1)
     context = {'form1': form1, 'form2': form2, 'template': choose_template,
-               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8, 'form9': form9, }
+               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8,
+               'form9': form9, }
     return render(request, 'resume/template.html', context)
 
 
 def choose_template2(request):
-
     form1 = ResumeForm
     form2 = ResumeUserDetailsForm
     form3 = EducationFormSet(queryset=Education.objects.none())
@@ -857,13 +795,13 @@ def choose_template2(request):
     template2 = "resume_templates/template2.html"
     choose_template = ChooseTemplate.objects.create(name=template2)
     context = {'form1': form1, 'form2': form2, 'template': choose_template,
-               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8, 'form9': form9, }
+               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8,
+               'form9': form9, }
 
     return render(request, 'resume/fresher.html', context)
 
 
 def choose_template3(request):
-
     form1 = ResumeForm
     form2 = ResumeUserDetailsForm
     form3 = EducationFormSet(queryset=Education.objects.none())
@@ -877,13 +815,13 @@ def choose_template3(request):
     template3 = "resume_templates/template3.html"
     choose_template = ChooseTemplate.objects.create(name=template3)
     context = {'form1': form1, 'form2': form2, 'template': choose_template,
-               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8, 'form9': form9, }
+               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8,
+               'form9': form9, }
 
     return render(request, 'resume/fresher.html', context)
 
 
 def choose_template4(request):
-
     form1 = ResumeForm
     form2 = ResumeUserDetailsForm
     form3 = EducationFormSet(queryset=Education.objects.none())
@@ -897,7 +835,8 @@ def choose_template4(request):
     template4 = "resume_templates/template4.html"
     choose_template = ChooseTemplate.objects.create(name=template4)
     context = {'form1': form1, 'form2': form2, 'template': choose_template,
-               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8, 'form9': form9, }
+               'form3': form3, 'form4': form4, 'form5': form5, 'form6': form6, 'form7': form7, 'form8': form8,
+               'form9': form9, }
 
     return render(request, 'resume/fresher.html', context)
 
@@ -925,9 +864,6 @@ def test(request):
     else:
         print("none")
         return HttpResponse("None")
-
-
-
 
 
 # Add template
@@ -975,10 +911,10 @@ class AddAnother(View):
 
 # Create for template
 class CreateResumeView(View):
-    def get(self, request,id, *args, **kwargs):
+    def get(self, request, id, *args, **kwargs):
         resume = Resume.objects.create()
-        template=ChooseTemplate.objects.get(id=id)
-        resume.template=template
+        template = ChooseTemplate.objects.get(id=id)
+        resume.template = template
         resume.save()
         experience = Experience.objects.create(resume=resume)
         work_samples = WorkSamples.objects.create(resume=resume)
@@ -991,7 +927,6 @@ class CreateResumeView(View):
         return redirect(f'/update_data/{resume.id}')
 
 
-
 # Delete for template
 
 
@@ -1001,8 +936,7 @@ class DeleteExperience(View):
         experience.delete()
         resume_id = experience.resume.id
         # print(hobbies.resume.id)
-        return redirect("/update_data/"+str(resume_id))
-
+        return redirect("/update_data/" + str(resume_id))
 
 
 class DeleteExperience(View):
@@ -1010,10 +944,9 @@ class DeleteExperience(View):
         experience = Experience.objects.get(id=id)
         resume_id = experience.resume.id
         experience.delete()
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
         # print(hobbies.resume.id)
         # return redirect("/update_data/"+str(resume_id))
-
 
 
 class DeleteEducation(View):
@@ -1021,9 +954,8 @@ class DeleteEducation(View):
         education = Education.objects.get(id=id)
         resume_id = education.resume.id
         education.delete()
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
         # return redirect("/update_data/"+str(resume_id))
-
 
 
 class DeleteWorkSamples(View):
@@ -1031,7 +963,7 @@ class DeleteWorkSamples(View):
         deleteworksamples = WorkSamples.objects.get(id=id)
         resume_id = deleteworksamples.resume.id
         deleteworksamples.delete()
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
         # print(hobbies.resume.id)
         # return redirect("/update_data/"+str(resume_id))
 
@@ -1041,10 +973,9 @@ class DeleteAchievements(View):
         deleteachievements = Achievements.objects.get(id=id)
         resume_id = deleteachievements.resume.id
         deleteachievements.delete()
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
         # print(hobbies.resume.id)
         # return redirect("/update_data/"+str(resume_id))
-
 
 
 class DeleteCertificate(View):
@@ -1052,10 +983,9 @@ class DeleteCertificate(View):
         certificate = Certificate.objects.get(id=id)
         resume_id = certificate.resume.id
         certificate.delete()
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
         # print(hobbies.resume.id)
         # return redirect("/update_data/"+str(resume_id))
-
 
 
 class DeleteSkills(View):
@@ -1064,9 +994,8 @@ class DeleteSkills(View):
         resume_id = skills.resume.id
         skills.delete()
         # print(skills.resume.id)
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
         # return redirect("/update_data/"+str(resume_id))
-
 
 
 class DeleteHobbies(View):
@@ -1074,9 +1003,8 @@ class DeleteHobbies(View):
         hobbies = Hobbies.objects.get(id=id)
         resume_id = hobbies.resume.id
         hobbies.delete()
-        return JsonResponse({'status':True})
+        return JsonResponse({'status': True})
 
-        
 
 # ImageUpload for template
 class ImageUpload(View):
@@ -1086,151 +1014,149 @@ class ImageUpload(View):
         print(photo)
         user_data.photo = photo
         user_data.save()
-        return redirect("/update_data/"+str(id))
-
-          
+        return redirect("/update_data/" + str(id))
 
 
-
-########################################################################################
-
-
-# Update for template
 class UpdateDataView(View):
-    def post(self, request, id):
+
+    def post(self, request, id, *args, **kwargs):
+        """
+            Method to update template content.
+        """
         resume = Resume.objects.get(id=id)
         if request.method == 'POST':
-            # import pdb; pdb.set_trace()
             objective = request.POST.get('objective', '')
             title = request.POST.get('title', '')
             resume.objective = objective
             resume.title = title
             resume.save()
 
-            experience = Experience.objects.filter(resume__id=id)
-            for count in range(experience.count()):
-
-                experience = Experience.objects.filter(resume__id=id)[count]
-                company_name = request.POST.getlist("company_name[]")[count]
-                designation = request.POST.getlist("designation[]")[count]
-                role = request.POST.getlist("role[]")[count]
-                place = request.POST.getlist("place[]")[count]
-                company_name = company_name
-                experience.company_name = company_name
-                experience.designation = designation
-                experience.role = role
-                experience.place = place
+            experience_data_list = resume.experience_set.all()
+            company_names = request.POST.getlist("company_name[]")
+            res = max(idx for idx, val in enumerate(company_names) if val == '')
+            company_names.pop(res)
+            designations = request.POST.getlist("designation[]")
+            res = max(idx for idx, val in enumerate(designations) if val == '')
+            designations.pop(res)
+            roles = request.POST.getlist("role[]")
+            res = max(idx for idx, val in enumerate(roles) if val == '')
+            roles.pop(res)
+            places = request.POST.getlist("place[]")
+            res = max(idx for idx, val in enumerate(places) if val == '')
+            places.pop(res)
+            for count, experience in enumerate(experience_data_list):
+                experience.company_name = company_names[count]
+                experience.designation = designations[count]
+                experience.role = roles[count]
+                experience.place = places[count]
                 experience.save()
 
-            worksamples_data = WorkSamples.objects.filter(resume__id=id)
-            for count in range(worksamples_data.count()):
-
-                worksamples_data = WorkSamples.objects.filter(resume__id=id)[
-                    count]
-                project_name = request.POST.getlist("project_name[]")[count]
-                project_link = request.POST.getlist("project_link[]")[count]
-                technology = request.POST.getlist("technology[]")[count]
-                description = request.POST.getlist("description[]")[count]
-                responsibilities = request.POST.getlist(
-                    "responsibilities[]")[count]
-                worksamples_data.project_name = project_name
-                worksamples_data.project_link = project_link
-                worksamples_data.technology = technology
-                worksamples_data.description = description
-                worksamples_data.responsibilities = responsibilities
+            worksamples_data_list = resume.worksamples_set.all()
+            project_names = request.POST.getlist("project_name[]")
+            res = max(idx for idx, val in enumerate(project_names) if val == '')
+            project_names.pop(res)
+            project_links = request.POST.getlist("project_link[]")
+            res = max(idx for idx, val in enumerate(project_links) if val == '')
+            project_links.pop(res)
+            technologies = request.POST.getlist("technology[]")
+            res = max(idx for idx, val in enumerate(technologies) if val == '')
+            technologies.pop(res)
+            descriptions = request.POST.getlist("description[]")
+            res = max(idx for idx, val in enumerate(descriptions) if val == '')
+            descriptions.pop(res)
+            responsibilities = request.POST.getlist("responsibilities[]")
+            res = max(idx for idx, val in enumerate(responsibilities) if val == '')
+            responsibilities.pop(res)
+            for count, worksamples_data in enumerate(worksamples_data_list):
+                worksamples_data.project_name = project_names[count]
+                worksamples_data.project_link = project_links[count]
+                worksamples_data.technology = technologies[count]
+                worksamples_data.description = descriptions[count]
+                worksamples_data.responsibilities = responsibilities[count]
                 worksamples_data.save()
 
-            achievements_data = Achievements.objects.filter(resume__id=id)
-            for count in range(achievements_data.count()):
-
-                achievements_data = Achievements.objects.filter(resume__id=id)[
-                    count]
-                achievements = request.POST.getlist("achievements[]")[count]
-                achievements_data.achievements = achievements
+            achievements_data_list = resume.achievements_set.all()
+            achievements = request.POST.getlist("achievements[]")
+            res = max(idx for idx, val in enumerate(achievements) if val == '')
+            achievements.pop(res)
+            for count, achievements_data in enumerate(achievements_data_list):
+                achievements_data.achievements = achievements[count]
                 achievements_data.save()
 
-            certificate_data = Certificate.objects.filter(resume__id=id)
-            for count in range(certificate_data.count()):
-
-                certificate_data = Certificate.objects.filter(resume__id=id)[
-                    count]
-                certificate = request.POST.getlist("certificate[]")[count]
-                certificate_data.certificate = certificate
+            certificate_data_list = resume.certificate_set.all()
+            certificate = request.POST.getlist("certificate[]")
+            res = max(idx for idx, val in enumerate(certificate) if val == '')
+            certificate.pop(res)
+            for count, certificate_data in enumerate(certificate_data_list):
+                certificate_data.certificate = certificate[count]
                 certificate_data.save()
 
-            education_data = Education.objects.filter(resume__id=id)
-
-            for count in range(education_data.count()):
-                education_data = Education.objects.filter(resume__id=id)[count]
-                qualification_name = request.POST.getlist(
-                    "qualification_name[]")[count]
-                university = request.POST.getlist("university[]")[count]
-                year_of_passing = request.POST.getlist(
-                    "year_of_passing[]")[count]
-                percentage_or_grade = request.POST.getlist(
-                    "percentage_or_grade[]")[count]
-
-                education_data.qualification_name = qualification_name
-                education_data.university = university
-                education_data.year_of_passing = year_of_passing
-                education_data.percentage_or_grade = percentage_or_grade
+            education_data_list = resume.education_set.all()
+            qualification_names = request.POST.getlist("qualification_name[]")
+            res = max(idx for idx, val in enumerate(qualification_names) if val == '')
+            qualification_names.pop(res)
+            universitys = request.POST.getlist("university[]")
+            res = max(idx for idx, val in enumerate(universitys) if val == '')
+            universitys.pop(res)
+            year_of_passings = request.POST.getlist("year_of_passing[]")
+            res = max(idx for idx, val in enumerate(year_of_passings) if val == '')
+            year_of_passings.pop(res)
+            percentage_or_grades = request.POST.getlist("percentage_or_grade[]")
+            res = max(idx for idx, val in enumerate(percentage_or_grades) if val == '')
+            percentage_or_grades.pop(res)
+            for count, education_data in enumerate(education_data_list):
+                education_data.qualification_name = qualification_names[count]
+                education_data.university = universitys[count]
+                education_data.year_of_passing = year_of_passings[count]
+                education_data.percentage_or_grade = percentage_or_grades[count]
                 education_data.save()
 
-            # print(request.POST)
-            skills_data = Skills.objects.filter(resume__id=id)
-            for count in range(skills_data.count()):
-                skills_data = Skills.objects.filter(resume__id=id)[count]
-                skills = request.POST.getlist("skills[]")[count]
-                skills_data.skills = skills
+            skills_data_list = resume.skills_set.all()
+            skills = request.POST.getlist("skills[]")
+            res = max(idx for idx, val in enumerate(skills) if val == '')
+            skills.pop(res)
+            for count, skills_data in enumerate(skills_data_list):
+                skills_data.skills = skills[count]
                 skills_data.save()
-                
 
-            hobbies_data = Hobbies.objects.filter(resume__id=id)
-            for count in range(hobbies_data.count()):
-
-                hobbies_data = Hobbies.objects.filter(resume__id=id)[count]
-                hobbies = request.POST.getlist("hobbies[]")[count]
-                hobbies_data.hobbies = hobbies
+            hobbies_data_list = resume.hobbies_set.all()
+            hobbies = request.POST.getlist("hobbies[]")
+            res = max(idx for idx, val in enumerate(hobbies) if val == '')
+            hobbies.pop(res)
+            for count, hobbies_data in enumerate(hobbies_data_list):
+                hobbies_data.hobbies = hobbies[count]
                 hobbies_data.save()
-               
 
             user_data = ResumeUserDetails.objects.get(resume__id=id)
-            full_name = request.POST.get("full_name")
-            address = request.POST.get("address")
-            email = request.POST.get("email")
-            mobile = request.POST.get("mobile")
-            date_of_birth = request.POST.get("date_of_birth")
-            # photo=request.POST.get('photo')
-            print(full_name)
-            user_data.full_name = full_name
-            user_data.address = address
-            user_data.email = email
-            user_data.mobile = mobile
-            user_data.date_of_birth = date_of_birth
-            # user_data.photo = photo
+            user_data.full_name = request.POST.get("full_name")
+            user_data.address = request.POST.get("address")
+            user_data.email = request.POST.get("email")
+            user_data.mobile = request.POST.get("mobile")
+            user_data.date_of_birth = request.POST.get("date_of_birth")
             user_data.resume = resume
             user_data.save()
-            response =HttpResponse("200 ok")
-            response.set_cookie('last_work', f'http://127.0.0.1:8000/update_data/{id}') 
+            response = HttpResponse("200 ok")
+            response.set_cookie('last_work', f'http://127.0.0.1:8000/update_data/{id}')
             return response
-            # return JsonResponse(experience)
-    def get(self, request, id):
+
+    def get(self, request, id, *args, **kwargs):
+        """
+            Get template selected by user.
+        """
         resume = Resume.objects.get(id=id)
+
         if resume.template.name == "template":
             return render(request, 'resume/template6.html', {'resume': resume})
         if resume.template.name == "template2":
             return render(request, 'resume/template2.html', {'resume': resume})
-        if resume.template.name == "template3":   
-            return render(request, 'resume/template3.html', {'resume': resume}) 
+        if resume.template.name == "template3":
+            return render(request, 'resume/template3.html', {'resume': resume})
         if resume.template.name == "template4":
-            return render(request, 'resume/template4.html', {'resume': resume}) 
+            return render(request, 'resume/template4.html', {'resume': resume})
         if resume.template.name == "template5":
-            return render(request, 'resume/template5.html', {'resume': resume}) 
+            return render(request, 'resume/template5.html', {'resume': resume})
         if resume.template.name == "template6":
-            return render(request, 'resume/template.html', {'resume': resume}) 
-            
-             
-           
+            return render(request, 'resume/template.html', {'resume': resume})
 
 
 class TemplatePreviews6(View):
@@ -1242,16 +1168,13 @@ class TemplatePreviews6(View):
         return render(request, 'resume/template_previews6.html', context)
 
 
-
-
 class TemplatePreviews2(View):
     def get(self, request, id):
         context = {}
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews2.html', context)  
-
+        return render(request, 'resume/template_previews2.html', context)
 
 
 class TemplatePreviews3(View):
@@ -1260,8 +1183,7 @@ class TemplatePreviews3(View):
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews3.html', context)        
-
+        return render(request, 'resume/template_previews3.html', context)
 
 
 class TemplatePreviews4(View):
@@ -1270,7 +1192,7 @@ class TemplatePreviews4(View):
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews4.html', context)  
+        return render(request, 'resume/template_previews4.html', context)
 
 
 class TemplatePreviews5(View):
@@ -1279,7 +1201,8 @@ class TemplatePreviews5(View):
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews5.html', context)  
+        return render(request, 'resume/template_previews5.html', context)
+
 
 class TemplatePreviews(View):
     def get(self, request, id):
@@ -1287,6 +1210,4 @@ class TemplatePreviews(View):
         user = request.user
         resume = Resume.objects.filter(id=id).last()
         context['resume'] = resume
-        return render(request, 'resume/template_previews.html', context)  
-
-
+        return render(request, 'resume/template_previews.html', context)

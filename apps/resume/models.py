@@ -28,6 +28,9 @@ class Resume(models.Model):
     def __str__(self):
         return str(self.title)
 
+    class Meta:
+        ordering = ['id']
+
         
 
 class ResumeUserDetails(models.Model):
@@ -58,6 +61,9 @@ class Education(models.Model):
     def __str__(self):
         return str(self.resume)
 
+    class Meta:
+        ordering = ['id']
+
 
 class Experience(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -87,6 +93,9 @@ class WorkSamples(models.Model):
     logo = models.ImageField(upload_to='images/logos/')
     date = models.DateField(null=True, blank=True  )
 
+    class Meta:
+        ordering = ['id']
+
 
 class Hobbies(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -95,6 +104,9 @@ class Hobbies(models.Model):
 
     def __str__(self):
         return str(self.resume)
+
+    class Meta:
+        ordering = ['id']
 
 
 class Skills(models.Model):
@@ -105,6 +117,9 @@ class Skills(models.Model):
     def __str__(self):
         return str(self.resume)
 
+    class Meta:
+        ordering = ['id']
+
 
 class Certificate(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -113,6 +128,9 @@ class Certificate(models.Model):
     date_obtained = models.DateField(null=True, blank=True)
     def __str__(self):
         return str(self.resume)
+
+    class Meta:
+        ordering = ['id']
 
 
 class Achievements(models.Model):
@@ -123,10 +141,17 @@ class Achievements(models.Model):
     def __str__(self):
         return str(self.resume)
 
+    class Meta:
+        ordering = ['id']
+
 class Language(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     resume = models.ForeignKey(Resume, on_delete=models.CASCADE, blank=True,null=True)
     language_name = models.CharField(max_length=255, blank=True)
     competency = models.IntegerField(choices=COMPETENCY_CHOICES, null=True, blank=True)
+
     def __str__(self):
         return str(self.resume)
+
+    class Meta:
+        ordering = ['id']
