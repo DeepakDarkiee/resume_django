@@ -1,26 +1,25 @@
-{% extends 'base.html' %}
-{% block css %}
+{% extends 'base.html' %} {% block css %}
 <style>
-html{
-   scroll-behavior: smooth;
-}
-.main-banner h1 {
-    text-align: left;
-}
-
-.service-content p {
-    text-align: center;
-}
-.pt-4, .py-4 {
-    padding-top: 0.0rem!important;
-}
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    .main-banner h1 {
+        text-align: left;
+    }
+    
+    .service-content p {
+        text-align: center;
+    }
+    
+    .pt-4,
+    .py-4 {
+        padding-top: 0rem !important;
+    }
 </style>
-{% endblock css %}
+{% endblock css %} {% block main %} {% include 'navbar.html' %}
 
-{% block main %}
-{% include 'navbar.html' %}
-
-<div class="top-bar bg-dark " id="top-bar">
+<div class="top-bar bg-dark" id="top-bar">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-6">
@@ -32,53 +31,60 @@ html{
 
             <div class="col-lg-4 ml-lg-auto col-md-6">
                 <ul class="d-flex list-unstyled header-socials float-lg-right">
-                    <li><a href="#"> <i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"> <i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"> <i class="fab fa-pinterest-p"></i></a></li>
-                    <li><a href="#"> <i class="fab fa-linkedin"></i></a></li>
+                    <li>
+                        <a href="#"> <i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="fab fa-pinterest-p"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"> <i class="fab fa-linkedin"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-
-  <!-- HERO
+<!-- HERO
     ================================================== -->
-    <section class="banner-area py-4">
-        <!-- Content -->
-        <div class="container">
-            <div class="row  align-items-center">
-                <div class="col-md-12 col-lg-7 text-center text-lg-left">
-                    <div class="main-banner">
-                        <!-- Heading -->
-                        <h1 class="display-4 mb-4 font-weight-normal">
-                            <b>TRY THE BEST RESUME BUILDER ONLINE</b>
-                            
-                        </h1>
+<section class="banner-area py-4">
+    <!-- Content -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-7 text-center text-lg-left">
+                <div class="main-banner">
+                    <!-- Heading -->
+                    <h1 class="display-4 mb-4 font-weight-normal">
+                        <b>TRY THE BEST RESUME BUILDER ONLINE</b>
+                    </h1>
 
-                        <!-- Subheading -->
-                        <p class="lead mb-4">
-                            Get all the help you need to create a professional CV in minutes
-                     </p>
-
-                     <!-- Button -->
-                     <p class="mb-0">
-                        <a href="#services-2" class="btn btn-primary btn-circled">
-                            CREATE MY CV
-                        </a>
+                    <!-- Subheading -->
+                    <p class="lead mb-4">
+                        Get all the help you need to create a professional CV in minutes
                     </p>
 
+                    <!-- Button -->
+                    <p class="mb-0">
+                        <a href="#services-2" class="btn btn-primary btn-circled">
+              CREATE MY CV
+            </a>
+                    </p>
                 </div>
             </div>
 
             <div class="col-lg-5 d-none d-lg-block">
                 <div class="banner-img-block">
-                    <img src="../static/resume/images/banner-img-5.png" alt="banner-img" class="img-fluid">
+                    <img src="../static/resume/images/banner-img-5.png" alt="banner-img" class="img-fluid" />
                 </div>
             </div>
-        </div> <!-- / .row -->
-    </div> <!-- / .container -->
+        </div>
+        <!-- / .row -->
+    </div>
+    <!-- / .container -->
 </section>
 
 <section class="section bg-grey" id="feature">
@@ -110,7 +116,9 @@ html{
                         <i class="ti-wallet"></i>
                     </div>
                     <h4 class="mb-2">Compare the best</h4>
-                    <p>We only compare market leaders with a reputation for service quality.</p>
+                    <p>
+                        We only compare market leaders with a reputation for service quality.
+                    </p>
                 </div>
             </div>
 
@@ -120,77 +128,73 @@ html{
                         <i class="ti-dashboard"></i>
                     </div>
                     <h4 class="mb-2">Premium Services</h4>
-                    <p>We only compare market leaders with a reputation for service quality.</p>
+                    <p>
+                        We only compare market leaders with a reputation for service quality.
+                    </p>
                 </div>
             </div>
         </div>
-    </div> <!-- / .container -->
+    </div>
+    <!-- / .container -->
 </section>
 
-    <!-- SERVICE-1
+<!-- SERVICE-1
         ================================================== -->
-        <section class="bg-grey" id="service">
-            <div class="container">
-                <div class="row ">
-                    <div class="col-lg-3">
+<section class="bg-grey" id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
 
-                    </div>
-
-                    <div class="col-lg-6 pl-4">
-                        <div class="service-content">
-                            <h1>Get a better deal and start saving money today</h1>
-                            <p>We compare hundreds of leading products and plans across many categories to bring you the best value for money.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3">
-
-                    </div>
+            <div class="col-lg-6 pl-4">
+                <div class="service-content">
+                    <h1>Get a better deal and start saving money today</h1>
+                    <p>
+                        We compare hundreds of leading products and plans across many categories to bring you the best value for money.
+                    </p>
                 </div>
             </div>
-        </section>
 
-        <section class="section" id="services-2">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8 col-lg-6 text-center">
-                        <div class="section-heading">
-                            <!-- Heading -->
-                            <h2 class="section-title mb-2 text-white">
-                                Choose Resume 
-                            </h2>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+</section>
 
-                            <!-- Subheading -->
-                            <p class="mb-5 text-white">
-                                Rapoo can be used to create anything from a small marketing page to a sophisticated website.
-                            </p>
-                        </div>
-                    </div>
-                </div> <!-- / .row -->
+<section class="section" id="services-2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 text-center">
+                <div class="section-heading">
+                    <!-- Heading -->
+                    <h2 class="section-title mb-2 text-white">Choose Resume</h2>
 
-                <div class="row">
-
-                    {% for template in theme  %}
-                    
-                    
-                    <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
-                        <a href="{% url 'create_resume' template.id %}">
-                            <div class="web-service-block">
-                                <img src="{{template.theme.url}}" class="img-fluid" >
-                                
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
+                    <!-- Subheading -->
+                    <p class="mb-5 text-white">
+                        Rapoo can be used to create anything from a small marketing page to a sophisticated website.
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+        <!-- / .row -->
 
-        <!--  Page Scroll to Top  -->
+        <div class="row">
+            {% for template in theme %}
 
-        <a class="scroll-to-top js-scroll-trigger" href="#top-header">
-            <i class="fa fa-angle-up"></i>
-        </a>
-        
-        {% endblock main %}
+            <div class="col-lg-4 col-sm-6 col-md-6 mb-30">
+                <a href="{% url 'create_resume' template.id %}">
+                    <div class="web-service-block">
+                        <img src="{{template.theme.url}}" class="img-fluid" />
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
 
+<!--  Page Scroll to Top  -->
+
+<a class="scroll-to-top js-scroll-trigger" href="#top-header">
+    <i class="fa fa-angle-up"></i>
+</a>
+
+{% endblock main %}

@@ -5,7 +5,6 @@ from apps.resume.models import *
 
 
 
-
 class EducationAdmin(admin.ModelAdmin):
    
     search_fields = ['qualification_name', ]
@@ -43,9 +42,6 @@ class AchievementsAdmin(admin.ModelAdmin):
     search_fields = ['resume', ]
     list_display = ['resume', 'achievements', ]
 
-class LanguageAdmin(admin.ModelAdmin):
-    search_fields = ['resume', ]
-    list_display = ['resume', 'language_name', 'competency']
 
 
 
@@ -58,7 +54,6 @@ admin.site.register(Hobbies, HobbiesAdmin)
 admin.site.register(Skills, SkillAdmin)
 admin.site.register(Certificate, CertificateAdmin)
 admin.site.register(Achievements, AchievementsAdmin)
-admin.site.register(Language, LanguageAdmin)
 admin.site.register(ChooseTemplate)
 
 

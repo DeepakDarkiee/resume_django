@@ -1,36 +1,38 @@
-{% load static %}
-
-{% block nav %}
- 
+{% load static %} {% block nav %}
 
 <nav>
     <div class="logo">
-<img src="{% static  'resume/images/header.png' %}" alt="">
+        <img src="{% static  'resume/images/header.png' %}" alt="" />
     </div>
     <ul>
-      <!-- <h2><b><li>{{ user.get_full_name }}</li></b></h2> -->  
-      <li><a href="/dashboard"> Dashboard</a></li>
-      <li>Components</li>
-      <li>Widgets<i class="fas fa-chevron-right flecha"></i></li>
+        <!-- <h2><b><li>{{ user.get_full_name }}</li></b></h2> -->
+        <li><a href="/dashboard"> Dashboard</a></li>
+        <li>Components</li>
+        <li>Widgets<i class="fas fa-chevron-right flecha"></i></li>
         <ul class="subboton">
-          <li>Desk</li>
+            <li>Desk</li>
         </ul>
         <li>Metrics</li>
-      <li>Tables<i class="fas fa-chevron-right flecha"></i></li>
-      <ul class="subboton">
-        <li>Sales</li>
+        <li>Tables<i class="fas fa-chevron-right flecha"></i></li>
+        <ul class="subboton">
+            <li>Sales</li>
         </ul>
 
-          
         {% if user.is_teamleader %}
-        
-        <li><a class="nav-link" href="{% url 'user_list' %}" style="padding:0;">Team</a></li>
-          
-        {% endif %}
-          
-        <li>Timeline</li>
-        <li><a class="nav-link" href="{% url 'logout' %}" style="padding:0;">Logout</a></li>
-      </ul>
-      
-    </nav>
-    {% endblock nav %}
+
+        <li>
+            <a class="nav-link" href="{% url 'user_list' %}" style="padding: 0">Team</a
+      >
+    </li>
+
+    {% endif %}
+
+    <li>Timeline</li>
+    <li>
+      <a class="nav-link" href="{% url 'logout' %}" style="padding: 0"
+        >Logout</a
+      >
+    </li>
+  </ul>
+</nav>
+{% endblock nav %}

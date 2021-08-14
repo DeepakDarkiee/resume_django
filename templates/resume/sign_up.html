@@ -1,127 +1,65 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form action="" method="post">
-  {% csrf_token %}
-  <label for="username">Username : </label><input type="text" name="username" >
-  <label for="email">Email : </label><input type="email" name="email" >
-  <label for="password">Password : </label><input type="password" name="password" >
-  <button type="submit" name="submit" >Submit</button>
-  
-  </form>
-  
-</body>
-</html>
-</script>
-{% if status %}
-    <script>
-        alert("{{status}}");
-        window.location="/"
-    </script>
-{% endif %} -->
-
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Resume Maker
-  </title>
-  <link href='/static/css/style1.css' rel="stylesheet"/>
- </head>
- <body>
-  <!-- partial:index.partial.html -->
-  <div id="javascript_header">
-  </div>
-  <form method="POST" >
-    {% csrf_token %}
-   <div class="form__header">
-    <h1>
-     Sign Up
-    </h1>
-    <p>
-     Enter your login details below.
-    </p>
-   </div>
-   <div class="form-group">
-    <label for="firstname">
-     First Name
-     <span>
-      *
-     </span>
-    </label>
-    <input id="firstname" name="firstname" type="text"/ required="">
-    <div class="error" id="name__error">
-    </div>
-   </div>
-   <div class="form-group">
-    <label for="lastname">
-     Last Name
-     <span>
-      *
-     </span>
-    </label>
-    <input id="lastname" name="lastname" type="text"/ required="">
-    <div class="error" id="name__error">
-    </div>
-   </div>
-   <div class="form-group">
-    <label for="username">
-     Username
-     <span>
-      *
-     </span>
-    </label>
-    <input id="username" name="username" type="text"/ required="">
-    <div class="error" id="name__error">
-    </div>
-   </div>
-   <!-- <div class="form-group">
-    <label for="email">
-     Email
-     <span>
-      *
-     </span>
-    </label>
-    <input id="email" name="email" type="email"/>
-    <div class="error" id="name__error">
-    </div>
-   </div> -->
-   <div class="form-group">
-    <label for="password">
-     Password
-     <span>
-      *
-     </span>
-    </label>
-    <input id="password" name="password" type="password"/ required="">
-   </div>
-   <div class="line-break">
-   </div>
-   {% if id is None %}
-      <input id="register" type="submit" value="Register"/>
-    Already have an account? <a href="/login/">Sign In</a>
-   {% else %}
-      <input id="register" type="submit" value="Register"/>
-    Already have an account? <a href="/login/{{id}}">Sign In</a>
-   {% endif %}
 
-  </form>
-  <!-- partial -->
-  <script src="/static/script.js">
-  </script>
- </body>
+<head>
+    <meta charset="utf-8" />
+    <title>Resume Maker</title>
+    <link href="/static/css/style1.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div id="javascript_header"></div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form__header">
+            <h1>Sign Up</h1>
+            <p>Enter your login details below.</p>
+        </div>
+        <div class="form-group">
+            <label for="firstname">
+          First Name
+          <span> * </span>
+        </label>
+            <input id="firstname" name="firstname" type="text" required="" />
+            <div class="error" id="name__error"></div>
+        </div>
+        <div class="form-group">
+            <label for="lastname">
+          Last Name
+          <span> * </span>
+        </label>
+            <input id="lastname" name="lastname" type="text" required="" />
+            <div class="error" id="name__error"></div>
+        </div>
+        <div class="form-group">
+            <label for="username">
+          Username
+          <span> * </span>
+        </label>
+            <input id="username" name="username" type="text" required="" />
+            <div class="error" id="name__error"></div>
+        </div>
+        <div class="form-group">
+            <label for="password">
+          Password
+          <span> * </span>
+        </label>
+            <input id="password" name="password" type="password" required="" />
+        </div>
+        <div class="line-break"></div>
+        {% if id is None %}
+        <input id="register" type="submit" value="Register" /> Already have an account? <a href="{% url 'sign_in'%}">Sign In</a> {% else %}
+        <input id="register" type="submit" value="Register" /> Already have an account? <a href="{% url 'sign_in' id %}">Sign In</a> {% endif %}
+    </form>
+    <!-- partial -->
+    <script src="/static/script.js"></script>
+</body>
+
 </html>
-
 {% if status %}
-    <script>
-        alert("{{status}}");
-        window.location="/"
-    </script>
-{% endif %} 
+<script>
+    alert("{{status}}");
+    window.location = "/";
+</script>
+{% endif %}

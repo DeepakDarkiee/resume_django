@@ -1,86 +1,87 @@
 <style>
     ul.navbar-nav {
-    margin-left: auto;
-}
-.d-lg-none{
-    display: block !important;
-}
-
-.main-nav {
-    margin-bottom: -5.5%;
+        margin-left: auto;
     }
-
+    
+    .d-lg-none {
+        display: block !important;
+    }
+    
+    .main-nav {
+        margin-bottom: -5.5%;
+    }
+    
     ul.ml-lg-auto.list-unstyled.m-0 h3 {
-    color: #fff;
-    text-transform: capitalize;
-}
-
-
-
-@media screen and (max-width: 767px) {
-  .main-nav{
-    margin-bottom: 0px;
-}
-.main-navigation{
-    margin-top: 0px !important;
-}
-.navbar-collapse.collapse.show{
-    padding-bottom: 0px;
-}
-div#top-bar {
-    display: none;
-}
-}
+        color: #fff;
+        text-transform: capitalize;
+    }
+    
+    @media screen and (max-width: 767px) {
+        .main-nav {
+            margin-bottom: 0px;
+        }
+        .main-navigation {
+            margin-top: 0px !important;
+        }
+        .navbar-collapse.collapse.show {
+            padding-bottom: 0px;
+        }
+        div#top-bar {
+            display: none;
+        }
+    }
 </style>
-    <!-- NAVBAR
+<!-- NAVBAR
     ================================================= -->
-    <div class="main-navigation mt-4" id="mainmenu-area">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary main-nav navbar-togglable rounded-radius">
+<div class="main-navigation mt-4" id="mainmenu-area">
+    <div class="container">
+        <nav class="
+        navbar navbar-expand-lg navbar-dark
+        bg-primary
+        main-nav
+        navbar-togglable
+        rounded-radius
+      ">
+            <a class="navbar-brand d-lg-none d-block" href="">
+                <img src="../static/resume/images/header.png" alt="banner-img" class="img-fluid" />
+            </a>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span>
+      </button>
 
-                <a class="navbar-brand d-lg-none d-block" href="">
-                    <img src="../static/resume/images/header.png" alt="banner-img" class="img-fluid"> 
-                </a>
-                <!-- Toggler -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fa fa-bars"></span>
-                </button>
-
-                <!-- Collapse -->
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <!-- Links -->
-                    <ul class="navbar-nav ">
-
-                     <!--    <li class="nav-item">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <!--    <li class="nav-item">
 
                             <img src="../static/resume/images/header.png" alt="banner-img" class="img-fluid">
                            
                         </li> -->
 
+                    <li class="nav-item">
+                        <a class="nav-link" id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Home
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://thoughtwin.com/about" class="nav-link js-scroll-trigger">
+              About
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services-2" class="nav-link js-scroll-trigger">
+              resume templates
+            </a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link"  id="navbarWelcome" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Home
-                            </a>
-                           
-                        </li>
-                        <li class="nav-item ">
-                            <a href="https://thoughtwin.com/about" class="nav-link js-scroll-trigger">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a href="#services-2" class="nav-link js-scroll-trigger">
-                                resume templates
-                            </a>
-                        </li>
-                    
-                        <li class="nav-item ">
-                            <a href="https://thoughtwin.com/contact" class="nav-link">
-                                Contact
-                            </a>
-                        </li>
-                        <!-- {% if last_work is not None %}
+                    <li class="nav-item">
+                        <a href="https://thoughtwin.com/contact" class="nav-link">
+              Contact
+            </a>
+                    </li>
+                    <!-- {% if last_work is not None %}
                         <li class="nav-item ">
                             <a href="{{last_work}}" class="nav-link">
                                 Go to last Work
@@ -88,21 +89,21 @@ div#top-bar {
                         </li>
                         {% endif %} -->
 
-                        <li class="nav-item ">
-                            <a href="/login/" class="nav-link">
-                                Sign in 
-                            </a>
-                        </li>
-                    </ul>
+                    <li class="nav-item">
+                        <a href="{% url 'sign_in' %}" class="nav-link"> Sign in </a>
+                    </li>
+                </ul>
 
-                    <ul class="ml-lg-auto list-unstyled m-0">
-                        <li> {% if user.is_authenticated %}
-                                <h3>{{request.user.username}}</h3> 
-                            {% endif %}
-                        </li>
-                    </ul>
-                </div> <!-- / .navbar-collapse -->
-            </nav>
-        </div> <!-- / .container -->
+                <ul class="ml-lg-auto list-unstyled m-0">
+                    <li>
+                        {% if user.is_authenticated %}
+                        <h3>{{request.user.username}}</h3>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+            <!-- / .navbar-collapse -->
+        </nav>
     </div>
-
+    <!-- / .container -->
+</div>

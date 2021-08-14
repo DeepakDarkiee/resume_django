@@ -1,10 +1,10 @@
 <!doctype html>
-  <html lang="en">
-  <head>
+<html lang="en">
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    ​
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> ​
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/static/css/template4/style.css">
@@ -14,153 +14,118 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <title>resume preview</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="wrapper">
-     <div class="btnset">
-      <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
-      More</button></a>
-      {% if  request.user.is_authenticated  %}
-      {% if not  request.user.account_approved %}
-      <a  onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a>
-      {% else %}
-      <a href="#" id="noprint" class="btn btn-info download">
-      Download</a>
-      {% endif %}
-      {% else %}
-      <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a>
-    {% endif %}</div>
-    <div class="row">
-      <div class="col-md-8">
-        <div class="set">
-         <h2>CAREER OBJECTIVE</h2>
-         
-         <!-- <p>{{resume.objective}}</p> -->
-         <ul class="achie">
-          <li>
-            {{resume.objective.capitalize}}
-          </li>
-        </ul>
-        {{object.role}}
+        <div class="btnset">
+            <a id="noprint" href="{% url 'update_data' resume.id %}"><button class="btn btn-primary">Edit
+      More</button></a> {% if request.user.is_authenticated %} {% if not request.user.account_approved %}
+            <a onclick="alert('pending approval')" href="#"><button class="btn btn-primary">Download</button></a> {% else %}
+            <a href="#" id="noprint" class="btn btn-info download">
+      Download</a> {% endif %} {% else %}
+            <a href="{% url 'sign_up' resume.id %}"><button class="btn btn-primary">Download</button></a> {% endif %}</div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="set">
+                    <h2>CAREER OBJECTIVE</h2>
 
-        <h2>EXPERIENCES</h2>
-        {% for object in  resume.experience_set.all %}
-        {% if object.company_name == '' %}
-        {% else %}
-        <h6 class=" font-weight-bold" name="company_name">Company Name :- {{ object.company_name }}</h6>
-        {% endif %}
+                    <!-- <p>{{resume.objective}}</p> -->
+                    <ul class="achie">
+                        <li>
+                            {{resume.objective.capitalize}}
+                        </li>
+                    </ul>
+                    {{object.role}}
 
-        {% if object.designation == '' %}
-        {% else %}
-        <div class="" name="designation" placeholder="Designation..." onkeyup="AutoGrowTextArea(this)">Designation :- {{object.designation}}</div>
-        {% endif %}
-
-        {% if object.place == '' %}
-        {% else %}
-        <div class="" name="place" placeholder="Place...">Place :- {{ object.place }}</div> 
-        {% endif %}
-
-        {% if object.role == '' %}
-        
-        {% else %}
-        <p class="font-weight-bold">Role :-</p>
-        <ul class="achie">
-          <li>
-            {{object.role}}
-          </li>
-        </ul>
-              <!-- <div class="" name="role" placeholder="Description here...">
+                    <h2>EXPERIENCES</h2>
+                    {% for object in resume.experience_set.all %} {% if object.company_name == '' %} {% else %}
+                    <h6 class=" font-weight-bold" name="company_name">Company Name :- {{ object.company_name }}</h6>
+                    {% endif %} {% if object.designation == '' %} {% else %}
+                    <div class="" name="designation" placeholder="Designation..." onkeyup="AutoGrowTextArea(this)">Designation :- {{object.designation}}</div>
+                    {% endif %} {% if object.place == '' %} {% else %}
+                    <div class="" name="place" placeholder="Place...">Place :- {{ object.place }}</div>
+                    {% endif %} {% if object.role == '' %} {% else %}
+                    <p class="font-weight-bold">Role :-</p>
+                    <ul class="achie">
+                        <li>
+                            {{object.role}}
+                        </li>
+                    </ul>
+                    <!-- <div class="" name="role" placeholder="Description here...">
               {{object.role}}</div> -->
-              
-              {% endif %}
-              {% endfor %}
-              
 
-              
-              <h2 style="padding-top: 18px; padding-bottom: 7px;">WORK SAMPLES</h2>
-              
+                    {% endif %} {% endfor %}
 
-              {% for object in  resume.worksamples_set.all %}
-              {% if object.project_name == '' %}
-              {% else %}
-              <h6 class=" font-weight-bold" name="project_name" value="{{object.project_name}}" placeholder="Project name..."><span></span> Project Name :- {{ object.project_name }}</h6>
-              {% endif %}
-              
-              {% if object.project_link == '' %}
-              {% else %}
-              <div class="" name="project_link" placeholder="project link...">Link :- {{ object.project_link}}</div>
-              {% endif %}
 
-              {% if object.technology == '' %}
-              {% else %}
-              <div class="" name="technology" value="{{object.technology}}" placeholder="technology...">Technology :- {{ object.technology }}</div>
-              {% endif %}
 
-              {% if object.description == '' %}
-              {% else %}
-              <p  class="font-weight-bold">Description :-</p>
-              <ul class="achie">
-                <li>
-                  {{ object.description }}
-                </li>
-              </ul>
-              {% endif %}
-              
-              {% if object.responsibilities == '' %}
-              {% else %}
-              <p class=" font-weight-bold">Role and Responsibilities :-</p>
-              <ul class="achie">
-                <li>
-                  {{ object.responsibilities }}
-                </li>
-              </ul>
-              {% endif %}
-              <!-- <div class="" name="responsibilities" value="{{object.responsibilities}}" placeholder="Description here..."rows="6">{{ object.responsibilities }}</div> -->
-              
-              {% endfor %}
-              <p style="break-inside: always;"></p>
-              <div>
-                
-                <h2>ACHIEVEMENTS</h2>
-                {% for object in resume.achievements_set.all %}
-                <!-- <p>{{object.achievements}}</p> -->
+                    <h2 style="padding-top: 18px; padding-bottom: 7px;">WORK SAMPLES</h2>
 
-                <ul class="achie">
-                  {% if object.achievements == '' %}
-                  {% else %}
-                  <li>
-                    {{object.achievements}}
-                  </li>
-                  {% endif%}
 
-                  
-                </ul>
-                {% endfor %}
+                    {% for object in resume.worksamples_set.all %} {% if object.project_name == '' %} {% else %}
+                    <h6 class=" font-weight-bold" name="project_name" value="{{object.project_name}}" placeholder="Project name..."><span></span> Project Name :- {{ object.project_name }}</h6>
+                    {% endif %} {% if object.project_link == '' %} {% else %}
+                    <div class="" name="project_link" placeholder="project link...">Link :- {{ object.project_link}}</div>
+                    {% endif %} {% if object.technology == '' %} {% else %}
+                    <div class="" name="technology" value="{{object.technology}}" placeholder="technology...">Technology :- {{ object.technology }}</div>
+                    {% endif %} {% if object.description == '' %} {% else %}
+                    <p class="font-weight-bold">Description :-</p>
+                    <ul class="achie">
+                        <li>
+                            {{ object.description }}
+                        </li>
+                    </ul>
+                    {% endif %} {% if object.responsibilities == '' %} {% else %}
+                    <p class=" font-weight-bold">Role and Responsibilities :-</p>
+                    <ul class="achie">
+                        <li>
+                            {{ object.responsibilities }}
+                        </li>
+                    </ul>
+                    {% endif %}
+                    <!-- <div class="" name="responsibilities" value="{{object.responsibilities}}" placeholder="Description here..."rows="6">{{ object.responsibilities }}</div> -->
 
-                <h2>CERTIFICATE</h2>
-                {% for object in resume.certificate_set.all %}
-                <ul class="achie">
-                  {% if object.certificate == '' %}
-                  {% else %}
-                  <li>{{object.certificate}}</li>
-                  {% endif %}
-                </ul>
-                <!-- <p>{{object.certificate}}</p> -->
-                {% endfor %}
-              </div>
+                    {% endfor %}
+                    <p style="break-inside: always;"></p>
+                    <div>
+
+                        <h2>ACHIEVEMENTS</h2>
+                        {% for object in resume.achievements_set.all %}
+                        <!-- <p>{{object.achievements}}</p> -->
+
+                        <ul class="achie">
+                            {% if object.achievements == '' %} {% else %}
+                            <li>
+                                {{object.achievements}}
+                            </li>
+                            {% endif%}
+
+
+                        </ul>
+                        {% endfor %}
+
+                        <h2>CERTIFICATE</h2>
+                        {% for object in resume.certificate_set.all %}
+                        <ul class="achie">
+                            {% if object.certificate == '' %} {% else %}
+                            <li>{{object.certificate}}</li>
+                            {% endif %}
+                        </ul>
+                        <!-- <p>{{object.certificate}}</p> -->
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-          </div>
 
 
 
-          <div class="col-md-4">
-           <div class="profile-area">
-            
+            <div class="col-md-4">
+                <div class="profile-area">
 
-            <div class="avatar-upload">
-              
-              <!-- <div class="avatar-preview">
+
+                    <div class="avatar-upload">
+
+                        <!-- <div class="avatar-preview">
                 {% if resume.resumeuserdetails_set.get.photo.url is not null   %}
                 <div id="imagePreview" style="background-image: url('{{resume.resumeuserdetails_set.get.photo.url}}')">
                   {% else %}
@@ -169,84 +134,68 @@
                 </div>
               </div>
             </div> -->
-          </div>
+                    </div>
 
-          <div class="test" >
-            {% for object in resume.resumeuserdetails_set.all %}
-            <h3>{{resume.resumeuserdetails_set.all.first.full_name}}</h3>
-            <h6  style="font-size:15px" >{{resume.title}}</h6>
-            {% comment %} <h6  style="font-size:15px" >{{object.email}}</h6> {% endcomment %}
-            
-            
-            
-            <ul>
-              <!-- <li>Title :- {{resume.title}}</li> -->
-              <li>Email :- {{object.email}}</li>
-              <li>Phone :- {{object.mobile}}</li>
-              <li>Dob :- {{object.date_of_birth}}</li>
-              <li>Address :- {{object.address}}</li>
-            </ul>
+                    <div class="test">
+                        {% for object in resume.resumeuserdetails_set.all %}
+                        <h3>{{resume.resumeuserdetails_set.all.first.full_name}}</h3>
+                        <h6 style="font-size:15px">{{resume.title}}</h6>
+                        {% comment %}
+                        <h6 style="font-size:15px">{{object.email}}</h6> {% endcomment %}
 
-            <h2>EDUCATION</h2>
-            {% for object in resume.education_set.all %}
-            <ul>
-              {% if object.qualification_name == '' %}
-              {% else %}
-              <li class="font-weight-bold" >Qualification :- {{object.qualification_name}}</li>
-              {% endif %}
 
-              {% if object.university == '' %}
-              {% else %}
-              <li>University :- {{object.university}}</li>
-              {% endif %}
 
-              {% if object.year_of_passing == '' %}
-              {% else %}
-              <li>Passing :- {{object.year_of_passing}}</li>
-              {% endif %}
-              
-              {% if object.percentage_or_grade == '' %}
-              {% else %}
-              <li>Percentage :- {{object.percentage_or_grade}}</li>
-              {% endif %}
-            </ul>
-            {% endfor %}
-            <h2>SKILLS</h2>
-            
-            <ul>
-              {% for object in resume.skills_set.all %}
-              {% if object.skills == '' %}
-              {% else %}
-              <li> {{object.skills}}</li>
-              {% endif %}
-              {% endfor %}
-            </ul>
-            
-            <h2>HOBBIES</h2>
-            <ul>
-              {% for object in resume.hobbies_set.all %}
-              {% if object.hobbies == '' %}
-              {% else %}
-              <li>
-                {{object.hobbies}}
-              </li>
-              {% endif %}
-              {% endfor %}
-            </ul>
-            {% endfor %}
-          </div></div>
+                        <ul>
+                            <!-- <li>Title :- {{resume.title}}</li> -->
+                            <li>Email :- {{object.email}}</li>
+                            <li>Phone :- {{object.mobile}}</li>
+                            <li>Dob :- {{object.date_of_birth}}</li>
+                            <li>Address :- {{object.address}}</li>
+                        </ul>
+
+                        <h2>EDUCATION</h2>
+                        {% for object in resume.education_set.all %}
+                        <ul>
+                            {% if object.qualification_name == '' %} {% else %}
+                            <li class="font-weight-bold">Qualification :- {{object.qualification_name}}</li>
+                            {% endif %} {% if object.university == '' %} {% else %}
+                            <li>University :- {{object.university}}</li>
+                            {% endif %} {% if object.year_of_passing == '' %} {% else %}
+                            <li>Passing :- {{object.year_of_passing}}</li>
+                            {% endif %} {% if object.percentage_or_grade == '' %} {% else %}
+                            <li>Percentage :- {{object.percentage_or_grade}}</li>
+                            {% endif %}
+                        </ul>
+                        {% endfor %}
+                        <h2>SKILLS</h2>
+
+                        <ul>
+                            {% for object in resume.skills_set.all %} {% if object.skills == '' %} {% else %}
+                            <li> {{object.skills}}</li>
+                            {% endif %} {% endfor %}
+                        </ul>
+
+                        <h2>HOBBIES</h2>
+                        <ul>
+                            {% for object in resume.hobbies_set.all %} {% if object.hobbies == '' %} {% else %}
+                            <li>
+                                {{object.hobbies}}
+                            </li>
+                            {% endif %} {% endfor %}
+                        </ul>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
         </div>
 
-
-
-
-        
-      </div>
-
-    </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
-    integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- <script>
   $(".download").click(function(){
@@ -255,11 +204,11 @@
 </script> -->
 
 <script>
-  $(".download").click(function(){
-    $(".wrapper").css("margin-top","-25px");
-    $(".wrapper").css("margin-bottom", "0px");
-    window.print()
-  })
+    $(".download").click(function() {
+        $(".wrapper").css("margin-top", "-25px");
+        $(".wrapper").css("margin-bottom", "0px");
+        window.print()
+    })
 </script>
 
 </html>
